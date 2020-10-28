@@ -1,5 +1,6 @@
 // Imports
 
+const fs = require("fs");
 const { src, watch, symlink, dest, series, parallel } = require('gulp');
 
 var sass = require('gulp-sass');
@@ -9,6 +10,7 @@ const postcss = require('gulp-postcss');
 
 const replace = require('gulp-replace');
 const clean = require('gulp-clean');
+const { join } = require("path");
 
 /* Dev
 1. Link Tailwind
@@ -23,7 +25,7 @@ const clean = require('gulp-clean');
 
 
 const defaultTask = function() {
-  watch('src/*', series(
+  watch('src/**/*', series(
       removePreviousBuild,
       buildCss,
       buildHtml
@@ -49,12 +51,27 @@ async function buildHtml() {
     src("node_modules/clipboard/dist/clipboard.js")
     .pipe(symlink('tmp/'));
 
+  const jsonSchedule = JSON.parse(fs.readFileSync("./test_data/meetingsNext24Hours.json").toString());
+  const scheduleScriptTag = `<script>JSON_SCHEDULE=${JSON.stringify(jsonSchedule)}</script>`
+
+  const sessionCardPartial = fs.readFileSync("./src/partials/meeting-card.html").toString();
+
+  const javascriptFilesToInline = [
+    "./src/javascript/timeDifference.js"
+  ].map(filePath => fs.readFileSync(filePath).toString()).
+  join(" ");
+
+  const inlinedJsScriptTag = `<script>${javascriptFilesToInline}</script>`
+
   // Inject a link to the stylesheet into the HTML
   src('src/index.html').
     pipe(replace("<!-- TAILWIND_DEV -->", "<link rel=\"stylesheet\" href=\"tailwind_full.css\">")).
-    pipe(replace("<!-- JS_DEV -->", `<script src=\"alpine.js\"></script><script src=\"clipboard.js\"></script>`)).
+    pipe(replace("<!-- JS_LIBS -->", `<script src=\"alpine.js\"></script><script src=\"clipboard.js\"></script>`)).
     pipe(replace("<!-- FONTS -->", `<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">`)).
     pipe(replace("<!-- CSS -->", `<link rel="stylesheet" href="styles.css">`)).
+    pipe(replace("<!-- SCHEDULE_JSON_SCRIPT_TAG -->", scheduleScriptTag)).
+    pipe(replace("<!-- SESSION_CARD -->", sessionCardPartial)).
+    pipe(replace("<!-- JS_INLINE -->", inlinedJsScriptTag)).
     pipe(dest('tmp'));
 }
 

@@ -3,71 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>NextMeeting</title>
+
   <!-- TAILWIND_DEV -->
-  <!-- JS_DEV -->
+  <!-- JS_LIBS -->  
+
   <!-- FONTS -->
+  <!-- SCHEDULE_JSON_SCRIPT_TAG -->
 
   <!-- CSS -->
-</head>
-<body>
-  <div class="main-nav mb-6">
-    <a href="/">
-      <h1 class="logo light"><span class="bold">Next</span><span>Meeting</span></h1>
-    </a>
-  </div>
-  
+  <!-- JS_INLINE -->
 
-  <section class="session-group">
-    <div class="flex justify-center mb-2">
-      <h2 class="session-group__title">Just Started</h2>
-    </div>
+  <script>
+    const ALREADY_STARTED_MEETING_VISIBILITY_THRESHOLD_MINUTES = 20;
+
+    MEETINGS_BY_TIME = {
+      past: {
+        olderThanThreshold: [],
+        newerThanThreshold: [] 
+      },
+      future: {
+        nextHour: [],
+        restOfDay: [],
+        tomorrow: [],
+        other: []
+      }
+    }
+
+    const MILLISECONDS_IN_MINUTE = 60 * 1000;
+    const MILLISECONDS_IN_HOUR = MILLISECONDS_IN_MINUTE * 60;
+
+    const now = new Date();
+    const currentTimeString = now.toISOString();
+
+    CURRENT_TIME_STRING = currentTimeString;
+
+    const alreadyStartedOlderThanThresholdTimeString = new Date(now.getTime() - (MILLISECONDS_IN_MINUTE * ALREADY_STARTED_MEETING_VISIBILITY_THRESHOLD_MINUTES)).toISOString();
+
+    const nextHourTimeString = new Date(now.getTime() + MILLISECONDS_IN_HOUR);
     
+    const nextMidnight = new Date(new Date().setHours(24,0,0,0)) ; 
+    const nextMidnightTimeString = nextMidnight.toISOString(); 
 
-    <div class="session-card">
-      
-      <a class="card-content w-full" href="?virtualPage=sessionDetails&sessionId=1234">
-        <h3 class="session-title">Meeting Title</h3>
+    const endOfTomorrowTimeString = new Date(nextMidnight.getTime() + MILLISECONDS_IN_HOUR * 24).toISOString();
 
-        <div  class="session-metadata">
-          <div class="badge-live mr-2">Live</div>
-          <!-- <div class="session-time mr-1">2:15 PM</div> -->
-          <!-- <div class="mr-1">•</div> -->
-          <div class="session-time-relative text-color-3">started
-            <span class="text-primary">5 min ago</span>
-          </div>
-        </div>
-      </a>
+    JSON_SCHEDULE.meetings.forEach((session) => {
+      if(session.nextOccurrence < alreadyStartedOlderThanThresholdTimeString) {
+        MEETINGS_BY_TIME.past.olderThanThreshold.push(session);
+        return;
+      }
+      if(session.nextOccurrence < currentTimeString) {
+        MEETINGS_BY_TIME.past.newerThanThreshold.push(session);
+        return;
+      }
+      if(session.nextOccurrence < nextHourTimeString) {
+        MEETINGS_BY_TIME.future.nextHour.push(session);
+        return;
+      }
+      if(session.nextOccurrence < nextMidnightTimeString) {
+        MEETINGS_BY_TIME.future.restOfDay.push(session);
+        return;
+      }
+      if(session.nextOccurrence < endOfTomorrowTimeString) {
+        MEETINGS_BY_TIME.future.tomorrow.push(session);
+        return;
+      }
+      MEETINGS_BY_TIME.future.tomorrow.other.push(session);
+    })
 
-      <div class="flex items-center">
-        <a href="#" class="button-primary mr-2">Join&nbsp;›</a>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right opacity-50"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </div>
-      <!-- <a href="#" class="button-secondary">Join ›</a> -->
+    console.log(MEETINGS_BY_TIME);
+
+    function getLocalTimeFromDateString(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleTimeString(undefined, {timeStyle: "short"});
+    }
+    window.getLocalTimeFromDateString = getLocalTimeFromDateString;
+  </script>
+</head>
+  <body>
+    <div class="main-nav mb-6">
+      <a href="/">
+        <h1 class="logo light"><span class="bold">Next</span><span>Meeting</span></h1>
+      </a> 
     </div>
 
-    <div class="session-card">
-      
-      <a class="card-content w-full" href="?virtualPage=sessionDetails&sessionId=1234">
-        <h3 class="session-title">Meeting Title</h3>
-
-        <div  class="session-metadata">
-          <!-- <div class="badge-live mr-2">Live</div> -->
-          <div class="session-time mr-1">2:25 PM</div>
-          <div class="mr-1">•</div>
-          <div class="session-time-relative text-color-3">starting in
-            <span class="text-primary">10 min</span>
-          </div>
-        </div>
-      </a>
-
-      <div class="flex items-center">
-        <!-- <a href="#" class="button-secondary mr-2">In 10m</a> -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right opacity-50"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    <section class="session-group" x-data="{ MEETINGS_BY_TIME }" x-show="MEETINGS_BY_TIME.past.newerThanThreshold.length > 0">
+      <div class="flex justify-center mb-2">
+        <h2 class="session-group__title">Just Started</h2>
       </div>
-      <!-- <a href="#" class="button-secondary">Join ›</a> -->
-    </div>
+    
+      <template x-for="(session, index) in MEETINGS_BY_TIME.past.newerThanThreshold" :key="index">
+        <!-- SESSION_CARD -->
+      </template>
+    </section>
 
-  </section>
-</body>
+
+    <section class="session-group" x-data="{ MEETINGS_BY_TIME }" x-show="MEETINGS_BY_TIME.future.nextHour.length > 0">
+      <div class="flex justify-center mb-2">
+        <h2 class="session-group__title">Next Hour</h2>
+      </div>
+    
+      <template x-for="(session, index) in MEETINGS_BY_TIME.future.nextHour" :key="index">
+        <!-- SESSION_CARD -->
+      </template>
+    </section>
+
+    <section class="session-group" x-data="{ MEETINGS_BY_TIME }" x-show="MEETINGS_BY_TIME.future.restOfDay.length > 0">
+      <div class="flex justify-center mb-2">
+        <h2 class="session-group__title">Later Today</h2>
+      </div>
+    
+      <template x-for="(session, index) in MEETINGS_BY_TIME.future.restOfDay" :key="index">
+        <!-- SESSION_CARD -->
+      </template>
+    </section>
+
+    <section class="session-group" x-data="{ MEETINGS_BY_TIME }" x-show="MEETINGS_BY_TIME.future.tomorrow.length > 0">
+      <div class="flex justify-center mb-2">
+        <h2 class="session-group__title">Tomorrow</h2>
+      </div>
+    
+      <template x-for="(session, index) in MEETINGS_BY_TIME.future.tomorrow" :key="index">
+        <!-- SESSION_CARD -->
+      </template>
+    </section>
+  </body>
 </html>

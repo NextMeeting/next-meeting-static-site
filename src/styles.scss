@@ -61,6 +61,7 @@ html, body {
   border-radius: 8px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
   transition: .3s all cubic-bezier(0.075, 0.82, 0.165, 1);
+  width: 64px;
 
   &:hover {
     transform: scale(1.05);
@@ -81,6 +82,10 @@ html, body {
   border-radius: 8px;
   box-shadow: inset 0px 0px 0px 2px $color-primary,
               0px 1px 2px rgba(0, 0, 0, 0.3);  
+  
+  width: 64px;
+  display: flex;
+  justify-content: center;
 }
 
 
@@ -120,6 +125,7 @@ html, body {
   text-align: center;
   width: fit-content;
   position: relative;
+  margin-bottom: 6px;
 
   &::before {
     content: " ";
@@ -142,6 +148,10 @@ html, body {
     top: 50%;
     transform: translateY(-2px);
   }
+}
+
+.session-group {
+  margin-top: 32px;
 }
 
 .session-group .session-card {
