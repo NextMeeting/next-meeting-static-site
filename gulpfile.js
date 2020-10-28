@@ -33,7 +33,7 @@ function removePreviousBuild() {
 async function buildHtml() {
   src('src/index.html').
   pipe(replace("<!-- TAILWIND_DEV -->", "<link rel=\"stylesheet\" src=\"../dev_static/tailwind_full.css\">")).
-  pipe(dest('tmp/index.html'));
+  pipe(dest('tmp'));
 }
 
 async function buildCss (cb) {
