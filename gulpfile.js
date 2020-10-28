@@ -57,7 +57,8 @@ async function buildHtml() {
   const sessionCardPartial = fs.readFileSync("./src/partials/meeting-card.html").toString();
 
   const javascriptFilesToInline = [
-    "./src/javascript/timeDifference.js"
+    "./src/javascript/timeDifference.js",
+    "./src/javascript/categorizeSessions.js"
   ].map(filePath => fs.readFileSync(filePath).toString()).
   join(" ");
 

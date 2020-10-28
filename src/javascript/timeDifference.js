@@ -99,7 +99,7 @@ const defaultOptions = {
 
 // Takes two `Date`, (or parsable date-strings. Converted with `new Date()`) and an options object
 function timeDifference(current, previous, options) {
-  console.log(`timeDifference ${current} ${previous} ${JSON.stringify(options)}`);
+  //console.log(`timeDifference ${current} ${previous} ${JSON.stringify(options)}`);
   
   if(!(current instanceof Date)) {
     //if(!current.match(VALID_DATETIME_STRING_REGEX)) throw "Invalid datetime string \"" + current + "\"";

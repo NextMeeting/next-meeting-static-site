@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NextMeeting</title>
+  <title>NextMeeting for SA</title>
 
-  <!-- TAILWIND_DEV -->
+  <!-- TAILWIND_DEV -->  
   <!-- JS_LIBS -->  
 
   <!-- FONTS -->
@@ -15,63 +15,8 @@
   <!-- JS_INLINE -->
 
   <script>
-    const ALREADY_STARTED_MEETING_VISIBILITY_THRESHOLD_MINUTES = 20;
 
-    MEETINGS_BY_TIME = {
-      past: {
-        olderThanThreshold: [],
-        newerThanThreshold: [] 
-      },
-      future: {
-        nextHour: [],
-        restOfDay: [],
-        tomorrow: [],
-        other: []
-      }
-    }
-
-    const MILLISECONDS_IN_MINUTE = 60 * 1000;
-    const MILLISECONDS_IN_HOUR = MILLISECONDS_IN_MINUTE * 60;
-
-    const now = new Date();
-    const currentTimeString = now.toISOString();
-
-    CURRENT_TIME_STRING = currentTimeString;
-
-    const alreadyStartedOlderThanThresholdTimeString = new Date(now.getTime() - (MILLISECONDS_IN_MINUTE * ALREADY_STARTED_MEETING_VISIBILITY_THRESHOLD_MINUTES)).toISOString();
-
-    const nextHourTimeString = new Date(now.getTime() + MILLISECONDS_IN_HOUR);
-    
-    const nextMidnight = new Date(new Date().setHours(24,0,0,0)) ; 
-    const nextMidnightTimeString = nextMidnight.toISOString(); 
-
-    const endOfTomorrowTimeString = new Date(nextMidnight.getTime() + MILLISECONDS_IN_HOUR * 24).toISOString();
-
-    JSON_SCHEDULE.meetings.forEach((session) => {
-      if(session.nextOccurrence < alreadyStartedOlderThanThresholdTimeString) {
-        MEETINGS_BY_TIME.past.olderThanThreshold.push(session);
-        return;
-      }
-      if(session.nextOccurrence < currentTimeString) {
-        MEETINGS_BY_TIME.past.newerThanThreshold.push(session);
-        return;
-      }
-      if(session.nextOccurrence < nextHourTimeString) {
-        MEETINGS_BY_TIME.future.nextHour.push(session);
-        return;
-      }
-      if(session.nextOccurrence < nextMidnightTimeString) {
-        MEETINGS_BY_TIME.future.restOfDay.push(session);
-        return;
-      }
-      if(session.nextOccurrence < endOfTomorrowTimeString) {
-        MEETINGS_BY_TIME.future.tomorrow.push(session);
-        return;
-      }
-      MEETINGS_BY_TIME.future.tomorrow.other.push(session);
-    })
-
-    console.log(MEETINGS_BY_TIME);
+    MEETINGS_BY_TIME = categorizeSessions(JSON_SCHEDULE);
 
     function getLocalTimeFromDateString(dateString) {
       const date = new Date(dateString);
@@ -83,13 +28,13 @@
   <body>
     <div class="main-nav mb-6">
       <a href="/">
-        <h1 class="logo light"><span class="bold">Next</span><span>Meeting</span></h1>
+        <h1 class="logo light"><span class="bold">Next</span><span>Meeting</span> <span>for <strong>SA<strong></strong></span></h1>
       </a> 
     </div>
 
     <section class="session-group" x-data="{ MEETINGS_BY_TIME }" x-show="MEETINGS_BY_TIME.past.newerThanThreshold.length > 0">
       <div class="flex justify-center mb-2">
-        <h2 class="session-group__title">Just Started</h2>
+        <h2 class="session-group__title">Live Now</h2>
       </div>
     
       <template x-for="(session, index) in MEETINGS_BY_TIME.past.newerThanThreshold" :key="index">

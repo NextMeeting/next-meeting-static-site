@@ -19,10 +19,16 @@
   </a>
 
   <div class="flex items-center">
-    <a x-show="!session.connectionDetails.mustContactForConnectionInfo" x-bind:href="session.connectionDetails.joinUrl" class="button-primary mr-2">Join&nbsp;›</a>
+    <a x-show="!session.connectionDetails.mustContactForConnectionInfo && isInNextHour(session.nextOccurrence)" x-bind:href="session.connectionDetails.joinUrl" class="button-primary mr-2">Join&nbsp;›</a>
+
+    <!-- <button 
+      x-show="!isInNextHour(session.nextOccurrence)"
+      x-text="timeDifference(new Date(), session.nextOccurrence, {displayMode: 'short', sign: 'text'})"
+      class="button-secondary mr-2">
+  </button> -->
 
     <button 
-      x-show="session.connectionDetails.mustContactForConnectionInfo"
+      x-show="session.connectionDetails.mustContactForConnectionInfo && isInNextHour(session.nextOccurrence)"
       class="button-secondary mr-2">
       <div>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
