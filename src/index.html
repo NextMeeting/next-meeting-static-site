@@ -5,8 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <!-- TAILWIND_DEV -->
+  <!-- JS_DEV -->
+  <!-- FONTS -->
+
+  <!-- CSS -->
 </head>
 <body>
+  <div class="main-nav mb-6">
+    <a href="/">
+      <h1 class="logo light"><span class="bold">Next</span><span>Meeting</span></h1>
+    </a>
+  </div>
   
+
+  <section class="session-group">
+    <div class="flex justify-center mb-2">
+      <h2 class="session-group__title">Just Started</h2>
+    </div>
+    
+
+    <div class="session-card">
+      
+      <a class="card-content w-full" href="?virtualPage=sessionDetails&sessionId=1234">
+        <h3 class="session-title">Meeting Title</h3>
+
+        <div  class="session-metadata">
+          <div class="badge-live mr-2">Live</div>
+          <!-- <div class="session-time mr-1">2:15 PM</div> -->
+          <!-- <div class="mr-1">•</div> -->
+          <div class="session-time-relative text-color-3">started
+            <span class="text-primary">5 min ago</span>
+          </div>
+        </div>
+      </a>
+
+      <div class="flex items-center">
+        <a href="#" class="button-primary mr-2">Join&nbsp;›</a>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right opacity-50"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </div>
+      <!-- <a href="#" class="button-secondary">Join ›</a> -->
+    </div>
+
+    <div class="session-card">
+      
+      <a class="card-content w-full" href="?virtualPage=sessionDetails&sessionId=1234">
+        <h3 class="session-title">Meeting Title</h3>
+
+        <div  class="session-metadata">
+          <!-- <div class="badge-live mr-2">Live</div> -->
+          <div class="session-time mr-1">2:25 PM</div>
+          <div class="mr-1">•</div>
+          <div class="session-time-relative text-color-3">starting in
+            <span class="text-primary">10 min</span>
+          </div>
+        </div>
+      </a>
+
+      <div class="flex items-center">
+        <!-- <a href="#" class="button-secondary mr-2">In 10m</a> -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right opacity-50"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </div>
+      <!-- <a href="#" class="button-secondary">Join ›</a> -->
+    </div>
+
+  </section>
 </body>
 </html>
