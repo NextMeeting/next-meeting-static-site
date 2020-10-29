@@ -1,35 +1,34 @@
 <div class="session-card">
 
   <a class="card-content w-full" href="?virtualPage=sessionDetails&sessionId=1234">
-    <h3 class="session-title" x-text="session.name"></h3>
+    <h3 class="session-title text-color-1" x-text="session.name"></h3>
 
-    <div  class="session-metadata">  
+    <div  class="session-metadata mb-1">  
       <div class="badge-live mr-2" x-show="session.nextOccurrence < CURRENT_TIME_STRING">Live</div>
 
-      <div class="text-primary mr-1" x-show="session.nextOccurrence > CURRENT_TIME_STRING" x-text="getLocalTimeFromDateString(session.nextOccurrence)">
+      <div class="text-primary mr-1 whitespace-no-wrap" x-show="session.nextOccurrence > CURRENT_TIME_STRING" x-text="getLocalTimeFromDateString(session.nextOccurrence)">
       </div>
 
       <div class="mr-1" x-show="session.nextOccurrence > CURRENT_TIME_STRING">•</div>
 
       <div class="session-time-relative text-color-3">
-        <span x-text="session.nextOccurrence < CURRENT_TIME_STRING ? 'started' : 'starting in'"></span>
+        <span x-text="session.nextOccurrence < CURRENT_TIME_STRING ? 'started' : 'starting'"></span>
         <span class="text-primary" x-text="timeDifference(new Date(), session.nextOccurrence, {displayMode: 'full', sign: 'text'})"></span>
       </div>
     </div>
   </a>
 
-  <div class="flex items-center">
-    <a x-show="!session.connectionDetails.mustContactForConnectionInfo && isInNextHour(session.nextOccurrence)" x-bind:href="session.connectionDetails.joinUrl" class="button-primary mr-2">Join&nbsp;›</a>
-
-    <!-- <button 
-      x-show="!isInNextHour(session.nextOccurrence)"
-      x-text="timeDifference(new Date(), session.nextOccurrence, {displayMode: 'short', sign: 'text'})"
-      class="button-secondary mr-2">
-  </button> -->
+  <div class="flex items-center ml-3">
+    <a 
+      x-show="!session.connectionDetails.mustContactForConnectionInfo" 
+      x-bind:href="session.connectionDetails.joinUrl" 
+      class="button-primary mr-1">
+      Join&nbsp;›
+    </a>
 
     <button 
-      x-show="session.connectionDetails.mustContactForConnectionInfo && isInNextHour(session.nextOccurrence)"
-      class="button-secondary mr-2">
+      x-show="session.connectionDetails.mustContactForConnectionInfo"
+      class="button-secondary mr-1">
       <div>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
       </div>

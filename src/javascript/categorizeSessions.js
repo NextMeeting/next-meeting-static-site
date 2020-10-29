@@ -1,9 +1,9 @@
-const ALREADY_STARTED_MEETING_VISIBILITY_THRESHOLD_MINUTES = 45;
+const ALREADY_STARTED_MEETING_VISIBILITY_THRESHOLD_MINUTES = 50;
 
 const MILLISECONDS_IN_MINUTE = 60 * 1000;
 const MILLISECONDS_IN_HOUR = MILLISECONDS_IN_MINUTE * 60;
 
-function categorizeSessions() {
+function categorizeSessions(sessions) {
 
   const MEETINGS_BY_TIME = {
     past: {
@@ -31,7 +31,7 @@ function categorizeSessions() {
 
   const endOfTomorrowTimeString = new Date(nextMidnight.getTime() + MILLISECONDS_IN_HOUR * 24).toISOString();
 
-  JSON_SCHEDULE.meetings.forEach((session) => {
+  sessions.forEach((session) => {
     if(session.nextOccurrence < alreadyStartedOlderThanThresholdTimeString) {
       MEETINGS_BY_TIME.past.olderThanThreshold.push(session);
       return;

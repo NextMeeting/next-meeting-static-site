@@ -15,12 +15,16 @@ $brand-gradient: linear-gradient(90deg, #4E54C8, #8F94FB);
 
 * {
   font-family: 'Roboto', sans-serif;
-  color: $color-text-1;
+  // color: $color-text-1;
 }
 
 html, body {
   background: $color-background;
 } 
+
+[x-cloak] { 
+  display: none; 
+}
 
 .text-primary {
   color: $color-primary;
@@ -53,7 +57,7 @@ html, body {
   color: white;
   font-style: italic;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 14px;
   text-align: center;
   letter-spacing: -0.04em;
   text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
@@ -61,7 +65,7 @@ html, body {
   border-radius: 8px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
   transition: .3s all cubic-bezier(0.075, 0.82, 0.165, 1);
-  width: 64px;
+  width: 54px;
 
   &:hover {
     transform: scale(1.05);
@@ -74,7 +78,7 @@ html, body {
   color: $color-primary;
   font-style: italic;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 14px;
   text-align: center;
   letter-spacing: -0.04em;
   text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
@@ -83,7 +87,7 @@ html, body {
   box-shadow: inset 0px 0px 0px 2px $color-primary,
               0px 1px 2px rgba(0, 0, 0, 0.3);  
   
-  width: 64px;
+  width: 54px;
   display: flex;
   justify-content: center;
 }
@@ -117,7 +121,7 @@ html, body {
 }
 
 .session-group__title {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
   letter-spacing: 1px;
   color: $color-text-2;
@@ -135,7 +139,7 @@ html, body {
     background: $color-primary;
     left: -46px;
     top: 50%;
-    transform: translateY(-2px);
+    transform: translateY(-1px);
   }
 
   &::after {
@@ -146,12 +150,15 @@ html, body {
     background: $color-primary;
     right: -46px;
     top: 50%;
-    transform: translateY(-2px);
+    transform: translateY(-1px);
   }
 }
 
 .session-group {
-  margin-top: 32px;
+  margin-top: 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .session-group .session-card {
@@ -162,11 +169,10 @@ html, body {
   background: white;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
   border-left: 4px solid $color-primary;
-  padding: 12px 6px 12px 24px;
+  padding: 12px 6px 12px 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   .card-content {
     padding-top: 4px;
     display: flex;
@@ -176,10 +182,33 @@ html, body {
   &:hover {
     background: $color-background-2;
   }
+
+  &.inset {
+    border-radius: 8px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .session-card {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 430px) {
+  .session-card {
+    border-radius: 8px;
+    width: 470px;
+  }
+
+  .session-group .session-card {
+    margin-bottom: 8px;
+  }
 }
 
 .session-title {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 400;
 }
 
@@ -187,7 +216,7 @@ html, body {
   display: flex;
   color: $color-text-3;
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: 10px;
   letter-spacing: 0.5px;
 }
 
@@ -198,7 +227,7 @@ html, body {
   text-transform: uppercase;
   font-size: 9px;
   border-radius: 30px;
-  padding: 9px 8px 0px 8px;
+  padding: 8px 8px 0px 8px;
   line-height: 2px;
 }
 

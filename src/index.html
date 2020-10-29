@@ -1,76 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NextMeeting for SA</title>
-
-  <!-- TAILWIND_DEV -->  
-  <!-- JS_LIBS -->  
-
-  <!-- FONTS -->
-  <!-- SCHEDULE_JSON_SCRIPT_TAG -->
+  <title>NextMeeting for SA</title>    
 
   <!-- CSS -->
+  <!-- TAILWIND_DEV -->  
   <!-- JS_INLINE -->
 
   <script>
 
-    MEETINGS_BY_TIME = categorizeSessions(JSON_SCHEDULE);
+    /* INJECT_BUILD_INFO */
+    /* INJECT_SCHEDULE_JSON */ 
+
+    if(JSON_SCHEDULE === undefined) {
+      window.TEMPLATE_NOT_BUILT = true;
+    }
+
+    var MEETINGS_BY_TIME = window.categorizeSessions(JSON_SCHEDULE.meetings);
+
+    // const MILLISECONDS_IN_MINUTE = 1000 * 60;
+
+    // From https://stackoverflow.com/a/10797177/6068782
+    function repeatEvery(func, interval) {
+      // Check current time and calculate the delay until next interval
+      var now = new Date(),
+          delay = interval - now % interval;
+
+      function start() {
+          // Execute function now...
+          func();
+          // ... and every interval
+          setInterval(func, interval);
+      }
+
+      // Delay execution until it's an even interval
+      setTimeout(start, delay);
+    }
+
+    const ONE_MINUTE_IN_MS = 60 * 1000;
+    repeatEvery(()=> {
+      // Recalculate all meeting times every minute
+      // So sessions can move up to the next category, become/exit being live, etc.
+      console.log("Recalulating dates");
+      MEETINGS_BY_TIME = window.categorizeSessions(JSON_SCHEDULE.meetings);
+    }, ONE_MINUTE_IN_MS);  
 
     function getLocalTimeFromDateString(dateString) {
       const date = new Date(dateString);
-      return date.toLocaleTimeString(undefined, {timeStyle: "short"});
+      return date.toLocaleTimeString(undefined, {hour: "2-digit", minute: "2-digit" });
     }
     window.getLocalTimeFromDateString = getLocalTimeFromDateString;
+
+    window.sessionCategories = [
+      {
+        title: "Live Now",
+        categoryPath: ["past", "newerThanThreshold"],
+        emptyUIString: "There are no meetings in progress right now"
+      },
+      {
+        title: "Next Hour",
+        categoryPath: ["future", "nextHour"], 
+        emptyUIString: "There are no meetings in the next hour",
+        hideIfEmpty: true
+      },
+      {
+        title: "Later Today",
+        categoryPath: ["future", "restOfDay"], 
+        emptyUIString: "There are no more meetings today",
+        hideIfEmpty: true
+      },
+      {
+        title: "Tomorrow",
+        categoryPath: ["future", "tomorrow"], 
+        emptyUIString: "There are no meetings tomorrow",
+        hideIfEmpty: true
+      },
+      {
+        title: "Upcoming",
+        categoryPath: ["future", "other"], 
+        emptyUIString: "There are no upcoming meetings",
+        hideIfEmpty: true
+      }
+    ];
+
+    function getCurrentTimeZoneString() {
+      return new Date().toString().match(/([A-Z]+[\+-][0-9]+.*)/)[1];
+    }
   </script>
 </head>
-  <body>
-    <div class="main-nav mb-6">
-      <a href="/">
+  <body> 
+    <div class="main-nav">
+      <a href="/"> 
         <h1 class="logo light"><span class="bold">Next</span><span>Meeting</span> <span>for <strong>SA<strong></strong></span></h1>
       </a> 
     </div>
 
-    <section class="session-group" x-data="{ MEETINGS_BY_TIME }" x-show="MEETINGS_BY_TIME.past.newerThanThreshold.length > 0">
-      <div class="flex justify-center mb-2">
-        <h2 class="session-group__title">Live Now</h2>
-      </div>
+    <!-- <h4 class="text-xs uppercase flex flex-col items-center mt-4 opacity-50 mb-8">
+     
+    </h4> -->
     
-      <template x-for="(session, index) in MEETINGS_BY_TIME.past.newerThanThreshold" :key="index">
-        <!-- SESSION_CARD -->
-      </template>
-    </section>
+    <!-- <div class="flex flex-col items-center x-cloak" x-data={}>
+      <div class="session-card inset flex flex-col items-center my-8" x-show="!JSON_SCHEDULE">
+        <h1 class="text-xl">Template file</h1>
+        <p>This file has not been populated with the schedule by the build system yet.</p>
+      </div>
+     </div> -->
+ 
+    <div x-cloak x-data="{ MEETINGS_BY_TIME }">
+      <template x-for="(category, index) in window.sessionCategories">
+
+        <section class="session-group" x-show="MEETINGS_BY_TIME[category.categoryPath[0]][category.categoryPath[1]].length > 0 || !category.hideIfEmpty">
+
+          <div class="flex justify-center mb-2">
+            <h2 class="session-group__title" x-text="category.title"></h2>
+          </div>
+        
+          <div class="w-full flex flex-col items-center" x-show="MEETINGS_BY_TIME[category.categoryPath[0]][category.categoryPath[1]].length > 0">
+            <template x-for="(session, index) in MEETINGS_BY_TIME[category.categoryPath[0]][category.categoryPath[1]]" :key="index">
+              <!-- SESSION_CARD -->
+            </template> 
+          </div> 
+    
+          <div x-show="MEETINGS_BY_TIME[category.categoryPath[0]][category.categoryPath[1]].length == 0">
+           <div class="session-card inset flex justify-center items-center ">
+             <h2 x-text="category.emptyUIString" class="text-center mr-6 text-sm"></h2>
+           </div>
+          </div>
+        </section>
+      </template> 
+    </div>
 
 
-    <section class="session-group" x-data="{ MEETINGS_BY_TIME }" x-show="MEETINGS_BY_TIME.future.nextHour.length > 0">
-      <div class="flex justify-center mb-2">
-        <h2 class="session-group__title">Next Hour</h2>
-      </div>
-    
-      <template x-for="(session, index) in MEETINGS_BY_TIME.future.nextHour" :key="index">
-        <!-- SESSION_CARD -->
-      </template>
-    </section>
+    <div x-cloak x-data="{}" class="text-xs uppercase flex flex-col items-center mt-6 opacity-50 mb-6">
+      <h4>
+        <span>Showing meetings in</span>
+        <span class="text-primary">Next 24 Hours</span>
+      </h4> 
+      <h4>
+        <span>Timezone</span>
+        <span class="text-primary" x-text="getCurrentTimeZoneString()"></span>
+      </h4>
 
-    <section class="session-group" x-data="{ MEETINGS_BY_TIME }" x-show="MEETINGS_BY_TIME.future.restOfDay.length > 0">
-      <div class="flex justify-center mb-2">
-        <h2 class="session-group__title">Later Today</h2>
-      </div>
-    
-      <template x-for="(session, index) in MEETINGS_BY_TIME.future.restOfDay" :key="index">
-        <!-- SESSION_CARD -->
-      </template>
-    </section>
-
-    <section class="session-group" x-data="{ MEETINGS_BY_TIME }" x-show="MEETINGS_BY_TIME.future.tomorrow.length > 0">
-      <div class="flex justify-center mb-2">
-        <h2 class="session-group__title">Tomorrow</h2>
-      </div>
-    
-      <template x-for="(session, index) in MEETINGS_BY_TIME.future.tomorrow" :key="index">
-        <!-- SESSION_CARD -->
-      </template>
-    </section>
+      <h4 class="mt-2">
+        <span x-text="(window.BUILD_INFO.buildType == 'prod' ? 'Production' : 'Development') + ' build'"></span>
+        <span x-text="(window.BUILD_INFO.commitHash && window.BUILD_INFO.commitHash.length > 0) ? ' ' + window.BUILD_INFO.commitHash.substring(0,6) : ''" class="text-primary"></span>
+      </h4>
+      <h4>
+        <span>Deployed </span>
+        <span class="text-primary" x-text="timeDifference(new Date(), window.BUILD_INFO.builtAt, {displayMode: 'full', sign: 'text'})"></span>
+      </h4>
+    </div>
   </body>
+  <footer>
+    <!-- JS_LIBS -->  
+    <!-- FONTS -->
+  </footer>
 </html>
