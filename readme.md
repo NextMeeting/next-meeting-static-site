@@ -25,6 +25,8 @@ gulp # Watches source directory and autorebuilds on changes.
 # you'll need to manually reload the browder (Cmd + R in Chrome)
 ```
 
+> Slow build systems should not exist. This build script is optimized to run everything blazing fast. In live rebuild mode the site rebuilds in less than 16ms. Production builds take less than 4 seconds (most of which is Tailwind stripping away all unused CSS styles)
+
 ## Deployment
 
 `gulp build` creates three files in `dist`:
@@ -37,7 +39,6 @@ gulp # Watches source directory and autorebuilds on changes.
 The `next-meeting-regenerate-schedule` Lambda pulls `index.template.html` from S3 every hour, injects the latest schedule JSON, and re-uploads it to S3 as a proper `index.html`.
 
 This allows the static site to be up-to-date with practically no overhead - nothing is recompiled, we don't need to deploy the entire gulp workflow into the cloud or run an servers. Just a simple string replacement in a text (HTML) file.
-
 
 ```bash
 gulp build # Builds dist directory
