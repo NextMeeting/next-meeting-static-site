@@ -311,7 +311,7 @@ html, body {
 .swipeable-bottom-sheet {
   .card {
     width: 100%;
-    // height: 100vh;
+    // height: 80vh;
     position: fixed;
     background: white;
     border-radius: 10px 10px 0 0;
@@ -357,6 +357,6 @@ html, body {
 
 .accent-color-bar {
   width: 100%;
-  height: 42px;
+  height: 32px;
   background: $brand-gradient;
 }
