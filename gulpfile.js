@@ -63,6 +63,7 @@ function buildProdJs() {
   return src([
     "node_modules/alpinejs/dist/alpine.js",
     "node_modules/clipboard/dist/clipboard.js",
+    "node_modules/body-scroll-lock/lib/bodyScrollLock.js"
   ]).
     pipe(concat("scripts.js")).
     pipe(terser()).
@@ -128,6 +129,10 @@ async function buildHtml() {
   
     src("node_modules/clipboard/dist/clipboard.js")
     .pipe(symlink('tmp/'));
+
+    src("node_modules/body-scroll-lock/lib/bodyScrollLock.js")
+      .pipe(symlink('tmp/'));
+    
     const scheduleJson = (fs.readFileSync("./test_data/meetingsNext24Hours.json").toString());
   
     const jsonToInject = `const JSON_SCHEDULE=${scheduleJson}`
@@ -152,7 +157,7 @@ async function buildHtml() {
     // Inject a link to the stylesheet into the HTML
     return src('src/index.html').
       pipe(replace("<!-- TAILWIND_DEV -->", "<link rel=\"stylesheet\" href=\"tailwind_full.css\">")).
-      pipe(replace("<!-- JS_LIBS -->", `<script src=\"alpine.js\"></script><script src=\"clipboard.js\"></script>`)).
+      pipe(replace("<!-- JS_LIBS -->", `<script src=\"alpine.js\"></script><script src=\"clipboard.js\"></script><script src=\"bodyScrollLock.js\"></script>`)).
       pipe(replace("<!-- FONTS -->", `<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">`)).
       pipe(replace("<!-- CSS -->", `<link rel="stylesheet" href="styles.css">`)).
       pipe(replace("/* INJECT_SCHEDULE_JSON */", jsonToInject)).

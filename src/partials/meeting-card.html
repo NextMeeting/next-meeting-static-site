@@ -1,6 +1,13 @@
 <div class="session-card">
 
-  <a class="card-content w-full" href="?virtualPage=sessionDetails&sessionId=1234">
+  <div 
+    class="card-content w-full" 
+    @click="
+      virtualPage='sessionDetails';
+      selectedSession=session;
+      bodyScrollLock.disableBodyScroll('#session-details-card')
+      console.log('Row click! ' + session.name)
+    ">
     <h3 class="session-title text-color-1" x-text="session.name"></h3>
 
     <div  class="session-metadata mb-1">  
@@ -16,19 +23,19 @@
         <span class="text-primary" x-text="timeDifference(new Date(), session.nextOccurrence, {displayMode: 'full', sign: 'text'})"></span>
       </div>
     </div>
-  </a>
+  </div>
 
   <div class="flex items-center ml-3">
     <a 
       x-show="!session.connectionDetails.mustContactForConnectionInfo" 
       x-bind:href="session.connectionDetails.joinUrl" 
-      class="button-primary mr-1">
+      class="button-primary fixed-width mr-1">
       Join&nbsp;›
     </a>
 
     <button 
       x-show="session.connectionDetails.mustContactForConnectionInfo"
-      class="button-secondary mr-1">
+      class="button-secondary fixed-width mr-1">
       <div>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
       </div>

@@ -1,11 +1,11 @@
 # Next Meeting Static Site
 
-A static site for browsing a list of Zoom meetings.
+🔥 Blazing fast static site for browsing a list of Zoom meetings.
 
 * 🌍 Automatically translates to the users timezone
 * ⚡ Entire site is 21 KB (!)
 * 💪 100% Lighthouse performance score 
-* 🤫 No network requests
+* 🤫 No network requests, servers, APIs or databases
 
 ## Architecture
 

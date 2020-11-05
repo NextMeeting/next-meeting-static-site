@@ -44,7 +44,7 @@
     }
 
     const ONE_MINUTE_IN_MS = 60 * 1000;
-    repeatEvery(()=> {
+    repeatEvery(()=> { 
       // Recalculate all meeting times every minute
       // So sessions can move up to the next category, become/exit being live, etc.
       console.log("Recalulating dates");
@@ -56,6 +56,13 @@
       return date.toLocaleTimeString(undefined, {hour: "2-digit", minute: "2-digit" });
     }
     window.getLocalTimeFromDateString = getLocalTimeFromDateString;
+
+    function getLocalDayOfWeekFromDateString(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString(undefined, {weekday: 'long'});
+    }
+    window.getLocalTimeFromDateString = getLocalTimeFromDateString;
+
 
     window.sessionCategories = [
       {
@@ -92,6 +99,30 @@
     function getCurrentTimeZoneString() {
       return new Date().toString().match(/([A-Z]+[\+-][0-9]+.*)/)[1];
     }
+
+    const BLANK_SESSION = {
+      "name": "",
+      "nextOccurrence": new Date().toISOString(),
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "",
+        "password": "",
+        "joinUrl": "https://zoom.us"
+      },
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    };
   </script>
 </head>
   <body> 
@@ -111,10 +142,101 @@
         <p>This file has not been populated with the schedule by the build system yet.</p>
       </div>
      </div> -->
- 
-    <div x-cloak x-data="{ MEETINGS_BY_TIME }">
-      <template x-for="(category, index) in window.sessionCategories">
 
+  </div>
+
+    <div x-cloak x-data="{  
+      MEETINGS_BY_TIME, 
+      meetings: JSON_SCHEDULE.meetings, 
+      virtualPage: 'home', 
+      selectedSession: BLANK_SESSION,
+    }">
+     
+        <div class="swipeable-bottom-sheet">
+          <div class="bg" :class="{'active': virtualPage === 'sessionDetails'}"></div>
+
+          <div class="card" 
+            id="session-details-card"
+            x-show="virtualPage === 'sessionDetails'"
+            @click.away="virtualPage = 'home';sessionDetails=BLANK_SESSION;bodyScrollLock.clearAllBodyScrollLocks()"
+            >
+            <div class="mt-4">
+              <div class="bar"></div>
+
+              <div class="mx-6 mt-12">
+                <div class="mt-4 flex items-center uppercase">
+                  <div class="badge-live mr-2" x-show="selectedSession.nextOccurrence < CURRENT_TIME_STRING">Live</div>
+                  <div class="session-time-relative text-color-3 tracking-wide text-sm">
+                    <span x-text="selectedSession.nextOccurrence < CURRENT_TIME_STRING ? 'started' : 'starting'"></span>
+                    <span class="text-primary" x-text="timeDifference(new Date(), selectedSession.nextOccurrence, {displayMode: 'full', sign: 'text'})"></span>
+                  </div>
+                </div>
+                <h3 class="session-title text-color-1 text-3xl" x-text="selectedSession.name"></h3>
+                <div class="text-color-2 opacity-75">
+                  <span>
+                    Every 
+                    <span x-text="getLocalDayOfWeekFromDateString(selectedSession.nextOccurrence)"></span>
+                  </span>
+                  <span>•</span>
+                  <span x-text="getLocalTimeFromDateString(selectedSession.nextOccurrence)"></span>
+                </div>
+              </div>
+
+              <div class="mt-8 mx-6 flex justify-between">
+                <button id="selected-session-copy-link-button" class="button medium borderless button-divider" :data-clipboard-text="selectedSession.connectionDetails.joinUrl">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link-2"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                  <span class="ml-1">Copy&nbsp;Link</span>
+                </button>
+
+                <button id="selected-session-copy-details-button"class="button medium borderless" :data-clipboard-text="'Join ' + selectedSession.name + (selectedSession.nextOccurrence < CURRENT_TIME_STRING ? ', started ' : ', starting ') + (timeDifference(new Date(), selectedSession.nextOccurrence, {displayMode: 'full', sign: 'text'})) + '\n' + selectedSession.connectionDetails.joinUrl + '\n' + 'Meeting ID: ' + selectedSession.connectionDetails.meetingId + '\nPassword: ' + selectedSession.connectionDetails.password">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <span class="ml-1">Copy&nbsp;Details</span>
+                </button>
+      
+                <a
+                  id="selected-session-join-url"
+                  :href="selectedSession.connectionDetails.joinUrl"
+                  class="button button-primary large mr-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-video"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+                  <span class="mx-2">Join&nbsp;›</span>
+                </a>
+              </div>
+
+            </div>
+
+            <div class="mt-4 px-6 py-6 text-xl background-light">
+              <div class="mb-4 flex justify-between">
+                <strong>Zoom ID</strong>
+                <div class="text-primary" x-text="selectedSession.connectionDetails.meetingId">123 456 890</div>
+              </div>
+              <div class="flex justify-between">
+                <strong>Password</strong>
+                <div class="text-primary" x-text="selectedSession.connectionDetails.password">2020</div>
+              </div>
+            </div>
+
+            <div class="mx-6 my-6">
+              <h4 class="uppercase text-color-2 mb-3">Contact</h4>
+              <div x-text="selectedSession.contactInfo" class="text-xl"></div>
+              <div x-show="!selectedSession.contactInfo" class="opacity-75">
+                🤷‍♂️ No contact info provided. 
+              </div>
+            </div>
+
+            <div class="w-full flex flex-col items-center">
+              <button class="button-secondary medium transform translate-y-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                <span class="ml-2">Send&nbsp;Feedback</span>
+              </button>
+
+              <div class="accent-color-bar"></div>
+            </div>
+          </div>
+        </div>
+
+
+      <template x-for="(category, index) in window.sessionCategories">
+ 
         <section class="session-group" x-show="MEETINGS_BY_TIME[category.categoryPath[0]][category.categoryPath[1]].length > 0 || !category.hideIfEmpty">
 
           <div class="flex justify-center mb-2">
@@ -159,6 +281,38 @@
   </body>
   <footer>
     <!-- JS_LIBS -->  
+    <script>
+      const clipboardButtonElems = [
+        ,
+        // "#selected-session-copy-details-button"
+      ];
+
+      console.log(clipboardButtonElems);
+      new ClipboardJS("#selected-session-copy-link-button", {
+        text: function(trigger) {
+          return trigger.getAttribute('data-clipboard-text');
+        }
+      }).on('success', function(e) {
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+
+        e.clearSelection();
+    });
+
+
+    new ClipboardJS("#selected-session-copy-details-button", {
+      text: function(trigger) {
+        return trigger.getAttribute('data-clipboard-text');
+      }
+    }).on('success', function(e) {
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+
+        e.clearSelection();
+    });
+    </script>
     <!-- FONTS -->
   </footer>
 </html>
