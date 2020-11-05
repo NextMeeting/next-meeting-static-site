@@ -360,3 +360,36 @@ html, body {
   height: 32px;
   background: $brand-gradient;
 }
+
+// * {
+//   border: 1px solid red !important;
+// }
+
+.toast-container {
+  // width: fit-content;
+}
+
+.toast {
+  position: fixed;
+  
+  // left: 24px;
+  display: flex;
+  background: $color-text-2;
+  font-style: italic;
+  color: white;
+  width: fit-content;
+  padding: 12px 22px;
+  border-radius: 50px;
+  box-shadow: 0px 4px 6px $color-text-3;
+  z-index: 20;
+  transition: .1s all ease-in;
+
+  bottom: -32px;
+  opacity: 0;
+
+  &.show {
+    bottom: 16px;
+    opacity: 1;
+    transition: .1s all ease-out;
+  }
+}

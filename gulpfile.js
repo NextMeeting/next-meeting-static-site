@@ -71,10 +71,8 @@ function buildProdJs() {
 }
 
 async function buildProdHtml() {
-  const jsonSchedule = JSON.parse(fs.readFileSync("./test_data/meetingsNext24Hours.json").toString());
-  const scheduleJson = `const JSON_SCHEDULE=${JSON.stringify(jsonSchedule)}`
-
   const sessionCardPartial = fs.readFileSync("./src/partials/meeting-card.html").toString();
+  const sessionDetailsModalPartial = fs.readFileSync("./src/partials/session-details-modal.html").toString();
 
   const javascriptToInline = [
     "./src/javascript/timeDifference.js",
@@ -100,6 +98,7 @@ async function buildProdHtml() {
     pipe(replace("<!-- FONTS -->", `<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">`)).
     pipe(replace("<!-- CSS -->", `<link rel="stylesheet" href="styles.css">`)).
     pipe(replace("<!-- SESSION_CARD -->", sessionCardPartial)).
+    pipe(replace("<!-- INJECT_SESSION_DETAILS_MODAL -->", sessionDetailsModalPartial)).
     pipe(replace("<!-- JS_INLINE -->", inlinedJsScriptTag)).
     pipe(replace("/* INJECT_BUILD_INFO */", `window.BUILD_INFO=${JSON.stringify(buildInfo)}`)).
     // pipe(replace("/* INJECT_SCHEDULE_JSON */", scheduleJson)). // Schedule is injected by automated rebuild Lambda
@@ -138,6 +137,7 @@ async function buildHtml() {
     const jsonToInject = `const JSON_SCHEDULE=${scheduleJson}`
 
     const sessionCardPartial = fs.readFileSync("./src/partials/meeting-card.html").toString();
+    const sessionDetailsModalPartial = fs.readFileSync("./src/partials/session-details-modal.html").toString();
   
     const javascriptToInline = [
       "./src/javascript/timeDifference.js",
@@ -162,6 +162,7 @@ async function buildHtml() {
       pipe(replace("<!-- CSS -->", `<link rel="stylesheet" href="styles.css">`)).
       pipe(replace("/* INJECT_SCHEDULE_JSON */", jsonToInject)).
       pipe(replace("<!-- SESSION_CARD -->", sessionCardPartial)).
+      pipe(replace("<!-- INJECT_SESSION_DETAILS_MODAL -->", sessionDetailsModalPartial)).
       pipe(replace("<!-- JS_INLINE -->", inlinedJsScriptTag)).
       pipe(replace("/* INJECT_BUILD_INFO */", `window.BUILD_INFO=${JSON.stringify(buildInfo)};`)).
       pipe(dest('tmp'));
