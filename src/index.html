@@ -136,9 +136,14 @@
   <body> 
     <div class="main-nav">
       <a href="/"> 
-        <h1 class="logo light"><span class="bold">Next</span><span>Meeting</span> <span>for <strong>SA<strong></strong></span></h1>
+        <h1 class="logo light">
+          <span class="bold">Next</span>
+          <span>Meeting</span>
+          <span>for <strong>SA<strong></strong></span>
+          <!-- <span class="beta-badge">beta</span> -->
+        </h1>
       </a> 
-    </div>
+    </div> 
 
     <!-- <h4 class="text-xs uppercase flex flex-col items-center mt-4 opacity-50 mb-8">
      
@@ -153,10 +158,10 @@
 
   </div>
 
-    <div x-cloak x-data="{  
+    <div x-cloak x-data="{    
       MEETINGS_BY_TIME,
       meetings: JSON_SCHEDULE.meetings, 
-      virtualPage: 'home', 
+      virtualPage: 'home',  
       selectedSession: BLANK_SESSION,
       closeSessionDetailsModal() {
         this.virtualPage = 'home';
@@ -178,9 +183,9 @@
         recategorizeSessions();
       }, ONE_MINUTE_IN_MS); 
     "
-    >
+    >    
     <script>
-    </script>
+    </script> 
       
       <!-- INJECT_SESSION_DETAILS_MODAL -->
 
@@ -228,7 +233,7 @@
       </h4>
     </div>
     <div class="toast-container relative flex justify-center">
-      <div id="toast__copy-success" class="toast z-30"> 
+      <div id="toast__copy-success" class="toast z-30">  
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clipboard"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
         <span class="ml-2">Copied to clipboard</span>
       </div>
