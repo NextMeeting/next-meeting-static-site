@@ -14,6 +14,7 @@ function categorizeSessions(sessions) {
       nextHour: [],
       restOfDay: [],
       tomorrow: [],
+      thisWeek: [],
       other: []
     }
   }
@@ -24,10 +25,14 @@ function categorizeSessions(sessions) {
   CURRENT_TIME_STRING = currentTimeString;
 
   const alreadyStartedOlderThanThresholdTimeString = new Date(now.getTime() - (MILLISECONDS_IN_MINUTE * ALREADY_STARTED_MEETING_VISIBILITY_THRESHOLD_MINUTES)).toISOString();
-  const nextHourTimeString = new Date(now.getTime() + MILLISECONDS_IN_HOUR);
+  const nextHourTimeString = new Date(now.getTime() + MILLISECONDS_IN_HOUR).toISOString();
   
   const nextMidnight = new Date(new Date().setHours(24,0,0,0)) ; 
   const nextMidnightTimeString = nextMidnight.toISOString(); 
+
+  const hoursInWeek = 24 * 7;
+  const nextSevenDays = new Date(new Date().setHours(hoursInWeek,0,0,0));
+  const thisWeekTimeString = nextSevenDays.toISOString();
 
   const endOfTomorrowTimeString = new Date(nextMidnight.getTime() + MILLISECONDS_IN_HOUR * 24).toISOString();
 
@@ -52,7 +57,11 @@ function categorizeSessions(sessions) {
       MEETINGS_BY_TIME.future.tomorrow.push(session);
       return;
     }
-    MEETINGS_BY_TIME.future.tomorrow.other.push(session);
+    if(session.nextOccurrence < thisWeekTimeString) {
+      MEETINGS_BY_TIME.future.thisWeek.push(session);
+      return;
+    }
+    MEETINGS_BY_TIME.future.other.push(session);
   })
 
   console.log(MEETINGS_BY_TIME);

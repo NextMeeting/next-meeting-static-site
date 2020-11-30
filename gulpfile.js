@@ -71,6 +71,12 @@ function buildProdJs() {
 }
 
 async function buildProdHtml() {
+  src('./assets/favicons/apple-touch-icon.png')
+    .pipe(symlink('dist'));
+
+  src('./assets/images/*')
+    .pipe(symlink('dist'));
+
   const sessionCardPartial = fs.readFileSync("./src/partials/meeting-card.html").toString();
   const sessionDetailsModalPartial = fs.readFileSync("./src/partials/session-details-modal.html").toString();
 
@@ -93,6 +99,18 @@ async function buildProdHtml() {
     commitHash: stdout
   }
 
+  const googleAnalyticsSnippet = `
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TBFL2F31JY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-TBFL2F31JY');
+    </script>
+  `
+
   return src('src/index.html').
     pipe(replace("<!-- JS_LIBS -->", `<script src="scripts.js"></script>`)).
     pipe(replace("<!-- FONTS -->", `<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">`)).
@@ -100,6 +118,7 @@ async function buildProdHtml() {
     pipe(replace("<!-- SESSION_CARD -->", sessionCardPartial)).
     pipe(replace("<!-- INJECT_SESSION_DETAILS_MODAL -->", sessionDetailsModalPartial)).
     pipe(replace("<!-- JS_INLINE -->", inlinedJsScriptTag)).
+    pipe(replace("<!-- GOOGLE_ANALYTICS -->", googleAnalyticsSnippet)).
     pipe(replace("/* INJECT_BUILD_INFO */", `window.BUILD_INFO=${JSON.stringify(buildInfo)}`)).
     // pipe(replace("/* INJECT_SCHEDULE_JSON */", scheduleJson)). // Schedule is injected by automated rebuild Lambda
     pipe(rename("index.template.html")).
@@ -131,6 +150,13 @@ async function buildHtml() {
 
     src("node_modules/body-scroll-lock/lib/bodyScrollLock.js")
       .pipe(symlink('tmp/'));
+
+    src('./assets/favicons/apple-touch-icon.png')
+      .pipe(symlink('tmp'));
+    
+    src('./assets/images/*')
+      .pipe(symlink('dist'));
+  
     
     const scheduleJson = (fs.readFileSync("./test_data/meetingsNext24Hours.json").toString());
   

@@ -3,7 +3,25 @@
 <head>
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NextMeeting for SA</title>    
+  <title>NextMeeting for SA</title>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <meta name="title" content="NextMeeting for SA">
+  <meta name="description" content="Join an SA meeting anytime, anywhere! Choose from over 190 weekly SA meetings on Zoom, FreeConferenceCall, and other platforms!">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://d2deqbdk4xcrlo.cloudfront.net/index.html">
+  <meta property="og:title" content="NextMeeting for SA">
+  <meta property="og:description" content="Join an SA meeting anytime, anywhere! Choose from over 190 weekly SA meetings on Zoom, FreeConferenceCall, and other platforms!">
+  <meta property="og:image" content="https://d2deqbdk4xcrlo.cloudfront.net/open_graph_promo_banner.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://d2deqbdk4xcrlo.cloudfront.net/index.html">
+  <meta property="twitter:title" content="NextMeeting for SA">
+  <meta property="twitter:description" content="Join an SA meeting anytime, anywhere! Choose from over 190 weekly SA meetings on Zoom, FreeConferenceCall, and other platforms!">
+  <meta property="twitter:image" content="https://d2deqbdk4xcrlo.cloudfront.net/open_graph_promo_banner.jpg">
 
   <!-- CSS -->
   <!-- TAILWIND_DEV -->  
@@ -17,7 +35,7 @@
 
     /* INJECT_BUILD_INFO */
     /* INJECT_SCHEDULE_JSON */ 
-
+ 
     if(JSON_SCHEDULE === undefined) {
       window.TEMPLATE_NOT_BUILT = true;
     }
@@ -25,7 +43,7 @@
     var MEETINGS_BY_TIME = window.categorizeSessions(JSON_SCHEDULE.meetings);
 
     // const MILLISECONDS_IN_MINUTE = 1000 * 60;
-
+ 
     // From https://stackoverflow.com/a/10797177/6068782
     function repeatEvery(func, interval) {
       // Check current time and calculate the delay until next interval
@@ -46,20 +64,29 @@
     const ONE_MINUTE_IN_MS = 60 * 1000;
  
 
-    function getLocalTimeFromDateString(dateString) {
+    window.getLocalTimeFromDateString = function getLocalTimeFromDateString(dateString) {
       const date = new Date(dateString);
       return date.toLocaleTimeString(undefined, {hour: "2-digit", minute: "2-digit" });
     }
-    window.getLocalTimeFromDateString = getLocalTimeFromDateString;
 
-    function getLocalDayOfWeekFromDateString(dateString) {
+    window.getLocalDayOfWeekFromDateString = function getLocalDayOfWeekFromDateString(dateString) {
       const date = new Date(dateString);
       return date.toLocaleDateString(undefined, {weekday: 'long'});
     }
-    window.getLocalTimeFromDateString = getLocalTimeFromDateString;
 
+    const MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24;
+    window.isInNext24Hours = function isInNext24Hours(dateString) {
+      const in24HourstimeString = new Date(new Date().getTime() + MILLISECONDS_IN_DAY).toISOString();
+      return dateString < in24HourstimeString;
+    }
 
-    window.sessionCategories = [
+    window.isInTomorrow = function isInTomorrow(dateString) {
+      const nextMidnight = new Date(new Date().setHours(24,0,0,0)) ; 
+      const endOfTomorrowTimeString = new Date(nextMidnight.getTime() + MILLISECONDS_IN_HOUR * 24).toISOString();
+      return dateString < endOfTomorrowTimeString;
+    }
+
+    window.sessionCategories = [ 
       {
         title: "Live Now",
         categoryPath: ["past", "newerThanThreshold"],
@@ -81,6 +108,12 @@
         title: "Tomorrow",
         categoryPath: ["future", "tomorrow"], 
         emptyUIString: "There are no meetings tomorrow",
+        hideIfEmpty: true
+      },
+      {
+        title: "Next few days",
+        categoryPath: ["future", "thisWeek"], 
+        emptyUIString: "There are no meetings this week",
         hideIfEmpty: true
       },
       {
@@ -136,11 +169,12 @@
   <body> 
     <div class="main-nav">
       <a href="/"> 
-        <h1 class="logo light">
-          <span class="bold">Next</span>
-          <span>Meeting</span>
-          <span>for <strong>SA<strong></strong></span>
-          <!-- <span class="beta-badge">beta</span> -->
+        <h1 class="logo light flex items-center justify-center">
+          <div>
+            <span class="bold">Next</span>
+            <span>Meeting</span>
+          </div>
+          <span class="beta-badge light ml-1">beta</span>
         </h1>
       </a> 
     </div> 
@@ -223,7 +257,7 @@
         <span class="text-primary" x-text="getCurrentTimeZoneString()"></span>
       </h4>
 
-      <h4 class="mt-2"> 
+      <h4 class="mt-2">  
         <span x-text="(window.BUILD_INFO.buildType == 'prod' ? 'Production' : 'Development') + ' build'"></span>
         <span x-text="(window.BUILD_INFO.commitHash && window.BUILD_INFO.commitHash.length > 0) ? ' ' + window.BUILD_INFO.commitHash.substring(0,6) : ''" class="text-primary"></span>
       </h4>
@@ -233,8 +267,8 @@
       </h4>
     </div>
     <div class="toast-container relative flex justify-center">
-      <div id="toast__copy-success" class="toast z-30">  
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clipboard"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+      <div id="toast__copy-success" class="toast whitespace-no-wrap z-30">  
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clipboard"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
         <span class="ml-2">Copied to clipboard</span>
       </div>
     </div>
@@ -251,31 +285,17 @@
           document.querySelector("#toast__copy-success").classList.remove('show');
         }, TOAST_VISIBLE_DURATION);
       }
-      new ClipboardJS("#selected-session-copy-link-button", {
+
+      new ClipboardJS('*[data-clipboard-text]', {
         text: function(trigger) {
           return trigger.getAttribute('data-clipboard-text');
         }
       }).on('success', function(e) {
-        console.info('Action:', e.action);
-        console.info('Text:', e.text);
-        console.info('Trigger:', e.trigger);
-
+        showCopySuccessToast() 
         e.clearSelection();
-    });
-
-
-    new ClipboardJS("#selected-session-copy-details-button", {
-      text: function(trigger) {
-        return trigger.getAttribute('data-clipboard-text');
-      }
-    }).on('success', function(e) {
-        console.info('Action:', e.action);
-        console.info('Text:', e.text);
-        console.info('Trigger:', e.trigger);
-        showCopySuccessToast();
-        e.clearSelection();
-    });
+      });
     </script>
+    <!-- GOOGLE_ANALYTICS -->
     <!-- FONTS -->
   </footer>
 </html>

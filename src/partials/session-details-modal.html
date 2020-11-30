@@ -18,15 +18,18 @@
               <span class="text-primary" x-text="timeDifference(new Date(), selectedSession.nextOccurrence, {displayMode: 'full', sign: 'text'})"></span>
             </div>
           </div>
+
           <h3 class="session-title text-color-1 text-2xl leading-tight mt-2 mb-1 md:text-3xl md:mt-3 md:mb-2" x-text="selectedSession.name"></h3>
-          <div class="text-color-2 opacity-75 text-xs">
+
+          <div class="text-color-3 opacity-75 text-md">
             <span>
               Every 
-              <span x-text="getLocalDayOfWeekFromDateString(selectedSession.nextOccurrence)"></span>
+              <span x-text="window.getLocalDayOfWeekFromDateString(selectedSession.nextOccurrence)"></span>
             </span>
             <span>•</span>
             <span x-text="getLocalTimeFromDateString(selectedSession.nextOccurrence)"></span>
           </div>
+
         </div>
   
         <div class="mt-4 mx-6 flex justify-between">
@@ -52,11 +55,11 @@
       </div>
   
       <div class="mt-3 px-6 py-3 text-xl background-light">
-        <div class="mb-4 flex justify-between">
-          <strong class="mr-2">Zoom ID</strong>
+        <div class="mb-4 flex justify-between" data-clipboard-text="selectedSession.connectionDetails.meetingId">
+          <strong class="mr-2">Zoom&nbsp;ID</strong>
           <div class="text-primary" x-text="selectedSession.connectionDetails.meetingId">123 456 890</div>
         </div>
-        <div class="flex justify-between">
+        <div class="flex justify-between" data-clipboard-text="selectedSession.connectionDetails.password">
           <strong class="mr-2">Password</strong>
           <div class="text-primary" x-text="selectedSession.connectionDetails.password">2020</div>
         </div>

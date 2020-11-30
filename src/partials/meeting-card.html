@@ -6,19 +6,21 @@
       virtualPage='sessionDetails';
       selectedSession=session;
       bodyScrollLock.disableBodyScroll('#session-details-card')
-      console.log('Row click! ' + session.name)
+      console.log('Row click!' + session.name)
     ">
-    <h3 class="session-title text-color-1" x-text="session.name"></h3>
+    <h3 class="session-title text-color-1 leading-tight" x-text="session.name"></h3>
 
     <div  class="session-metadata mb-1">  
       <div class="badge-live mr-2" x-show="session.nextOccurrence < CURRENT_TIME_STRING">Live</div>
 
+      <div x-text="window.getLocalDayOfWeekFromDateString(session.nextOccurrence)" x-show="!isInNext24Hours(session.nextOccurrence)" class="mr-1"></div>
+
       <div class="text-primary mr-1 whitespace-no-wrap" x-show="session.nextOccurrence > CURRENT_TIME_STRING" x-text="getLocalTimeFromDateString(session.nextOccurrence)">
       </div>
 
-      <div class="mr-1" x-show="session.nextOccurrence > CURRENT_TIME_STRING">•</div>
+      <div class="mr-1" x-show="session.nextOccurrence > CURRENT_TIME_STRING && isInNext24Hours(session.nextOccurrence)">•</div>
 
-      <div class="session-time-relative text-color-3">
+      <div class="session-time-relative text-color-3" x-show="isInNext24Hours(session.nextOccurrence)">
         <span x-text="session.nextOccurrence < CURRENT_TIME_STRING ? 'started' : 'starting'"></span>
         <span class="text-primary" x-text="timeDifference(new Date(), session.nextOccurrence, {displayMode: 'full', sign: 'text'})"></span>
       </div>
@@ -33,13 +35,14 @@
       Join&nbsp;›
     </a>
 
-    <button 
+    
+    <!-- <button 
       x-show="session.connectionDetails.mustContactForConnectionInfo"
       class="button-secondary fixed-width mr-1">
       <div>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
       </div>
-  </button>
+   </button> -->
 
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right opacity-50"><polyline points="9 18 15 12 9 6"></polyline></svg>
   </div>
