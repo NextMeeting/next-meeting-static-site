@@ -198,10 +198,30 @@
       meetings: JSON_SCHEDULE.meetings, 
       virtualPage: 'home',  
       selectedSession: BLANK_SESSION,
+      openSessionDetailsModal(session) {
+        this.virtualPage='sessionDetails';
+        this.selectedSession=session;
+
+        const state = {};
+        const title = session.name + ' | NextMeeting for SA';
+        const url = new URL(window.location);
+        url.searchParams.set('meetingName', session.name);
+        document.title = title;
+        history.pushState(state, title, url);
+        
+        console.log(title)
+        console.log(url)
+        
+        bodyScrollLock.disableBodyScroll('#session-details-card')
+        console.log('Row click! ' + session.name)
+        
+      },
       closeSessionDetailsModal() {
         this.virtualPage = 'home';
         this.sessionDetails=BLANK_SESSION;
+        document.title = 'NextMeeting For SA';
         bodyScrollLock.clearAllBodyScrollLocks();
+        history.pushState({}, '', new URL(window.location.origin));
       },
       recategorizeSessions() {
         // Recalculate all meeting times every minute

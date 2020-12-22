@@ -2,12 +2,7 @@
 
   <div 
     class="card-content w-full" 
-    @click="
-      virtualPage='sessionDetails';
-      selectedSession=session;
-      bodyScrollLock.disableBodyScroll('#session-details-card')
-      console.log('Row click!' + session.name)
-    ">
+    @click="openSessionDetailsModal(session)">
     <h3 class="session-title text-color-1 leading-tight" x-text="session.name"></h3>
 
     <div  class="session-metadata mb-1">  

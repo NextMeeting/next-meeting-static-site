@@ -39,6 +39,18 @@ const defaultTask = function() {
   );
 }
 
+function getRandomText(length) {
+  var result           = '';
+  var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
+  for ( var i = 0; i < length; i++ ) {
+     result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
+const BUILD_ID = getRandomText(8);
+
 const productionBuild = series(
   removeProductionBuild,
   buildProdHtml,
@@ -54,7 +66,7 @@ function buildProdCss() {
       require('tailwindcss'),
       require('autoprefixer'),
     ])).
-    pipe(concat('styles.css')).
+    pipe(concat(`styles.${BUILD_ID}.css`)).
     pipe(uglifycss())
     .pipe(dest('dist'));
 }
@@ -65,7 +77,7 @@ function buildProdJs() {
     "node_modules/clipboard/dist/clipboard.js",
     "node_modules/body-scroll-lock/lib/bodyScrollLock.js"
   ]).
-    pipe(concat("scripts.js")).
+    pipe(concat(`scripts.${BUILD_ID}.js`)).
     pipe(terser()).
     pipe(dest("dist"))
 }
@@ -104,21 +116,26 @@ async function buildProdHtml() {
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TBFL2F31JY"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      window.gtag = function gtag(){dataLayer.push(arguments);}
+      
       gtag('js', new Date());
     
       gtag('config', 'G-TBFL2F31JY');
     </script>
   `
 
+  const cloudflareAnalyticsSnippet = `
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2413c82530e24ed0bc714ed3595cd6c4"}'></script>
+  `
+
   return src('src/index.html').
-    pipe(replace("<!-- JS_LIBS -->", `<script src="scripts.js"></script>`)).
+    pipe(replace("<!-- JS_LIBS -->", `<script src="scripts.${BUILD_ID}.js"></script>`)).
+    pipe(replace("<!-- CSS -->", `<link rel="stylesheet" href="styles.${BUILD_ID}.css">`)).
     pipe(replace("<!-- FONTS -->", `<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">`)).
-    pipe(replace("<!-- CSS -->", `<link rel="stylesheet" href="styles.css">`)).
     pipe(replace("<!-- SESSION_CARD -->", sessionCardPartial)).
     pipe(replace("<!-- INJECT_SESSION_DETAILS_MODAL -->", sessionDetailsModalPartial)).
     pipe(replace("<!-- JS_INLINE -->", inlinedJsScriptTag)).
-    pipe(replace("<!-- GOOGLE_ANALYTICS -->", googleAnalyticsSnippet)).
+    pipe(replace("<!-- GOOGLE_ANALYTICS -->", googleAnalyticsSnippet + cloudflareAnalyticsSnippet)).
     pipe(replace("/* INJECT_BUILD_INFO */", `window.BUILD_INFO=${JSON.stringify(buildInfo)}`)).
     // pipe(replace("/* INJECT_SCHEDULE_JSON */", scheduleJson)). // Schedule is injected by automated rebuild Lambda
     pipe(rename("index.template.html")).

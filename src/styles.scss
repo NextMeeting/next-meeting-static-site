@@ -468,8 +468,11 @@ a {
   padding: 12px;
   border-radius: 100%;
   width: fit-content;
-  background-color: #4e54c80F;
-  border: 2px solid #8f94fb7e;
+  // background-color: #4e54c80F;
+  // border: 2px solid #8f94fb7e;
+  background: white;
+  box-shadow: inset 0px 0px 0px 2px $color-primary,
+              0px 1px 2px rgba(0, 0, 0, 0.3);  
 }
 
 .share-link {
@@ -479,7 +482,7 @@ a {
   color: $color-text-2;
 
   h2 {
-    
+
   }
 
   &:not(:last-of-type) {
