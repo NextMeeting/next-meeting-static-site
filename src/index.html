@@ -177,7 +177,7 @@
           <span class="beta-badge light ml-1">beta</span>
         </h1>
       </a> 
-    </div> 
+    </div>   
 
     <!-- <h4 class="text-xs uppercase flex flex-col items-center mt-4 opacity-50 mb-8">
      
@@ -192,7 +192,8 @@
 
   </div>
 
-    <div x-cloak x-data="{    
+    <div x-cloak x-data="{
+      JSON_SCHEDULE,
       MEETINGS_BY_TIME,
       meetings: JSON_SCHEDULE.meetings, 
       virtualPage: 'home',  
@@ -219,8 +220,8 @@
     "
     >    
     <script>
-    </script> 
-      
+    </script>
+
       <!-- INJECT_SESSION_DETAILS_MODAL -->
 
       <template x-for="(category, index) in window.sessionCategories">
@@ -244,13 +245,41 @@
           </div>
         </section>
       </template> 
+
+      <div class="flex justify-center">
+        <a href="https://docs.google.com/spreadsheets/d/1_QxT6VIm1HTLKSl71DtDqSMWVZYrdbqSl0WSF0Ch6g4/edit#gid=0" class="banner info flex items-center m-4">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          <div class="ml-3 mr-3">
+            <p>Meeting info is from <span class="text-primary">this Google Sheet ›</span></p>
+            <p class="text-xs uppercase opacity-50 tracking-wide">Updated hourly</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="flex justify-center">
+        <div class="flex justify-between">
+          <a href="mailto:sanewsenglish@gmail.com" class="share-link">
+            <div class="icon-bubble">
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <h2>Send Feedback</h2>
+          </a>
+          <!-- <a href="https://github.com/AnalyzePlatypus/next-meeting-static-site" class="share-link">
+            <div class="icon-bubble">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </div>
+            <h2>Code</h2>
+          </a> -->
+        </div>
+      </div>
+
     </div>
 
-
-    <div x-cloak x-data="{}" class="text-xs uppercase flex flex-col items-center mt-6 opacity-50 mb-6">
+    <div x-cloak x-data="{}" class="text-xs uppercase tracking-wide flex flex-col items-center mt-6 opacity-50 mb-6">
       <h4>
         <span>Showing meetings in</span>
-        <span class="text-primary">Next 24 Hours</span>
+        <span class="text-primary">Next 3 Days</span>
       </h4> 
       <h4>
         <span>Timezone</span>
@@ -265,7 +294,12 @@
         <span>Deployed </span>
         <span class="text-primary" x-text="timeDifference(new Date(), window.BUILD_INFO.builtAt, {displayMode: 'full', sign: 'text'})"></span>
       </h4>
+
+      <h4>
+        <a href="https://github.com/AnalyzePlatypus/next-meeting-static-site" class="text-primary">Code on Github ›</a>
+      </h4>
     </div>
+
     <div class="toast-container relative flex justify-center">
       <div id="toast__copy-success" class="toast whitespace-no-wrap z-30">  
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clipboard"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
@@ -279,11 +313,11 @@
 
       const TOAST_VISIBLE_DURATION = 1500;
 
-      function showCopySuccessToast() {
+      function showCopySuccessToast() { 
         document.querySelector("#toast__copy-success").classList.add('show');
         setTimeout(()=>{
           document.querySelector("#toast__copy-success").classList.remove('show');
-        }, TOAST_VISIBLE_DURATION);
+        }, TOAST_VISIBLE_DURATION); 
       }
 
       new ClipboardJS('*[data-clipboard-text]', {

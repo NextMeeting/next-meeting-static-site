@@ -32,7 +32,7 @@
 
         </div>
   
-        <div class="mt-4 mx-6 flex justify-between">
+        <div class="mt-4 mx-6 flex justify-between" x-show="!selectedSession.connectionDetails.mustContactForConnectionInfo" >
           <button id="selected-session-copy-link-button" class="button hidden medium borderless button-divider" :data-clipboard-text="selectedSession.connectionDetails.joinUrl">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link-2"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg>
             <span class="ml-1">Copy&nbsp;Link</span>
