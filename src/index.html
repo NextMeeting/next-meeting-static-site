@@ -7,20 +7,20 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <meta name="title" content="NextMeeting for SA">
-  <meta name="description" content="Join an SA meeting anytime, anywhere! Choose from over 190 weekly SA meetings on Zoom, FreeConferenceCall, and other platforms!">
+  <meta name="description" content="Join an SA meeting anytime, anywhere! Choose from over 240 weekly SA meetings on Zoom, FreeConferenceCall, and other platforms!">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://d2deqbdk4xcrlo.cloudfront.net/index.html">
+  <meta property="og:url" content="https://d2deqbdk4xcrlo.cloudfront.net">
   <meta property="og:title" content="NextMeeting for SA">
-  <meta property="og:description" content="Join an SA meeting anytime, anywhere! Choose from over 190 weekly SA meetings on Zoom, FreeConferenceCall, and other platforms!">
+  <meta property="og:description" content="Join an SA meeting anytime, anywhere! Choose from over 240 weekly SA meetings on Zoom, FreeConferenceCall, and other platforms!">
   <meta property="og:image" content="https://d2deqbdk4xcrlo.cloudfront.net/open_graph_promo_banner.jpg">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://d2deqbdk4xcrlo.cloudfront.net/index.html">
+  <meta property="twitter:url" content="https://d2deqbdk4xcrlo.cloudfront.net">
   <meta property="twitter:title" content="NextMeeting for SA">
-  <meta property="twitter:description" content="Join an SA meeting anytime, anywhere! Choose from over 190 weekly SA meetings on Zoom, FreeConferenceCall, and other platforms!">
+  <meta property="twitter:description" content="Join an SA meeting anytime, anywhere! Choose from over 240 weekly SA meetings on Zoom, FreeConferenceCall, and other platforms!">
   <meta property="twitter:image" content="https://d2deqbdk4xcrlo.cloudfront.net/open_graph_promo_banner.jpg">
 
   <!-- CSS -->
@@ -170,7 +170,7 @@
     <div class="main-nav">
       <a href="/"> 
         <h1 class="logo light flex items-center justify-center">
-          <div>
+          <div class="flex">
             <span class="bold">Next</span>
             <span>Meeting</span>
           </div>
@@ -212,15 +212,17 @@
         console.log(title)
         console.log(url)
         
-        bodyScrollLock.disableBodyScroll('#session-details-card')
+        bodyScrollLock.disableBodyScroll('#session-details-card');
+        document.querySelector('body').classList.add('ios-prevent-scroll');
         console.log('Row click! ' + session.name)
-        
       },
+      
       closeSessionDetailsModal() {
         this.virtualPage = 'home';
         this.sessionDetails=BLANK_SESSION;
-        document.title = 'NextMeeting For SA';
+        document.title = 'NextMeeting for SA';
         bodyScrollLock.clearAllBodyScrollLocks();
+        document.querySelector('body').classList.remove('ios-prevent-scroll');
         history.pushState({}, '', new URL(window.location.origin));
       },
       recategorizeSessions() {
@@ -239,8 +241,25 @@
       }, ONE_MINUTE_IN_MS); 
     "
     >    
-    <script>
+    <script> 
     </script>
+      <div class="flex justify-center">
+        <div class="announcement-banner info flex items-center justify-center">
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+           -->
+           <p class="hidden sm:block mx-1">👋</p>
+          <div class="ml-3 flex items-center justify-center">
+            <p class="text-center opacity-75">Hey, welcome! Please keep this site and all meeting info within the SA fellowship.</p>
+          <div class="flex justify-end">
+          
+            <!-- <button class="button-primary round ml-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button> -->
+          </div>
+            
+          </div>
+        </div>
+      </div>
 
       <!-- INJECT_SESSION_DETAILS_MODAL -->
 
@@ -285,6 +304,13 @@
             </div>
             <h2>Send Feedback</h2>
           </a>
+          <!-- <a href="" class="share-link">
+            <div class="icon-bubble">  
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
+            <h2>Add a meeting</h2>
+          </a> -->
+          
           <!-- <a href="https://github.com/AnalyzePlatypus/next-meeting-static-site" class="share-link">
             <div class="icon-bubble">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>

@@ -107,10 +107,15 @@ a {
   border-radius: 8px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
   transition: .3s all cubic-bezier(0.075, 0.82, 0.165, 1);
-  
+  // text-overflow: ;
 
   &.fixed-width {
     width: 54px;
+  }
+
+  &.round {
+    padding: 6px 12px;
+    // border-radius: 100%;
   }
 
   &:hover {
@@ -262,7 +267,7 @@ a {
   
 }
 
-@media screen and (min-width: 430px) {
+@media screen and (min-width: 450px) {
   .session-card {
     border-radius: 8px;
     width: 470px;
@@ -492,4 +497,35 @@ a {
   .icon-bubble {
     margin-bottom: 2px;
   }
+}
+
+.ios-prevent-scroll {
+  overflow: hidden;
+}
+
+.announcement-banner {
+  width: fit-content;
+  font-size: 0.88rem;
+
+  &.info {
+    background-color: #4e54c80F;
+    border: 2px solid #8f94fb7e;
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .announcement-banner {
+    width: 100%;
+    padding: 8px;
+    font-size: 0.88rem;
+  }  
+}
+
+@media screen and (min-width: 601px) {
+  .announcement-banner {
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 12px;
+  }  
 }
