@@ -199,6 +199,8 @@
       virtualPage: 'home',  
       selectedSession: BLANK_SESSION,
       openSessionDetailsModal(session) {
+        console.log('Row click! ' + session.name)
+
         this.virtualPage='sessionDetails';
         this.selectedSession=session;
 
@@ -209,21 +211,22 @@
         document.title = title;
         history.pushState(state, title, url);
         
-        console.log(title)
-        console.log(url)
-        
-        bodyScrollLock.disableBodyScroll('#session-details-card');
+        bodyScrollLock.disableBodyScroll(document.querySelector('#session-details-card'));
         document.querySelector('body').classList.add('ios-prevent-scroll');
-        console.log('Row click! ' + session.name)
+        
+        console.log('Locked scroll');
       },
       
       closeSessionDetailsModal() {
+        console.log('Closing modal')
         this.virtualPage = 'home';
         this.sessionDetails=BLANK_SESSION;
         document.title = 'NextMeeting for SA';
+        
         bodyScrollLock.clearAllBodyScrollLocks();
         document.querySelector('body').classList.remove('ios-prevent-scroll');
         history.pushState({}, '', new URL(window.location.origin));
+        console.log('Unlocked scroll')
       },
       recategorizeSessions() {
         // Recalculate all meeting times every minute
