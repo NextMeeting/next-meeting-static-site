@@ -22,14 +22,28 @@
   <meta property="twitter:title" content="NextMeeting for SA">
   <meta property="twitter:description" content="Join an SA meeting anytime, anywhere! Choose from over 240 weekly SA meetings on Zoom, FreeConferenceCall, and other platforms!">
   <meta property="twitter:image" content="https://d2deqbdk4xcrlo.cloudfront.net/open_graph_promo_banner.jpg">
-
+ 
+  <meta name="google-site-verification" content="hm3CPdpPlWsWUxHDYX8F38LkgWjbQp6Mj72PC7aoqhQ" />
+  <meta name="robots" content="noindex" />
+  <meta name="googlebot" content="noindex" />
   <!-- CSS -->
   <!-- TAILWIND_DEV -->  
   <!-- JS_INLINE -->
 
-  <style>
-    [x-cloak] { display: none; }
+  <style>  
+    [x-cloak] { opacity: 0; } 
+
   </style>
+
+  <script>
+    //  && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    // (!('theme' in localStorage))
+    if (localStorage.theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
 
   <script>
 
@@ -167,7 +181,8 @@
 
 </head>
   <body> 
-    <div class="main-nav">
+    <div class="main-nav flex justify-between">
+      <span style="width:60px;"></span>
       <a href="/"> 
         <h1 class="logo light flex items-center justify-center">
           <div class="flex">
@@ -177,6 +192,22 @@
           <span class="beta-badge light ml-1">beta</span>
         </h1>
       </a> 
+      <button id="theme-toggle" class="px-3 text-white opacity-0"  x-data="{
+        currentTheme: localStorage.theme || 'light',
+        switchToLightMode() { 
+          localStorage.theme = 'light';
+          document.documentElement.classList.remove('dark');
+          this.currentTheme = 'light';
+        },
+        switchToDarkMode() {
+          localStorage.theme = 'dark';
+          document.documentElement.classList.add('dark');
+          this.currentTheme = 'dark';
+        },
+      }" x-init="()=>{document.getElementById('theme-toggle').classList.remove('opacity-0');}">
+        <svg x-show="currentTheme == 'light'" @click="switchToDarkMode()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg x-show="currentTheme == 'dark'" @click="switchToLightMode()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
     </div>   
 
     <!-- <h4 class="text-xs uppercase flex flex-col items-center mt-4 opacity-50 mb-8">
@@ -292,27 +323,27 @@
         <a href="https://docs.google.com/spreadsheets/d/1_QxT6VIm1HTLKSl71DtDqSMWVZYrdbqSl0WSF0Ch6g4/edit#gid=0" class="banner info flex items-center m-4">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
           <div class="ml-3 mr-3">
-            <p>Meeting info is from <span class="text-primary">this Google Sheet ›</span></p>
+            <p>Info is from <span class="text-primary">this Google Sheet ›</span></p>
             <p class="text-xs uppercase opacity-50 tracking-wide">Updated hourly</p>
           </div>
         </a>
-      </div>
+      </div>  
 
       <div class="flex justify-center">
         <div class="flex justify-between">
           <a href="mailto:sanewsenglish@gmail.com" class="share-link">
             <div class="icon-bubble">
               <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
             </div>
             <h2>Send Feedback</h2>
           </a>
-          <!-- <a href="" class="share-link">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScOwdDsnTptb0NR3HuibXjAAT-qYGJwIUN2U1sIQobbMUAXSw/viewform" class="share-link">
             <div class="icon-bubble">  
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
             </div>
             <h2>Add a meeting</h2>
-          </a> -->
+          </a>
           
           <!-- <a href="https://github.com/AnalyzePlatypus/next-meeting-static-site" class="share-link">
             <div class="icon-bubble">
