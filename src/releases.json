@@ -1,0 +1,32 @@
+[
+  {
+    "releaseNumber": "1",
+    "date": "2020-11-30",
+    "releaseNotes": "First public release"
+  },
+  {
+    "releaseNumber": "2",
+    "date": "2020-12-22",
+    "releaseNotes": "Added source banner, feedback button, and fixed a caching bug"
+  },
+  {
+    "releaseNumber": "3",
+    "date": "2021-01-12",
+    "releaseNotes": "Added info icons, and 'Add a Meeting'"
+  },
+  {
+    "releaseNumber": "4",
+    "date": "2021-01-13",
+    "releaseNotes": "Fixed a bug in modal scroll-locking"
+  },
+  {
+    "releaseNumber": "5",
+    "date": "2021-01-28",
+    "releaseNotes": "Added dark mode"
+  },
+  {
+    "releaseNumber": "6",
+    "date": "2021-05-19",
+    "releaseNotes": "Added meeting details to feedback emails"
+  }
+]

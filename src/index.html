@@ -13,14 +13,14 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://d2deqbdk4xcrlo.cloudfront.net">
   <meta property="og:title" content="NextMeeting for SA">
-  <meta property="og:description" content="Join an SA meeting anytime, anywhere! Choose from over 240 weekly SA meetings on Zoom, FreeConferenceCall, and other platforms!">
+  <meta property="og:description" content="Join an SA meeting anytime, anywhere! Choose from over 270 weekly SA meetings on Zoom, FreeConferenceCall, and other platforms!">
   <meta property="og:image" content="https://d2deqbdk4xcrlo.cloudfront.net/open_graph_promo_banner.jpg">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://d2deqbdk4xcrlo.cloudfront.net">
   <meta property="twitter:title" content="NextMeeting for SA">
-  <meta property="twitter:description" content="Join an SA meeting anytime, anywhere! Choose from over 240 weekly SA meetings on Zoom, FreeConferenceCall, and other platforms!">
+  <meta property="twitter:description" content="Join an SA meeting anytime, anywhere! Choose from over 270 weekly SA meetings on Zoom, FreeConferenceCall, and other platforms!">
   <meta property="twitter:image" content="https://d2deqbdk4xcrlo.cloudfront.net/open_graph_promo_banner.jpg">
  
   <meta name="google-site-verification" content="hm3CPdpPlWsWUxHDYX8F38LkgWjbQp6Mj72PC7aoqhQ" />
@@ -180,7 +180,7 @@
   </script>
 
 </head>
-  <body> 
+  <body>  
     <div class="main-nav flex justify-between">
       <span style="width:60px;"></span>
       <a href="/"> 
@@ -189,8 +189,8 @@
             <span class="bold">Next</span>
             <span>Meeting</span>
           </div>
-          <span class="beta-badge light ml-1">beta</span>
-        </h1>
+          <span class="beta-badge light ml-1">SA</span>
+        </h1> 
       </a> 
       <button id="theme-toggle" class="px-3 text-white opacity-0"  x-data="{
         currentTheme: localStorage.theme || 'light',
@@ -206,7 +206,8 @@
         },
       }" x-init="()=>{document.getElementById('theme-toggle').classList.remove('opacity-0');}">
         <svg x-show="currentTheme == 'light'" @click="switchToDarkMode()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-        <svg x-show="currentTheme == 'dark'" @click="switchToLightMode()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <!-- The extra x-cloak prevents both icons from showing on init and stretching out the nav bar -->
+        <svg x-cloak x-show="currentTheme == 'dark'" @click="switchToLightMode()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       </button>
     </div>   
 
@@ -271,7 +272,7 @@
         closeSessionDetailsModal()
       });
       repeatEvery(()=> {  
-        recategorizeSessions();
+        recategorizeSessions(); 
       }, ONE_MINUTE_IN_MS); 
     "
     >    
@@ -383,7 +384,7 @@
     <div class="toast-container relative flex justify-center">
       <div id="toast__copy-success" class="toast whitespace-no-wrap z-30">  
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clipboard"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
-        <span class="ml-2">Copied to clipboard</span>
+        <span class="ml-2">Copied</span>
       </div>
     </div>
   </body>

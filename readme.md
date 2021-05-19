@@ -22,7 +22,10 @@ Custom build script powered by Gulp.
 ```bash
 npm i
 gulp # Watches source directory and autorebuilds on changes. 
-# you'll need to manually reload the browder (Cmd + R in Chrome)
+# you'll need to manually reload the browser (Cmd + R in Chrome)
+
+# Serve the files
+cd tmp && http-server
 ```
 
 > Slow build systems should not exist. This build script is optimized to run everything blazing fast. In live rebuild mode the site rebuilds in less than 16ms. Production builds take less than 4 seconds (most of which is Tailwind stripping away all unused CSS styles)

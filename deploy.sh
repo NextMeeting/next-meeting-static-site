@@ -10,3 +10,4 @@ echo "🌀 Rebuilding site..."
 # Trigger an immediate rebuild of the static site
 # with the updated assets
 curl https://fmzbvioi44.execute-api.us-east-1.amazonaws.com/default/next-meeting-regenerate-schedule
+echo "✅ Deploy complete"
