@@ -44,6 +44,7 @@
           </button>
   
           <a
+            x-show="selectedSession.connectionDetails.joinUrl"
             id="selected-session-join-url"
             :href="selectedSession.connectionDetails.joinUrl"
             class="button button-primary large mr-1 px-6 sm:px-2">

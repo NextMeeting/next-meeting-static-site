@@ -4,9 +4,7 @@ const fs = require("fs");
 const { src, watch, symlink, dest, series, parallel } = require('gulp');
 const  { execSync } = require("child_process");
 
-var sass = require('gulp-sass');
-sass.compiler = require('node-sass');
-
+var sass = require('gulp-dart-sass')
 const postcss = require('gulp-postcss');
 
 const replace = require('gulp-replace');

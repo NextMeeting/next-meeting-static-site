@@ -1,0 +1,2574 @@
+{
+  "metadata": {
+    "scheduleType": "next24Hours",
+    "generatedAt": "2021-08-26T04:20:29.454Z"
+  },
+  "meetings": [
+    {
+      "name": "OPEN AA MEETING",
+      "nextOccurrence": "2021-08-26T03:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "231 622 5487",
+        "password": "164",
+        "joinUrl": "https://zoom.us/j/2316225487"
+      },
+      "contactInfo": "remotecommunities40@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "aa",
+        "restrictions": {
+          "openMeeting": true,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "India Morning DSR (40 Minutes)",
+      "nextOccurrence": "2021-08-26T03:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "482 022 6073",
+        "password": "dsr",
+        "joinUrl": "https://zoom.us/j/4820226073?pwd=ZW84eDVEVzBSYjVLTG1TMHhRWlFQQT09"
+      },
+      "contactInfo": "Shivam +91 6377 423 980",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "24/7 AA OPEN MEETING - JOIN ANYTIME",
+      "nextOccurrence": "2021-08-26T04:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "8405 3554 493",
+        "password": "853263",
+        "joinUrl": "https://zoom.us/j/84053554493?pwd=K2ljZGVmNVB0R29zdllyN2tuNHZJZz09"
+      },
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "aa",
+        "restrictions": {
+          "openMeeting": true,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Book study  Northern California",
+      "nextOccurrence": "2021-08-26T04:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "827 826 44871",
+        "password": "366",
+        "joinUrl": "https://zoom.us/j/82782644871?pwd=RXRjSzFQTWFpa0FZZDU5dkF5ZHdXQT09"
+      },
+      "contactInfo": "Mark J (209) 430 3810",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Live in Jerusalem",
+      "nextOccurrence": "2021-08-26T04:45:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "813 5522 1630",
+        "password": "121212",
+        "joinUrl": ""
+      },
+      "contactInfo": "sanewsenglish@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "SA Bozos On the Bus (1:50 Singapore)",
+      "nextOccurrence": "2021-08-26T05:50:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "313 384 2833",
+        "password": "1212",
+        "joinUrl": "https://zoom.us/j/3133842833?pwd=b2k5dVZmVXdGQ3gvL2tIYlhHNWM5Zz09"
+      },
+      "contactInfo": "essay.bozos@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Gold Coast Australia",
+      "nextOccurrence": "2021-08-26T09:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "863 4851 9741",
+        "password": "063854",
+        "joinUrl": "https://zoom.us/j/86348519741?pwd=aGl3SnZFcDZDckhqekkrRHNzRjAxQT09"
+      },
+      "contactInfo": "Jason +61 401 231 499",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "SA MEN'S MEETING",
+      "nextOccurrence": "2021-08-26T10:15:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": true,
+        "meetingId": "WhatsApp +916377423980 or Text 1 443 574 4666 for info"
+      },
+      "contactInfo": "Shivam +916377423980",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "MEN_ONLY"
+        }
+      }
+    },
+    {
+      "name": "34th St./Hackensack Zoom Clubhouse",
+      "nextOccurrence": "2021-08-26T11:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "855 985 201",
+        "password": "1212",
+        "joinUrl": "https://zoom.us/j/855985201?pwd=bHB5ekdjRXJkR0hLM3I0c1hHN1VTQT09"
+      },
+      "contactInfo": "Phil W. +1(917)648 2378",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "San Antonio S.A. Meeting",
+      "nextOccurrence": "2021-08-26T11:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "840 788 231",
+        "password": "3215*",
+        "joinUrl": "https://zoom.us/j/840788231?pwd=UjBBS3RINWJld2VpblZoN3lJMUxodz09"
+      },
+      "contactInfo": "Troy H. 1 513 376 2275",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Nashville Daily \"Rise & Shine\" Meeting",
+      "nextOccurrence": "2021-08-26T11:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "615 555 1234",
+        "password": "187781",
+        "joinUrl": "https://zoom.us/j/6155551234?pwd=ZmFIdVZnUjRvaDY1UVBtbHpvRUpYQT09"
+      },
+      "contactInfo": "NASHVILLE INFO LINE +1 615 345 4334",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Exeter, UK, SA Meeting",
+      "nextOccurrence": "2021-08-26T11:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "564 951 1515",
+        "password": "255303",
+        "joinUrl": "https://zoom.us/j/5649511515?pwd=Qk5TbEM3dGhvNFM0YXdWbGozZ3paZz09"
+      },
+      "contactInfo": "Awylie1949@yahoo.co.uk",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Not a Glum Lot  Manchester, MO",
+      "nextOccurrence": "2021-08-26T12:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "551 363 362",
+        "password": "5247",
+        "joinUrl": "https://zoom.us/j/551363362?pwd=bE1RQ2k2RFo1S2krcE1Ya3lieFBnUT09"
+      },
+      "contactInfo": "Rick B  c2c5247@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "MEN_ONLY"
+        }
+      }
+    },
+    {
+      "name": "OPEN AA DISCUSSION MEETING",
+      "nextOccurrence": "2021-08-26T12:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "508 244 1937",
+        "password": "sober",
+        "joinUrl": "https://zoom.us/j/5082441937?pwd=TGppZkU3UGdUcmt3Uytya2pnWEJWUT09"
+      },
+      "contactInfo": "aafriendsandfamily@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "aa",
+        "restrictions": {
+          "openMeeting": true,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "SA MEN'S MEETING",
+      "nextOccurrence": "2021-08-26T12:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": true,
+        "meetingId": "WhatsApp or Text +19177104020 for login information"
+      },
+      "contactInfo": "Aryeh P. 917 710 4020",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "MEN_ONLY"
+        }
+      }
+    },
+    {
+      "name": "A Spiritual Awakening",
+      "nextOccurrence": "2021-08-26T12:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "382 290 1284",
+        "password": "397893",
+        "joinUrl": "https://zoom.us/j/3822901284?pwd=ZkJxSW4vajQ3R0hNOHdybUR3RldGUT09"
+      },
+      "contactInfo": "awakening.secretary@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Mukti Home Group Meeting (daily)",
+      "nextOccurrence": "2021-08-26T13:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "936 535 3513",
+        "password": "MUKTI",
+        "joinUrl": "https://zoom.us/j/9365353513?pwd=N09vL0xBVklsNmdERlJIemRQd1RzUT09"
+      },
+      "contactInfo": "George +91 84518 68016",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "North San Bernardino SA ",
+      "nextOccurrence": "2021-08-26T13:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "331 981 3297",
+        "password": "824601",
+        "joinUrl": "https://us02web.zoom.us/j/3319813297?pwd=M1Q2ejBSMDA5VHYzN0lLck4rRmpLUT09"
+      },
+      "contactInfo": "iecvsa2021@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Big Book Study",
+      "nextOccurrence": "2021-08-26T14:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "908 475 1934",
+        "password": "free",
+        "joinUrl": "https://zoom.us/j/9084751934?pwd=WkVySlFFclYrODEybTFqVXYxZDNYQT09"
+      },
+      "contactInfo": "Dennis T. +1 (907) 885 5378",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Live in Antwerp",
+      "nextOccurrence": "2021-08-26T15:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "936 208 3330",
+        "password": "936208",
+        "joinUrl": "https://zoom.us/j/9362083330?pwd=K21mdlNCclM5c0M2SDRHWDNiK1ZnUT09"
+      },
+      "contactInfo": "SA Antwerp English sa.antwerp.eng@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "SA reunião em português (Portuguese)",
+      "nextOccurrence": "2021-08-26T15:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "968 936 3923",
+        "password": "541751",
+        "joinUrl": "https://zoom.us/j/9689363923"
+      },
+      "contactInfo": "Alfredo alfredo11262018@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Live in Jerusalem",
+      "nextOccurrence": "2021-08-26T15:45:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "813 5522 1630",
+        "password": "121212",
+        "joinUrl": "https://zoom.us/j/81355221630?pwd=MFBVdGduUVQyWjRIWGNJN3JsNk9NUT09"
+      },
+      "contactInfo": "sanewsenglish@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "24/7 AA OPEN MEETING - JOIN ANYTIME",
+      "nextOccurrence": "2021-08-26T16:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "665 894 2198",
+        "password": "121",
+        "joinUrl": "https://zoom.us/j/6658942198?pwd=MzYwQ1NsRVNCY2tpMWFWYnlUL0ozUT09"
+      },
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "aa",
+        "restrictions": {
+          "openMeeting": true,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "India Evening DSR (40 Min)",
+      "nextOccurrence": "2021-08-26T16:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "482 022 6073",
+        "password": "dsr",
+        "joinUrl": "https://zoom.us/j/4820226073?pwd=ZW84eDVEVzBSYjVLTG1TMHhRWlFQQT09"
+      },
+      "contactInfo": "Shivam +91 6377 423 980",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "34th St./Hackensack Zoom Clubhouse",
+      "nextOccurrence": "2021-08-26T16:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "855 985 201",
+        "password": "1212",
+        "joinUrl": "https://zoom.us/j/855985201?pwd=bHB5ekdjRXJkR0hLM3I0c1hHN1VTQT09"
+      },
+      "contactInfo": "saon34th@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "OPEN AA MEETING",
+      "nextOccurrence": "2021-08-26T16:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "231 622 5487",
+        "password": "164",
+        "joinUrl": "https://zoom.us/j/2316225487"
+      },
+      "contactInfo": "remotecommunities40@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "aa",
+        "restrictions": {
+          "openMeeting": true,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Express 40 Minute Meeting Daily",
+      "nextOccurrence": "2021-08-26T16:10:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "610 637 513",
+        "password": "---",
+        "joinUrl": "https://zoom.us/j/610637513"
+      },
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "St. Margaret’s House - Fulton St. NYC",
+      "nextOccurrence": "2021-08-26T16:15:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "880 0146 7066",
+        "password": "494133",
+        "joinUrl": "https://zoom.us/j/88001467066?pwd=aVVKZmFIQzZrbmkrTmUvbkhYMGVwUT09"
+      },
+      "contactInfo": "grouchbrainstorm@protonmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Seaford / Plainview SA Zoom",
+      "nextOccurrence": "2021-08-26T16:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "516 316 8369",
+        "password": "062952",
+        "joinUrl": "https://zoom.us/j/5163168369?pwd=bFJSVWNUQ2FGSWVtUE9YK1FWM2hSdz09"
+      },
+      "contactInfo": "Dennis  (516) 316 8369",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Nashville Daily \"Lunch Bunch\" Meeting",
+      "nextOccurrence": "2021-08-26T17:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "615 555 1234",
+        "password": "187781",
+        "joinUrl": "https://zoom.us/j/6155551234?pwd=ZmFIdVZnUjRvaDY1UVBtbHpvRUpYQT09"
+      },
+      "contactInfo": "NASHVILLE INFO LINE +1 615 345 4334",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "San Antonio Face to Face Meeting",
+      "nextOccurrence": "2021-08-26T17:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "840 788 231",
+        "password": "3215*",
+        "joinUrl": "https://zoom.us/j/840788231?pwd=UjBBS3RINWJld2VpblZoN3lJMUxodz09"
+      },
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Young Adults in SA (Under 30)",
+      "nextOccurrence": "2021-08-26T17:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "609 321 5924",
+        "password": "012890",
+        "joinUrl": "https://zoom.us/j/6093215924?pwd=eVZtYUpPalZCMnBzc1hUZ2hmaWVFZz09"
+      },
+      "contactInfo": "Ferro: ferrolotchi@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "SA Durban Thursday 7pm book study",
+      "nextOccurrence": "2021-08-26T17:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "818 6644 2295",
+        "password": "978602",
+        "joinUrl": "https://zoom.us/j/81866442295?pwd=NWFSVlZUSDhrMnBNUFFIdGlRNkJ4dz09"
+      },
+      "contactInfo": "27 848 122 802",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Gateshead Meeting",
+      "nextOccurrence": "2021-08-26T18:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "823 812 53712",
+        "password": "127932",
+        "joinUrl": "https://zoom.us/j/82381253712?pwd=UGxvMG9aVzB0b1ZwZmhkL2haZnNPZz09"
+      },
+      "contactInfo": "No Contact",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Utah Unity & Fellowship are Important Group",
+      "nextOccurrence": "2021-08-26T18:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "233 882 267",
+        "password": "1309",
+        "joinUrl": "https://zoom.us/j/233882267?pwd=mNC0xOt5cWE"
+      },
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "SA Italia Giovedì H 21 Libro Bianco (in Italian Only) 75 minuti",
+      "nextOccurrence": "2021-08-26T19:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "455 875 717",
+        "password": "---",
+        "joinUrl": "https://zoom.us/j/455875717"
+      },
+      "contactInfo": "alextrackdown@yahoo.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Portland/Vancouver Group",
+      "nextOccurrence": "2021-08-26T19:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "545 045 324",
+        "password": "111111",
+        "joinUrl": "https://zoom.us/j/545045324?pwd=UFBCdDFVM3prRVN1R28xYjE4c3dEUT09"
+      },
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Los Angeles Olympic Lunch Meeting",
+      "nextOccurrence": "2021-08-26T19:15:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "898 485 6738",
+        "password": "769400",
+        "joinUrl": "https://zoom.us/j/8984856738?pwd=cWJlNy8vNHpVbThZM0pGZWZlbkdjQT09"
+      },
+      "contactInfo": "Moshe G. +1 (213) 454 6745",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "OPEN AA MEETING  12 & 12",
+      "nextOccurrence": "2021-08-26T20:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "974 620 132",
+        "password": "556134",
+        "joinUrl": "https://zoom.us/j/974620132"
+      },
+      "contactInfo": "thursdaystepri@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "aa",
+        "restrictions": {
+          "openMeeting": true,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Slow & Steady Daily DSR (30m Meeting)",
+      "nextOccurrence": "2021-08-26T20:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "891 3158 2593",
+        "password": "slow",
+        "joinUrl": "https://zoom.us/j/89131582593?pwd=REhQV2lLa0REdEdhV2dJblpyOW9udz09"
+      },
+      "contactInfo": "Joshua M NZ +6102041175747",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Nashville Daily \"Alive at Five\" Meeting",
+      "nextOccurrence": "2021-08-26T22:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "615 555 1234",
+        "password": "187781",
+        "joinUrl": "https://zoom.us/j/6155551234?pwd=ZmFIdVZnUjRvaDY1UVBtbHpvRUpYQT09"
+      },
+      "contactInfo": "NASHVILLE INFO LINE +1 615 345 4334",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "SA Dallas Thurs night 6p",
+      "nextOccurrence": "2021-08-26T23:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "820 940 00670",
+        "joinUrl": "https://zoom.us/j/82094000670"
+      },
+      "contactInfo": "SADallas@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "London/Kitchener Meeting",
+      "nextOccurrence": "2021-08-26T23:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "458 382 9923",
+        "password": "1542",
+        "joinUrl": "https://zoom.us/j/4583829923?pwd=YVJDek5NVWxpQ05uOVVlOFBVT0duZz09"
+      },
+      "contactInfo": "SA.Roy@yahoo.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "SALI - SINGLE AND LOVING IT",
+      "nextOccurrence": "2021-08-26T23:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "811 265 77772",
+        "password": "12345",
+        "joinUrl": "https://zoom.us/j/81126577772?pwd=UUJsSlowb2tRMlVVUlBZSXVYM3BqUT09"
+      },
+      "contactInfo": "Saligroup111@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Pittsburgh Step Into Action",
+      "nextOccurrence": "2021-08-26T23:15:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "615 242 9115",
+        "password": "retreat",
+        "joinUrl": "https://zoom.us/j/6152429115?pwd=S1g4cS9FYjFoWHB5SW5FV1VZNkQxQT09"
+      },
+      "contactInfo": "satrudger@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Seaford / Plainview SA Zoom",
+      "nextOccurrence": "2021-08-26T23:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "516 316 8369",
+        "password": "062952",
+        "joinUrl": "https://zoom.us/j/5163168369?pwd=bFJSVWNUQ2FGSWVtUE9YK1FWM2hSdz09"
+      },
+      "contactInfo": "Dennis  (516) 316 8369",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "San Antonio S.A. Meeting",
+      "nextOccurrence": "2021-08-26T23:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "840 788 231",
+        "password": "3215*",
+        "joinUrl": "https://zoom.us/j/840788231?pwd=UjBBS3RINWJld2VpblZoN3lJMUxodz09"
+      },
+      "contactInfo": "Bobby B. 1 201 240 1718",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "New Haven Thursday Night",
+      "nextOccurrence": "2021-08-27T00:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "811 3348 6104",
+        "password": "116704",
+        "joinUrl": "https://zoom.us/j/81133486104?pwd=S2ExNkNwYXdiclI5c3FWa2M2Z3pDUT09"
+      },
+      "contactInfo": "Yaakov (203) 892 5046",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Nashville Murfreesboro",
+      "nextOccurrence": "2021-08-27T00:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "615 555 1234",
+        "password": "187781",
+        "joinUrl": "https://zoom.us/j/6155551234?pwd=ZmFIdVZnUjRvaDY1UVBtbHpvRUpYQT09"
+      },
+      "contactInfo": "NASHVILLE INFO LINE +1 615 345 4334",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Nightly Dallas Ft. Worth Zoom Meeting",
+      "nextOccurrence": "2021-08-27T01:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "868 0241 8362",
+        "password": "---",
+        "joinUrl": "https://zoom.us/j/86802418362"
+      },
+      "contactInfo": "D/FW Contact: 214 628 4352",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Utah Thursday Night",
+      "nextOccurrence": "2021-08-27T01:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "989 872 403",
+        "password": "015537",
+        "joinUrl": "https://zoom.us/j/989872403?pwd=emV3ay8zdDFlZUV4TUJOVHRWSEVpQT09"
+      },
+      "contactInfo": "Tim B +1 801 949 2978",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Conscious Contact",
+      "nextOccurrence": "2021-08-27T01:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "827 826 44871",
+        "password": "366",
+        "joinUrl": "https://zoom.us/j/82782644871?pwd=RXRjSzFQTWFpa0FZZDU5dkF5ZHdXQT09"
+      },
+      "contactInfo": "2096041269",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Cedarhurst SA",
+      "nextOccurrence": "2021-08-27T01:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "631 769 4903",
+        "password": "613",
+        "joinUrl": "https://zoom.us/j/6317694903?pwd=RXY2MUF5MWNwMkFNTDZnN1dDTVRsdz09"
+      },
+      "contactInfo": "Sholom L. 1917-937-6438",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Seaford / Plainview SA Daily Reflection",
+      "nextOccurrence": "2021-08-27T02:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "516 316 8369",
+        "password": "062952",
+        "joinUrl": "https://zoom.us/j/5163168369?pwd=bFJSVWNUQ2FGSWVtUE9YK1FWM2hSdz09"
+      },
+      "contactInfo": "Dennis  (516) 316 8369",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Forest Grove (Oregon) S.A. Meeting",
+      "nextOccurrence": "2021-08-27T02:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "980 8950 1113",
+        "password": "111111",
+        "joinUrl": "https://zoom.us/j/98089501113?pwd=R1c3RTIrcGx6WWx6QU1rdjE2YTJoZz09"
+      },
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "OPEN AA MEETING",
+      "nextOccurrence": "2021-08-27T03:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "231 622 5487",
+        "password": "164",
+        "joinUrl": "https://zoom.us/j/2316225487"
+      },
+      "contactInfo": "remotecommunities40@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "aa",
+        "restrictions": {
+          "openMeeting": true,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "India Morning DSR (40 Minutes)",
+      "nextOccurrence": "2021-08-27T03:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "482 022 6073",
+        "password": "dsr",
+        "joinUrl": "https://zoom.us/j/4820226073?pwd=ZW84eDVEVzBSYjVLTG1TMHhRWlFQQT09"
+      },
+      "contactInfo": "Shivam +91 6377 423 980",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "24/7 AA OPEN MEETING - JOIN ANYTIME",
+      "nextOccurrence": "2021-08-27T04:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "8405 3554 493",
+        "password": "853263",
+        "joinUrl": "https://zoom.us/j/84053554493?pwd=K2ljZGVmNVB0R29zdllyN2tuNHZJZz09"
+      },
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "aa",
+        "restrictions": {
+          "openMeeting": true,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Book study  Northern California",
+      "nextOccurrence": "2021-08-27T04:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "827 826 44871",
+        "password": "366",
+        "joinUrl": "https://zoom.us/j/82782644871?pwd=RXRjSzFQTWFpa0FZZDU5dkF5ZHdXQT09"
+      },
+      "contactInfo": "Mark J (209) 430 3810",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "SA Bozos On the Bus (1:50 Singapore)",
+      "nextOccurrence": "2021-08-27T05:50:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "313 384 2833",
+        "password": "1212",
+        "joinUrl": "https://zoom.us/j/3133842833?pwd=b2k5dVZmVXdGQ3gvL2tIYlhHNWM5Zz09"
+      },
+      "contactInfo": "essay.bozos@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Live in Jerusalem",
+      "nextOccurrence": "2021-08-27T09:15:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "813 5522 1630",
+        "password": "121212",
+        "joinUrl": "https://zoom.us/j/81355221630?pwd=MFBVdGduUVQyWjRIWGNJN3JsNk9NUT09"
+      },
+      "contactInfo": "sanewsenglish@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "SA MEN'S MEETING  SPEAKER MEETING",
+      "nextOccurrence": "2021-08-27T10:15:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": true,
+        "meetingId": "WhatsApp +916377423980 or Text 1 443 574 4666 for info"
+      },
+      "contactInfo": "Shivam +916377423980",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "MEN_ONLY"
+        }
+      }
+    },
+    {
+      "name": "34th St./Hackensack Zoom Clubhouse",
+      "nextOccurrence": "2021-08-27T11:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "855 985 201",
+        "password": "1212",
+        "joinUrl": "https://zoom.us/j/855985201?pwd=bHB5ekdjRXJkR0hLM3I0c1hHN1VTQT09"
+      },
+      "contactInfo": "Phil W. +1(917)648 2378",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "San Antonio S.A. Meeting",
+      "nextOccurrence": "2021-08-27T11:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "840 788 231",
+        "password": "3215*",
+        "joinUrl": "https://zoom.us/j/840788231?pwd=UjBBS3RINWJld2VpblZoN3lJMUxodz09"
+      },
+      "contactInfo": "Troy H. 1 513 376 2275",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Nashville Daily \"Rise & Shine\" Meeting",
+      "nextOccurrence": "2021-08-27T11:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "615 555 1234",
+        "password": "187781",
+        "joinUrl": "https://zoom.us/j/6155551234?pwd=ZmFIdVZnUjRvaDY1UVBtbHpvRUpYQT09"
+      },
+      "contactInfo": "NASHVILLE INFO LINE +1 615 345 4334",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Not a Glum Lot  Manchester, MO",
+      "nextOccurrence": "2021-08-27T12:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "551 363 362",
+        "password": "5247",
+        "joinUrl": "https://zoom.us/j/551363362?pwd=bE1RQ2k2RFo1S2krcE1Ya3lieFBnUT09"
+      },
+      "contactInfo": "Rick B  c2c5247@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "MEN_ONLY"
+        }
+      }
+    },
+    {
+      "name": "OPEN AA DISCUSSION MEETING",
+      "nextOccurrence": "2021-08-27T12:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "508 244 1937",
+        "password": "sober",
+        "joinUrl": "https://zoom.us/j/5082441937?pwd=TGppZkU3UGdUcmt3Uytya2pnWEJWUT09"
+      },
+      "contactInfo": "aafriendsandfamily@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "aa",
+        "restrictions": {
+          "openMeeting": true,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "SA MEN'S MEETING",
+      "nextOccurrence": "2021-08-27T12:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": true,
+        "meetingId": "WhatsApp or Text +19177104020 for login information"
+      },
+      "contactInfo": "Aryeh P. 917 710 4020",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "MEN_ONLY"
+        }
+      }
+    },
+    {
+      "name": "A Spiritual Awakening",
+      "nextOccurrence": "2021-08-27T12:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "382 290 1284",
+        "password": "397893",
+        "joinUrl": "https://zoom.us/j/3822901284?pwd=ZkJxSW4vajQ3R0hNOHdybUR3RldGUT09"
+      },
+      "contactInfo": "awakening.secretary@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Mukti Home Group Meeting (daily)",
+      "nextOccurrence": "2021-08-27T13:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "936 535 3513",
+        "password": "MUKTI",
+        "joinUrl": "https://zoom.us/j/9365353513?pwd=N09vL0xBVklsNmdERlJIemRQd1RzUT09"
+      },
+      "contactInfo": "George +91 84518 68016",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "The Real Connection Group (India - Mens only)",
+      "nextOccurrence": "2021-08-27T13:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "799 879 4278",
+        "password": "136185",
+        "joinUrl": "https://zoom.us/j/7998794278?pwd=cW5FaVkrMzQ3NGZybzdBMlhWTXdFZz09"
+      },
+      "contactInfo": "91 9547004992",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "MEN_ONLY"
+        }
+      }
+    },
+    {
+      "name": "North San Bernardino SA ",
+      "nextOccurrence": "2021-08-27T13:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "331 981 3297",
+        "password": "824601",
+        "joinUrl": "https://us02web.zoom.us/j/3319813297?pwd=M1Q2ejBSMDA5VHYzN0lLck4rRmpLUT09"
+      },
+      "contactInfo": "iecvsa2021@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "SA Temecula - WB/12&12 study",
+      "nextOccurrence": "2021-08-27T14:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "774 522 391",
+        "joinUrl": "https://zoom.us/j/774522391"
+      },
+      "contactInfo": "satemecula@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "SA reunião em português (Portuguese)",
+      "nextOccurrence": "2021-08-27T16:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "968 936 3923",
+        "password": "541751",
+        "joinUrl": "https://zoom.us/j/9689363923"
+      },
+      "contactInfo": "Alfredo alfredo11262018@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "24/7 AA OPEN MEETING - JOIN ANYTIME",
+      "nextOccurrence": "2021-08-27T16:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "665 894 2198",
+        "password": "121",
+        "joinUrl": "https://zoom.us/j/6658942198?pwd=MzYwQ1NsRVNCY2tpMWFWYnlUL0ozUT09"
+      },
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "aa",
+        "restrictions": {
+          "openMeeting": true,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "India Evening DSR (40 Min)",
+      "nextOccurrence": "2021-08-27T16:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "482 022 6073",
+        "password": "dsr",
+        "joinUrl": "https://zoom.us/j/4820226073?pwd=ZW84eDVEVzBSYjVLTG1TMHhRWlFQQT09"
+      },
+      "contactInfo": "Shivam +91 6377 423 980",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "34th St./Hackensack Zoom Clubhouse",
+      "nextOccurrence": "2021-08-27T16:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "855 985 201",
+        "password": "1212",
+        "joinUrl": "https://zoom.us/j/855985201?pwd=bHB5ekdjRXJkR0hLM3I0c1hHN1VTQT09"
+      },
+      "contactInfo": "saon34th@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "OPEN AA MEETING",
+      "nextOccurrence": "2021-08-27T16:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "231 622 5487",
+        "password": "164",
+        "joinUrl": "https://zoom.us/j/2316225487"
+      },
+      "contactInfo": "remotecommunities40@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "aa",
+        "restrictions": {
+          "openMeeting": true,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Express 40 Minute Meeting Daily",
+      "nextOccurrence": "2021-08-27T16:10:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "610 637 513",
+        "password": "---",
+        "joinUrl": "https://zoom.us/j/610637513"
+      },
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "St. Margaret’s House - Fulton St. NYC",
+      "nextOccurrence": "2021-08-27T16:15:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "880 0146 7066",
+        "password": "494133",
+        "joinUrl": "https://zoom.us/j/88001467066?pwd=aVVKZmFIQzZrbmkrTmUvbkhYMGVwUT09"
+      },
+      "contactInfo": "grouchbrainstorm@protonmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Seaford / Plainview SA Zoom",
+      "nextOccurrence": "2021-08-27T16:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "516 316 8369",
+        "password": "062952",
+        "joinUrl": "https://zoom.us/j/5163168369?pwd=bFJSVWNUQ2FGSWVtUE9YK1FWM2hSdz09"
+      },
+      "contactInfo": "Dennis  (516) 316 8369",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Nashville Daily \"Lunch Bunch\" Meeting",
+      "nextOccurrence": "2021-08-27T17:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "615 555 1234",
+        "password": "187781",
+        "joinUrl": "https://zoom.us/j/6155551234?pwd=ZmFIdVZnUjRvaDY1UVBtbHpvRUpYQT09"
+      },
+      "contactInfo": "NASHVILLE INFO LINE +1 615 345 4334",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "San Antonio S.A. Meeting",
+      "nextOccurrence": "2021-08-27T17:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "840 788 231",
+        "password": "3215*",
+        "joinUrl": "https://zoom.us/j/840788231?pwd=UjBBS3RINWJld2VpblZoN3lJMUxodz09"
+      },
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Utah Unity & Fellowship are Important Group",
+      "nextOccurrence": "2021-08-27T18:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "233 882 267",
+        "password": "1309",
+        "joinUrl": "https://zoom.us/j/233882267?pwd=mNC0xOt5cWE"
+      },
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Passo Zero Venerdì h.21",
+      "nextOccurrence": "2021-08-27T19:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "722 129 744",
+        "password": "---",
+        "joinUrl": "https://zoom.us/j/722129744"
+      },
+      "contactInfo": "Franco G. +1 516 698 3400",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Came to Believe Book Study SA Meeting",
+      "nextOccurrence": "2021-08-27T19:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "865 7425 0447",
+        "password": "498951",
+        "joinUrl": "https://zoom.us/j/86574250447?pwd=cTRtVUpmaTZvU1RmUjNpeTVsQlMrUT09"
+      },
+      "contactInfo": "ioannis2505@btinternet.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Portland/Vancouver Group",
+      "nextOccurrence": "2021-08-27T19:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "545 045 324",
+        "password": "111111",
+        "joinUrl": "https://zoom.us/j/545045324?pwd=UFBCdDFVM3prRVN1R28xYjE4c3dEUT09"
+      },
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Los Angeles Olympic Lunch Meeting",
+      "nextOccurrence": "2021-08-27T19:15:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "898 485 6738",
+        "password": "769400",
+        "joinUrl": "https://zoom.us/j/8984856738?pwd=cWJlNy8vNHpVbThZM0pGZWZlbkdjQT09"
+      },
+      "contactInfo": "Moshe G. +1 (213) 454 6745",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Bill S. from Nashville  AUSSIE BIG BOOK STUDY",
+      "nextOccurrence": "2021-08-27T22:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "828 6288 0990",
+        "password": "835447",
+        "joinUrl": "https://zoom.us/j/82862880990?pwd=blI0cisxWWdiWHRoakovemx2WjJHQT09"
+      },
+      "contactInfo": "Jason +61 499 854 928",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Nashville Daily \"Alive at Five\" Meeting",
+      "nextOccurrence": "2021-08-27T22:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "6155 551 234",
+        "password": "187781",
+        "joinUrl": "https://zoom.us/j/6155551234?pwd=ZmFIdVZnUjRvaDY1UVBtbHpvRUpYQT09"
+      },
+      "contactInfo": "NASHVILLE INFO LINE +1 615 345 4334",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Sudbury Ontario Canada",
+      "nextOccurrence": "2021-08-27T22:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "827 4221 8899",
+        "password": "293800",
+        "joinUrl": "https://zoom.us/j/82742218899?pwd=U3pPUFFLcWY1elpuN0dwQWVDNWN0QT09"
+      },
+      "contactInfo": "sasudbury@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "HALIFAX, NOVA SCOTIA, SAFE HARBOUR SA",
+      "nextOccurrence": "2021-08-27T22:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "966 9074 9358",
+        "password": "902902",
+        "joinUrl": "https://zoom.us/j/96690749358?pwd=Nks1N3hVYzgvb2l4aVE2Nk1CK09Tdz09"
+      },
+      "contactInfo": "jtboston2929@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Threefold Recovery Meeting",
+      "nextOccurrence": "2021-08-27T23:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "524 521 6450",
+        "password": "SA3fold",
+        "joinUrl": "https://zoom.us/j/5245216450?pwd=c2doUGQxRGp4T3BLT2NLSFRNb2dkZz09"
+      },
+      "contactInfo": "sasaturday7@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Seaford / Plainview SA Zoom",
+      "nextOccurrence": "2021-08-27T23:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "516 316 8369",
+        "password": "062952",
+        "joinUrl": "https://zoom.us/j/5163168369?pwd=bFJSVWNUQ2FGSWVtUE9YK1FWM2hSdz09"
+      },
+      "contactInfo": "Dennis  (516) 316 8369",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Step 11 Reflections",
+      "nextOccurrence": "2021-08-28T00:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "4583 8299 923",
+        "password": "1542",
+        "joinUrl": "https://zoom.us/j/4583829923?pwd=YVJDek5NVWxpQ05uOVVlOFBVT0duZz09"
+      },
+      "contactInfo": "SA.royk@yahoo.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "San Antonio S.A. Meeting",
+      "nextOccurrence": "2021-08-28T00:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "840 788 231",
+        "password": "3215*",
+        "joinUrl": "https://zoom.us/j/840788231?pwd=UjBBS3RINWJld2VpblZoN3lJMUxodz09"
+      },
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "SA Sole Purpose",
+      "nextOccurrence": "2021-08-28T00:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "504 441 1080",
+        "password": "0t1TZf",
+        "joinUrl": "https://zoom.us/j/5044411080?pwd=S3Q3UytmL0h5bkNoakJSUzJPTnNBdz09"
+      },
+      "contactInfo": "sasolepurpose@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Friday Night Step Study (Sat 9am Taipei)",
+      "nextOccurrence": "2021-08-28T01:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "202 588 740",
+        "password": "1120",
+        "joinUrl": "https://zoom.us/j/202588740?pwd=SDJybHJoSEQxTmdJNWY1cVFMcHRlQT09"
+      },
+      "contactInfo": "Mike +1 (971) 517 7117",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "SA Friday Night Step into Action (Modesto, CA)",
+      "nextOccurrence": "2021-08-28T01:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "827 826 44871",
+        "password": "366",
+        "joinUrl": "https://zoom.us/j/82782644871?pwd=RXRjSzFQTWFpa0FZZDU5dkF5ZHdXQT09"
+      },
+      "contactInfo": "Marcus +1 (209) 408 7391",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Nightly Dallas Ft. Worth Zoom Meeting",
+      "nextOccurrence": "2021-08-28T01:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "868 0241 8362",
+        "password": "---",
+        "joinUrl": "https://zoom.us/j/86802418362"
+      },
+      "contactInfo": "D/FW Contact: 214 628 4352",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Seaford / Plainview SA Daily Reflection",
+      "nextOccurrence": "2021-08-28T02:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "516 316 8369",
+        "password": "062952",
+        "joinUrl": "https://zoom.us/j/5163168369?pwd=bFJSVWNUQ2FGSWVtUE9YK1FWM2hSdz09"
+      },
+      "contactInfo": "Dennis  (516) 316 8369",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Portland/Vancouver Group",
+      "nextOccurrence": "2021-08-28T02:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "545 045 324",
+        "password": "111111",
+        "joinUrl": "https://zoom.us/j/545045324?pwd=UFBCdDFVM3prRVN1R28xYjE4c3dEUT09"
+      },
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Men with Same Sex Lust",
+      "nextOccurrence": "2021-08-28T02:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "875 393 2607",
+        "password": "80657",
+        "joinUrl": "https://zoom.us/j/8753932607?pwd=ZjFzWnplOXFWdWl0NEx5L213cXIyUT09"
+      },
+      "contactInfo": "Bob trfesok@aol.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "MEN_ONLY"
+        }
+      }
+    },
+    {
+      "name": "戒性匿名會 (Chinese language SA)",
+      "nextOccurrence": "2021-08-28T02:10:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "202 588 740",
+        "password": "1120",
+        "joinUrl": "https://zoom.us/j/202588740?pwd=SDJybHJoSEQxTmdJNWY1cVFMcHRlQT09"
+      },
+      "contactInfo": "Mike +1 (971) 517 7117",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "OPEN AA MEETING",
+      "nextOccurrence": "2021-08-28T03:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "231 622 5487",
+        "password": "164",
+        "joinUrl": "https://zoom.us/j/2316225487"
+      },
+      "contactInfo": "remotecommunities40@gmail.com",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "aa",
+        "restrictions": {
+          "openMeeting": true,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "India Morning DSR (40 Minutes)",
+      "nextOccurrence": "2021-08-28T03:30:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "482 022 6073",
+        "password": "dsr",
+        "joinUrl": "https://zoom.us/j/4820226073?pwd=ZW84eDVEVzBSYjVLTG1TMHhRWlFQQT09"
+      },
+      "contactInfo": "Shivam +91 6377 423 980",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "24/7 AA OPEN MEETING - JOIN ANYTIME",
+      "nextOccurrence": "2021-08-28T04:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "8405 3554 493",
+        "password": "853263",
+        "joinUrl": "https://zoom.us/j/84053554493?pwd=K2ljZGVmNVB0R29zdllyN2tuNHZJZz09"
+      },
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "aa",
+        "restrictions": {
+          "openMeeting": true,
+          "gender": "ALL"
+        }
+      }
+    },
+    {
+      "name": "Book study  Northern California",
+      "nextOccurrence": "2021-08-28T04:00:00.000Z",
+      "connectionDetails": {
+        "platform": "zoom",
+        "mustContactForConnectionInfo": false,
+        "meetingId": "827 826 44871",
+        "password": "366",
+        "joinUrl": "https://zoom.us/j/82782644871?pwd=RXRjSzFQTWFpa0FZZDU5dkF5ZHdXQT09"
+      },
+      "contactInfo": "Mark J (209) 430 3810",
+      "notes": "",
+      "participantCount": "",
+      "durationMinutes": 60,
+      "metadata": {
+        "hostLocation": "",
+        "language": "en",
+        "fellowship": "sa",
+        "restrictions": {
+          "openMeeting": false,
+          "gender": "ALL"
+        }
+      }
+    }
+  ]
+}
