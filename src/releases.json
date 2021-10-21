@@ -33,5 +33,10 @@
     "releaseNumber": "7",
     "date": "2021-08-26",
     "releaseNotes": "Fixed: the 'Join Meeting' button would incorrectly show when the meeting ID & password were set, but the no join url was provided"
+  },
+  {
+    "releaseNumber": "8",
+    "date": "2021-10-21",
+    "releaseNotes": "Fixed: tapping the Zoom ID or Zoom password wouldn't copy to the clipboard correctly"
   }
 ]
