@@ -184,6 +184,21 @@ END:VCALENDAR
       const date = new Date(dateString);
       return date.toLocaleTimeString(undefined, {hour: "2-digit", minute: "2-digit" });
     }
+ 
+    window.getUtcTimeFromDateString = function getLocalTimeFromDateString(dateString) {
+      return dateString.slice(11,16);
+    }
+
+   window.convertTZ = function convertTZ(date, tzString) {
+    return new Date(date).toLocaleString("en-US", {
+      weekday: 'short',
+      hour: 'numeric',
+      minute: 'numeric',
+      timeZoneName: 'short',
+      timeZone: tzString,
+    });   
+   }
+
 
     window.getLocalDayOfWeekFromDateString = function getLocalDayOfWeekFromDateString(dateString) {
       const date = new Date(dateString);

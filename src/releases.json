@@ -38,5 +38,10 @@
     "releaseNumber": "8",
     "date": "2021-10-21",
     "releaseNotes": "Fixed: tapping the Zoom ID or Zoom password wouldn't copy to the clipboard correctly"
+  },
+  {
+    "releaseNumber": "9",
+    "date": "2021-10-31",
+    "releaseNotes": "Feedback email subject now contains meeting day/time in EST, instead of the user's timezone"
   }
 ]
