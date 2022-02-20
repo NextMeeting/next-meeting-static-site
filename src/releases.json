@@ -48,5 +48,10 @@
     "releaseNumber": "10",
     "date": "2022-02-20",
     "releaseNotes": "Links now open in new tabs, when relevant (Thx to SruliE for the feedback)"
+  },
+  {
+    "releaseNumber": "11",
+    "date": "2022-02-20",
+    "releaseNotes": "Added error monitoring with Honeybadger"
   }
 ]
