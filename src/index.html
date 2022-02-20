@@ -346,6 +346,7 @@ END:VCALENDAR
       MEETINGS_BY_TIME,
       meetings: JSON_SCHEDULE.meetings, 
       virtualPage: 'home',  
+      currentTimestamp: new Date().toISOString(),
       selectedSession: BLANK_SESSION,
       openSessionDetailsModal(session) {
         console.log('Row click! ' + session.name)
@@ -382,6 +383,7 @@ END:VCALENDAR
         // So sessions can move up to the next category, become/exit being live, etc.
         console.log('Recalulating dates');
         this.MEETINGS_BY_TIME = window.categorizeSessions(this.meetings.slice(0, this.amountRemaining));
+        this.currentTimestamp = new Date().toISOString();
       },
       downloadCalendarEvent(session) {
         const event = generateCalendarEvent(session);
@@ -397,15 +399,23 @@ END:VCALENDAR
       }, ONE_MINUTE_IN_MS); 
     "
     >    
-    <script> 
+    <script>  
     </script>
       <div class="flex justify-center">
         <div class="announcement-banner info flex items-center justify-center">
           <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
            -->
-           <p class="hidden sm:block mx-1">👋</p>
+           <p class="hidden sm:block mx-1">🎉</p>
           <div class="ml-3 flex items-center justify-center">
-            <p class="text-center opacity-75">Hey, welcome! Please keep this site and all meeting info within the SA fellowship.</p>
+            <!--  Before conf -->
+            <a x-show="currentTimestamp < '2021-11-18T12:00:00Z'" href="https://simhp.com/sim-2021-live/?utm_source=nextmeeting&utm_medium=link&utm_campaign=banner" class="text-center opacity-75">SIM 2021 is starting soon! Check it out on SIMHP.com!</a>
+
+            <!--  During conf -->
+            <a x-show="currentTimestamp > '2021-11-18T12:00:00Z' && currentTimestamp < '2021-11-19T12:00:00Z'" href="https://simhp.com/sim-2021-live/?utm_source=nextmeeting&utm_medium=link&utm_campaign=banner" class="text-center opacity-75">SIM 2021, the largest online SA conference is live now! Watch now at SIMHP.com!</a>
+
+            <!--  After conf -->
+            <p x-show="currentTimestamp > '2021-11-19T12:00:00Z'" class="text-center opacity-75">Hey, welcome! Please keep this site and all meeting info within the SA fellowship.</p>
+            
           <div class="flex justify-end">
           
             <!-- <button class="button-primary round ml-2">
@@ -414,7 +424,7 @@ END:VCALENDAR
           </div>
             
           </div>
-        </div>
+        </div>  
       </div>
 
       <!-- INJECT_SESSION_DETAILS_MODAL -->
@@ -426,7 +436,7 @@ END:VCALENDAR
           <div class="flex justify-center mb-2">
             <h2 class="session-group__title" x-text="category.title"></h2>
           </div>
-        
+         
           <div class="w-full flex flex-col items-center" x-show="MEETINGS_BY_TIME[category.categoryPath[0]][category.categoryPath[1]].length > 0">
             <template x-for="(session, index) in MEETINGS_BY_TIME[category.categoryPath[0]][category.categoryPath[1]]" :key="index">
               <!-- SESSION_CARD -->
@@ -442,7 +452,7 @@ END:VCALENDAR
       </template> 
 
       <div class="flex justify-center">
-        <a href="https://docs.google.com/spreadsheets/d/1_QxT6VIm1HTLKSl71DtDqSMWVZYrdbqSl0WSF0Ch6g4/edit#gid=0" class="banner info flex items-center m-4">
+        <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/spreadsheets/d/1_QxT6VIm1HTLKSl71DtDqSMWVZYrdbqSl0WSF0Ch6g4/edit#gid=0" class="banner info flex items-center m-4">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
           <div class="ml-3 mr-3">
             <p>Info is from <span class="text-primary">this Google Sheet ›</span></p>
@@ -453,14 +463,17 @@ END:VCALENDAR
 
       <div class="flex justify-center">
         <div class="flex justify-between">
-          <a href="mailto:sanewsenglish@gmail.com" class="share-link">
+          <a target="_blank" rel="noopener noreferrer" href="mailto:sanewsenglish@gmail.com" class="share-link">
             <div class="icon-bubble">
               <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> -->
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
             </div>
             <h2>Send Feedback</h2>
           </a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLScOwdDsnTptb0NR3HuibXjAAT-qYGJwIUN2U1sIQobbMUAXSw/viewform" class="share-link">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://docs.google.com/forms/d/e/1FAIpQLScOwdDsnTptb0NR3HuibXjAAT-qYGJwIUN2U1sIQobbMUAXSw/viewform" class="share-link">
             <div class="icon-bubble">  
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
             </div>
@@ -498,7 +511,7 @@ END:VCALENDAR
       </h4>
   
       <h4>  
-        <a href="https://github.com/AnalyzePlatypus/next-meeting-static-site" class="text-primary">Code on Github ›</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/AnalyzePlatypus/next-meeting-static-site" class="text-primary">Code on Github ›</a>
       </h4>
     </div>
 

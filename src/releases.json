@@ -43,5 +43,10 @@
     "releaseNumber": "9",
     "date": "2021-10-31",
     "releaseNotes": "Feedback email subject now contains meeting day/time in EST, instead of the user's timezone"
+  },
+  {
+    "releaseNumber": "10",
+    "date": "2022-02-20",
+    "releaseNotes": "Links now open in new tabs, when relevant (Thx to SruliE for the feedback)"
   }
 ]
