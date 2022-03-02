@@ -58,7 +58,7 @@ const productionBuild = series(
 
 
 function buildProdCss() {
-  return src(['src/*.scss'])
+  return src(['src/*.scss', 'src/*.css'])
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss([
       require('tailwindcss'),
