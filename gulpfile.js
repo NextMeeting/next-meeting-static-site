@@ -71,7 +71,7 @@ function buildProdCss() {
 
 function buildProdJs() {
   return src([
-    "node_modules/alpinejs/dist/alpine.js",
+    "node_modules/alpinejs/dist/cdn.js",
     "node_modules/clipboard/dist/clipboard.js",
     "node_modules/body-scroll-lock/lib/bodyScrollLock.js"
   ]).
@@ -92,21 +92,20 @@ async function buildProdHtml() {
 
   const javascriptToInline = [
     "./src/javascript/timeDifference.js",
-    "./src/javascript/categorizeSessions.js"
+    "./src/javascript/categorizeSessions.js",
+    "./src/javascript/atcb.js"
   ].map(filePath => fs.readFileSync(filePath).toString()).
   join(" ");
 
   const minified = await minify(javascriptToInline, { sourceMap: false });
   const inlinedJsScriptTag = `<script>${minified.code}</script>`;
 
-  const stdout = execSync('git rev-parse HEAD').toString();
-  console.log(stdout);
-  // if(stderr) throw stderr;
+  const commitHash = execSync('git rev-parse HEAD').toString();
 
   const buildInfo = {
     buildType: "prod",
     builtAt: new Date().toISOString(),
-    commitHash: stdout
+    commitHash: commitHash
   }
 
   const googleAnalyticsSnippet = `
@@ -157,7 +156,10 @@ async function buildHtml() {
   src('dev_static/tailwind_full.css')
     .pipe(symlink('tmp/'));
 
-  src("node_modules/alpinejs/dist/alpine.js")
+    src('src/atcb.css')
+    .pipe(symlink('tmp/'));
+
+  src("node_modules/alpinejs/dist/cdn.js")
     .pipe(symlink('tmp/'));
   
     src("node_modules/clipboard/dist/clipboard.js")
@@ -182,7 +184,8 @@ async function buildHtml() {
   
     const javascriptToInline = [
       "./src/javascript/timeDifference.js",
-      "./src/javascript/categorizeSessions.js"
+      "./src/javascript/categorizeSessions.js",
+      "./src/javascript/atcb.js"
     ].map(filePath => fs.readFileSync(filePath).toString()).
     join(" ");
   
@@ -198,9 +201,12 @@ async function buildHtml() {
     // Inject a link to the stylesheet into the HTML
     return src('src/index.html').
       pipe(replace("<!-- TAILWIND_DEV -->", "<link rel=\"stylesheet\" href=\"tailwind_full.css\">")).
-      pipe(replace("<!-- JS_LIBS -->", `<script src=\"alpine.js\"></script><script src=\"clipboard.js\"></script><script src=\"bodyScrollLock.js\"></script>`)).
+      pipe(replace("<!-- JS_LIBS -->", `<script src=\"cdn.js\"></script><script src=\"clipboard.js\"></script><script src=\"bodyScrollLock.js\"></script>`)).
       pipe(replace("<!-- FONTS -->", `<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">`)).
-      pipe(replace("<!-- CSS -->", `<link rel="stylesheet" href="styles.css">`)).
+      pipe(replace("<!-- CSS -->", `
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="atcb.css">
+      `)).
       pipe(replace("/* INJECT_SCHEDULE_JSON */", jsonToInject)).
       pipe(replace("<!-- SESSION_CARD -->", sessionCardPartial)).
       pipe(replace("<!-- INJECT_SESSION_DETAILS_MODAL -->", sessionDetailsModalPartial)).

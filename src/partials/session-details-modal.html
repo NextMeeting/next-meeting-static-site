@@ -36,7 +36,7 @@
           
           <button id="selected-session-copy-details-button" class="button medium borderless" :data-clipboard-text="'Join ' + selectedSession.name + (selectedSession.nextOccurrence < CURRENT_TIME_STRING ? ', started ' : ', starting ') + (timeDifference(new Date(), selectedSession.nextOccurrence, {displayMode: 'full', sign: 'text'})) + '\n' + selectedSession.connectionDetails.joinUrl + '\n' + 'Meeting ID: ' + selectedSession.connectionDetails.meetingId + '\nPassword: ' + selectedSession.connectionDetails.password">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            <span class="ml-1">Copy&nbsp;Details</span>
+            <span class="ml-1">Copy</span>
           </button>
           <!-- Doon't forget to add .button-divider to the previous button-->
 
@@ -44,7 +44,9 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
             <span class="ml-1">Remind&nbsp;Me</span>
           </button> -->
-  
+
+           <div class="atcb" style="display:none;" x-text='calendarEventJson'></div>
+
           <a
             x-show="selectedSession.connectionDetails.joinUrl"
             id="selected-session-join-url"

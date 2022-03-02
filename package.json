@@ -21,7 +21,7 @@
     "terser": "^5.3.8"
   },
   "dependencies": {
-    "alpinejs": "^2.7.3",
+    "alpinejs": "^3.9.0",
     "body-scroll-lock": "^3.1.5",
     "clipboard": "^2.0.6",
     "dart-sass": "^1.25.0",

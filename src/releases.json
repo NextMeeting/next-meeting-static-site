@@ -53,5 +53,10 @@
     "releaseNumber": "11",
     "date": "2022-02-20",
     "releaseNotes": "Added error monitoring with Honeybadger"
+  },
+  {
+    "releaseNumber": "12",
+    "date": "2022-03-02",
+    "releaseNotes": "🎉 New! Add meetings to your calendar (Powered by https://github.com/jekuer/add-to-calendar-button)"
   }
 ]
