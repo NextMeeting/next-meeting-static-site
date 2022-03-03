@@ -396,6 +396,7 @@ function atcb_open() {
   let list = document.getElementById('atcb_list_' + this.dataset.atcbtn);
   list.style.display = 'block';
   document.getElementById('atcb_bgoverlay_' + this.dataset.atcbtn).style.display = 'block';
+  if(gtag) gtag('send', { hitType: 'event', eventCategory: 'calendar-button', eventAction: 'click' });
 }
 
 function atcb_close() {

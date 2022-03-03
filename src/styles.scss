@@ -132,6 +132,14 @@ a {
   .atcb_icon svg {
     color: $dark-theme_color-primary;
   }
+
+  .atcb_button.active {
+    background: $dark-theme_color-card-background;
+  }
+
+  .atcb_list_item {
+    background: $dark-theme_color-card-background;
+  }
   
   
   a {
@@ -151,6 +159,16 @@ a {
   color: $color-primary;
 }
 
+
+.theme-light {
+  .atcb_button.active  {
+    background: rgb(255, 255, 255);
+  }
+
+  .atcb_list_item {
+    background: rgb(250, 250, 250);
+  }
+}
 
 .dark {
   .button.borderless {

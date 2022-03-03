@@ -53,9 +53,11 @@
     //  && window.matchMedia('(prefers-color-scheme: dark)').matches)
     // (!('theme' in localStorage))
     if (localStorage.theme === 'dark') {
+      document.documentElement.classList.remove('theme-light');
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('theme-light');
     }
   </script>
 
@@ -273,8 +275,6 @@
           "Apple",
           "Google",
           "Microsoft365|Office 365",
-          "MicrosoftTeams|Teams",
-          "Outlook.com|Outlook",
           "Yahoo",
           "iCal|iCal file"
         ],
@@ -300,12 +300,15 @@
       <button id="theme-toggle" class="px-3 text-white opacity-0"  x-data="{
         currentTheme: localStorage.theme || 'light',
         switchToLightMode() { 
+
           localStorage.theme = 'light';
           document.documentElement.classList.remove('dark');
+          document.documentElement.classList.add('theme-light');
           this.currentTheme = 'light';
         },
         switchToDarkMode() {
           localStorage.theme = 'dark';
+          document.documentElement.classList.remove('theme-light');
           document.documentElement.classList.add('dark');
           this.currentTheme = 'dark';
         },
@@ -497,7 +500,7 @@
           </a> -->
         </div>
       </div>
-
+ 
     </div>
 
     <div x-cloak x-data="{}" class="text-xs uppercase tracking-wide flex flex-col items-center mt-6 opacity-50 mb-6">
@@ -522,6 +525,10 @@
       <h4>  
         <a target="_blank" rel="noopener noreferrer" href="https://github.com/AnalyzePlatypus/next-meeting-static-site" class="text-primary">Code on Github ›</a>
       </h4>
+
+      <p class="mt-4">
+        NextMeeting is not affiliated with SA
+      </p> 
     </div>
 
     <div class="toast-container relative flex justify-center">
