@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #4E54C8;
+    --color-primary__hover: #3036a3;
+    --color-secondary: #8F94FB;
+
+    --color-background: #F8F8FD;
+    --color-background-3: #F3F3FB;
+
+    --color-card-background: #fff;
+    --color-card-background_hover: #fafafa;
+
+    --color-text-1: #161737;
+    --color-text-2: #4B4D6B;
+    --color-text-3: #737487;
+
+    --color-success-1: #32BD2F;
+    --color-danger-1: #C84E4E;
+
+    --brand-gradient: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  }
+
+  .theme-default-dark {
+    --color-primary: #7D7AFF;
+    --color-primary__hover: #3036a3;
+    --color-secondary: #8F94FB;
+
+    --color-background: #0B0B28;
+    --color-background-3: #242751;
+
+    --color-card-background: #22223A;
+    --color-card-background_hover: #2C2C49;
+
+    --color-text-1: #ffffff;
+    --color-text-2: #CECED4;
+    --color-text-3: #A3A5C2;
+
+    --color-success-1: #3EB43C;
+    --color-danger-1: #D44242;
+  }
+  
+
+  .theme-forest-light {
+    --color-primary: #7D7AFF;
+    --color-primary__hover: #3036a3;
+    --color-secondary: #8F94FB;
+
+    --color-background: #0B0B28;
+    --color-background-3: #242751;
+
+    --color-card-background: #22223A;
+    --color-card-background_hover: #2C2C49;
+
+    --color-text-1: #ffffff;
+    --color-text-2: #CECED4;
+    --color-text-3: #A3A5C2;
+
+    --color-success-1: #3EB43C;
+    --color-danger-1: #D44242;
+  }
+
+  .theme-forest-dark {
+    --color-primary: #7D7AFF;
+    --color-primary__hover: #3036a3;
+    --color-secondary: #8F94FB;
+
+    --color-background: #0B0B28;
+    --color-background-3: #242751;
+
+    --color-card-background: #22223A;
+    --color-card-background_hover: #2C2C49;
+
+    --color-text-1: #ffffff;
+    --color-text-2: #CECED4;
+    --color-text-3: #A3A5C2;
+
+    --color-success-1: #3EB43C;
+    --color-danger-1: #D44242;
+  }
+}

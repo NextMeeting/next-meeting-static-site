@@ -3,25 +3,25 @@
 <head>
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NextMeeting for SA</title>
+  <title>$SITE_TITLE</title>
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-  <meta name="title" content="NextMeeting for SA">
-  <meta name="description" content="Join an SA meeting anytime, anywhere! Choose from over 350 weekly SA meetings on Zoom, FreeConferenceCall, and other platforms!">
+  <meta name="title" content="$SITE_TITLE">  
+  <meta name="description" content="$SITE_DESCRIPTION">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://d2deqbdk4xcrlo.cloudfront.net">
-  <meta property="og:title" content="NextMeeting for SA">
-  <meta property="og:description" content="Join an SA meeting anytime, anywhere! Choose from over 350 weekly SA meetings on Zoom, FreeConferenceCall, and other platforms!">
-  <meta property="og:image" content="https://d2deqbdk4xcrlo.cloudfront.net/open_graph_promo_banner.jpg">
-
+  <meta property="og:url" content="$SITE_PUBLIC_URL">
+  <meta property="og:title" content="$SITE_TITLE">
+  <meta property="og:description" content="$SITE_DESCRIPTION">
+  <meta property="og:image" content="$SITE_PUBLIC_URL/$SITE_PROMO_BANNER_IMAGE">
+ 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://d2deqbdk4xcrlo.cloudfront.net">
-  <meta property="twitter:title" content="NextMeeting for SA">
-  <meta property="twitter:description" content="Join an SA meeting anytime, anywhere! Choose from over 350 weekly SA meetings on Zoom, FreeConferenceCall, and other platforms!">
-  <meta property="twitter:image" content="https://d2deqbdk4xcrlo.cloudfront.net/open_graph_promo_banner.jpg">
+  <meta property="twitter:url" content="$SITE_PUBLIC_URL">
+  <meta property="twitter:title" content="$SITE_TITLE">
+  <meta property="twitter:description" content="$SITE_DESCRIPTION">
+  <meta property="twitter:image" content="$SITE_PUBLIC_URL/$SITE_PROMO_BANNER_IMAGE">
  
   <!-- Verify Google property ownership -->
   <meta name="google-site-verification" content="hm3CPdpPlWsWUxHDYX8F38LkgWjbQp6Mj72PC7aoqhQ" />
@@ -59,34 +59,6 @@
       document.documentElement.classList.remove('dark');
       document.documentElement.classList.add('theme-light');
     }
-  </script>
-
-
-  <script>
- 
-    function formatTimestampForCalendar(t) {
-      return t.replace(/:|-|(\..*Z)/g, '');
-    }
-
-    function generateCalendarEvent(session) {
-     
-    }
-
-    function downloadFile(filename, data, mimeType) {
-      const blob = new Blob([data], {type: mimeType});
-      if(window.navigator.msSaveOrOpenBlob) {
-          window.navigator.msSaveBlob(blob, filename);
-      }
-      else{
-          const elem = window.document.createElement('a');
-          elem.href = window.URL.createObjectURL(blob, { oneTimeOnly: true });
-          elem.download = filename;   
-          elem.style.display = 'none';
-          document.body.appendChild(elem);
-          elem.click();        
-          document.body.removeChild(elem);
-      }
-  }
   </script>
 
   <script>
@@ -225,7 +197,7 @@
       "metadata": {
         "hostLocation": "",
         "language": "en",
-        "fellowship": "sa",
+        "fellowship": "aa",
         "restrictions": {
           "openMeeting": false,
           "gender": "ALL"
@@ -239,27 +211,26 @@
     !function(t,e){"use strict";"function"!=typeof t.CustomEvent&&(t.CustomEvent=function(t,n){n=n||{bubbles:!1,cancelable:!1,detail:void 0};var a=e.createEvent("CustomEvent");return a.initCustomEvent(t,n.bubbles,n.cancelable,n.detail),a},t.CustomEvent.prototype=t.Event.prototype),e.addEventListener("touchstart",function(t){if("true"===t.target.getAttribute("data-swipe-ignore"))return;s=t.target,r=Date.now(),n=t.touches[0].clientX,a=t.touches[0].clientY,u=0,i=0},!1),e.addEventListener("touchmove",function(t){if(!n||!a)return;var e=t.touches[0].clientX,r=t.touches[0].clientY;u=n-e,i=a-r},!1),e.addEventListener("touchend",function(t){if(s!==t.target)return;var e=parseInt(l(s,"data-swipe-threshold","20"),10),o=parseInt(l(s,"data-swipe-timeout","500"),10),c=Date.now()-r,d="",p=t.changedTouches||t.touches||[];Math.abs(u)>Math.abs(i)?Math.abs(u)>e&&c<o&&(d=u>0?"swiped-left":"swiped-right"):Math.abs(i)>e&&c<o&&(d=i>0?"swiped-up":"swiped-down");if(""!==d){var b={dir:d.replace(/swiped-/,""),xStart:parseInt(n,10),xEnd:parseInt((p[0]||{}).clientX||-1,10),yStart:parseInt(a,10),yEnd:parseInt((p[0]||{}).clientY||-1,10)};s.dispatchEvent(new CustomEvent("swiped",{bubbles:!0,cancelable:!0,detail:b})),s.dispatchEvent(new CustomEvent(d,{bubbles:!0,cancelable:!0,detail:b}))}n=null,a=null,r=null},!1);var n=null,a=null,u=null,i=null,r=null,s=null;function l(t,n,a){for(;t&&t!==e.documentElement;){var u=t.getAttribute(n);if(u)return u;t=t.parentNode}return a}}(window,document);
   </script>
 
-  <script>
+  <script>   
     function getSessionEndTimestamp(sessionStartTimestamp, sessionLengthMinutes) {
       let sessionStartMilliseconds = (new Date(sessionStartTimestamp)).getTime();
       let sessionDurationMilliseconds = sessionLengthMinutes * 60 * 1000;
       let sessionEndMilliseconds = sessionStartMilliseconds + sessionDurationMilliseconds
       let newDate = new Date(sessionEndMilliseconds);
       return newDate.toISOString();
-    }
-
+    } 
     function createCalendarEventJson(selectedSession) {
       const sessionEndTimestamp = getSessionEndTimestamp(selectedSession.nextOccurrence, selectedSession.durationMinutes);
 
       const startDate = selectedSession.nextOccurrence.slice(0,10);
-      const endDate = sessionEndTimestamp.slice(0,10);
+      const endDate = sessionEndTimestamp.slice(0,10);    
 
       const startTime = getUtcTimeFromDateString(selectedSession.nextOccurrence);
       const endTime = getUtcTimeFromDateString(sessionEndTimestamp);
 
       const location = selectedSession.connectionDetails.joinUrl || '';
       const description = `Join link: ${selectedSession.connectionDetails.joinUrl || '(not provided)'}\n\nMeeting ID: ${selectedSession.connectionDetails.meetingId || '(not provided)'}\nPassword: ${selectedSession.connectionDetails.password || '(not provided)'}\n\nContact info: ${selectedSession.contactInfo || '🤷‍♂️ No contact info provided.'}\n\nGenerated by NextMeeting`
-
+ 
       return {
         "name": selectedSession.name,
         location,
@@ -294,7 +265,7 @@
             <span class="bold">Next</span>
             <span>Meeting</span>
           </div>
-          <span class="beta-badge light ml-1">SA</span>
+          <span class="beta-badge light ml-1">$FELLOWSHIP</span>
         </h1> 
       </a> 
       <button id="theme-toggle" class="px-3 text-white opacity-0"  x-data="{
@@ -348,7 +319,7 @@
         this.selectedSession=session;
 
         const state = {};
-        const title = session.name + ' | NextMeeting for SA';
+        const title = session.name + ' | $SITE_TITLE';
         const url = new URL(window.location);
         url.searchParams.set('meetingName', session.name);
         document.title = title;
@@ -380,7 +351,7 @@
         console.log('Closing modal')
         this.virtualPage = 'home';
         this.sessionDetails=BLANK_SESSION;
-        document.title = 'NextMeeting for SA';
+        document.title = '$SITE_TITLE';
         
         bodyScrollLock.clearAllBodyScrollLocks();
         document.querySelector('body').classList.remove('ios-prevent-scroll');
@@ -394,10 +365,6 @@
         this.MEETINGS_BY_TIME = window.categorizeSessions(this.meetings.slice(0, this.amountRemaining));
         this.currentTimestamp = new Date().toISOString();
       },
-      downloadCalendarEvent(session) {
-        const event = generateCalendarEvent(session);
-        downloadFile('meeting.ics', event, 'text/calendar');
-      }
     }"
     x-init="
       document.querySelector('#session-details-card').addEventListener('swiped-down', function(e) {
@@ -421,12 +388,10 @@
 
             <!--  During conf
             <a x-show="currentTimestamp > '2021-11-18T12:00:00Z' && currentTimestamp < '2021-11-19T12:00:00Z'" href="https://simhp.com/sim-2021-live/?utm_source=nextmeeting&utm_medium=link&utm_campaign=banner" class="text-center opacity-75">SIM 2021, the largest online SA conference is live now! Watch now at SIMHP.com!</a>
-
-            <!--  After conf 
-            <p x-show="currentTimestamp > '2021-11-19T12:00:00Z'" class="text-center opacity-75">Hey, welcome! Please keep this site and all meeting info within the SA fellowship.</p>
             -->
-
-            <p>NEW: You can now add meetings directly to your calendar!</p>
+            
+            <p class="text-center opacity-75">Hey, welcome! Please keep this site and all meeting info within $FELLOWSHIP</p>
+            
             
           <div class="flex justify-end">
           
@@ -464,7 +429,7 @@
       </template> 
 
       <div class="flex justify-center">
-        <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/spreadsheets/d/1_QxT6VIm1HTLKSl71DtDqSMWVZYrdbqSl0WSF0Ch6g4/edit#gid=0" class="banner info flex items-center m-4">
+        <a target="_blank" rel="noopener noreferrer" href="$SOURCE_GOOGLE_SHEET_URL" class="banner info flex items-center m-4">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
           <div class="ml-3 mr-3">
             <p>Info is from <span class="text-primary">this Google Sheet ›</span></p>
@@ -475,7 +440,7 @@
 
       <div class="flex justify-center">
         <div class="flex justify-between">
-          <a target="_blank" rel="noopener noreferrer" href="mailto:sanewsenglish@gmail.com" class="share-link">
+          <a target="_blank" rel="noopener noreferrer" href="mailto:$FEEDBACK_EMAIL_ADDRESS" class="share-link">
             <div class="icon-bubble">
               <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> -->
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
@@ -485,7 +450,7 @@
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://docs.google.com/forms/d/e/1FAIpQLScOwdDsnTptb0NR3HuibXjAAT-qYGJwIUN2U1sIQobbMUAXSw/viewform" class="share-link">
+            href="$ADD_NEW_MEETING_URL" class="share-link">
             <div class="icon-bubble">  
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
             </div>
@@ -527,7 +492,7 @@
       </h4>
 
       <p class="mt-4">
-        NextMeeting is not affiliated with SA
+        NextMeeting is not affiliated with $FELLOWSHIP
       </p> 
     </div>
 

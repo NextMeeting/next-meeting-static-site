@@ -1,8 +1,11 @@
 // Imports
 
 const fs = require("fs");
+const path = require("path");
 const { src, watch, symlink, dest, series, parallel } = require('gulp');
 const  { execSync } = require("child_process");
+var es = require('event-stream');
+
 
 var sass = require('gulp-dart-sass')
 const postcss = require('gulp-postcss');
@@ -16,6 +19,60 @@ const rename = require("gulp-rename");
 
 const { minify }  = require("terser");
 
+
+function batchReplace(arr) {
+  console.log('batchReplace')
+  console.log(arr)
+  var doReplace = function(file, callback) {
+
+
+    var isStream = file.contents && typeof file.contents.on === 'function' && typeof file.contents.pipe === 'function';
+    var isBuffer = file.contents instanceof Buffer;
+
+
+    if (isStream)
+    {
+      file.contents = file.contents.pipe(es.map(function(chunk,cb){
+        for( var i=0, max = arr.length; i<max; i++ ){
+          var search  = arr[i][0],
+              replace = arr[i][1];
+
+          var isRegExp = search instanceof RegExp;
+
+          var result = isRegExp
+          ? String( chunk ).replace( search, replace )
+          : String( chunk ).split( search ).join( replace );
+          chunk = Buffer.from(result);
+        };
+        cb(null,chunk);
+      }));
+    }
+
+    else if(isBuffer)
+
+    {
+      for( var i=0, max = arr.length; i<max; i++ ){
+        var search  = arr[i][0],
+            replace = arr[i][1];
+
+        file.contents = search instanceof RegExp
+        ? Buffer.from( String( file.contents ).replace( search, replace ) )
+        : Buffer.from( String( file.contents ).split( search ).join( replace ) );
+      }
+    }
+
+    callback(null,file);
+  };
+
+
+  return es.map(doReplace);
+};
+
+const TEXT_REPLACEMENT_CONFIG_FILE = 'sanon.js'
+
+// const TEXT_REPLACEMENT_CONFIG = require(path.join('./configs/', TEXT_REPLACEMENT_CONFIG_FILE))
+const TEXT_REPLACEMENT_CONFIG = require('./configs/' + TEXT_REPLACEMENT_CONFIG_FILE).default
+
 /* Dev
 1. Link Tailwind
 2. Compile + link SCSS
@@ -26,6 +83,14 @@ const { minify }  = require("terser");
 
 // Fonts
 // Production: <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+function applyTextReplacements(targetText, replacements) {
+  let workingCopy = targetText + '';
+  Object.entries(replacements).forEach(([token, replacement]) => {
+    workingCopy.replace(token, replacement);
+  })
+  return workingCopy;
+}
 
 
 const defaultTask = function() {
@@ -126,6 +191,7 @@ async function buildProdHtml() {
   `
 
   return src('src/index.html').
+    pipe(batchReplace(Object.entries(TEXT_REPLACEMENT_CONFIG))).
     pipe(replace("<!-- JS_LIBS -->", `<script src="scripts.${BUILD_ID}.js"></script>`)).
     pipe(replace("<!-- CSS -->", `<link rel="stylesheet" href="styles.${BUILD_ID}.css">`)).
     pipe(replace("<!-- FONTS -->", `<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">`)).
@@ -200,6 +266,7 @@ async function buildHtml() {
 
     // Inject a link to the stylesheet into the HTML
     return src('src/index.html').
+      pipe(batchReplace(Object.entries(TEXT_REPLACEMENT_CONFIG))).
       pipe(replace("<!-- TAILWIND_DEV -->", "<link rel=\"stylesheet\" href=\"tailwind_full.css\">")).
       pipe(replace("<!-- JS_LIBS -->", `<script src=\"cdn.js\"></script><script src=\"clipboard.js\"></script><script src=\"bodyScrollLock.js\"></script>`)).
       pipe(replace("<!-- FONTS -->", `<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">`)).

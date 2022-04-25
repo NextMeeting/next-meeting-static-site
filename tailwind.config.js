@@ -8,7 +8,18 @@ module.exports = {
     content: ['./src/**/*.html'],
   },
   theme: {
-    extend: {},
+    extend: {
+      textColor: {
+        skin: {
+
+        }
+      },
+      backgroundColor: {
+        skin: {
+          
+        }
+      }
+    },
   },
   variants: {},
   plugins: [],
