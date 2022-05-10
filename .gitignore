@@ -4,3 +4,4 @@ tmp
 dist
 .DS_Store
 test_data/meetingsNext24Hours.json
+configs

@@ -1,4 +1,10 @@
+
+
 // Imports
+
+// Load env vars
+require('dotenv').config()
+
 
 const fs = require("fs");
 const path = require("path");
@@ -68,7 +74,8 @@ function batchReplace(arr) {
   return es.map(doReplace);
 };
 
-const TEXT_REPLACEMENT_CONFIG_FILE = 'sanon.js'
+
+const TEXT_REPLACEMENT_CONFIG_FILE = process.env.BUILD_CONFIG_FILE;
 
 // const TEXT_REPLACEMENT_CONFIG = require(path.join('./configs/', TEXT_REPLACEMENT_CONFIG_FILE))
 const TEXT_REPLACEMENT_CONFIG = require('./configs/' + TEXT_REPLACEMENT_CONFIG_FILE).default
@@ -146,7 +153,7 @@ function buildProdJs() {
 }
 
 async function buildProdHtml() {
-  src('./assets/favicons/apple-touch-icon.png')
+  src('./assets/favicons/*')
     .pipe(symlink('dist'));
 
   src('./assets/images/*')
@@ -201,7 +208,7 @@ async function buildProdHtml() {
     pipe(replace("<!-- GOOGLE_ANALYTICS -->", googleAnalyticsSnippet + cloudflareAnalyticsSnippet)).
     pipe(replace("/* INJECT_BUILD_INFO */", `window.BUILD_INFO=${JSON.stringify(buildInfo)}`)).
     // pipe(replace("/* INJECT_SCHEDULE_JSON */", scheduleJson)). // Schedule is injected by automated rebuild Lambda
-    pipe(rename("index.template.html")).
+    pipe(rename(`${TEXT_REPLACEMENT_CONFIG['$DEPLOY_ID']}.template.html`)).
     pipe(dest('dist'));
 }
 

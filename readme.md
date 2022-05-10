@@ -15,6 +15,68 @@
 * When the page is loaded, JS in the static page executes, parsing the injected JSON and rendering the schedule.
 
 
+## 🎉 NEW! Configuration
+
+The build contains a large number of settings that must be configured before the first build.
+There include the site title, color theme, links, and more!
+
+Here's how to create one.
+(You only need to do this once)
+
+1. Create the `./configs` directory
+2. Place `yoursite.js` in it (the name doesn't matter)
+3. Example file contents should be:
+```js
+exports.default = {
+  $SITE_DESCRIPTION: 'Join an our meetings anytime, anywhere! Choose from over 100 weekly meetings on Zoom!',
+  $SITE_TITLE:'NextMeeting Site',
+  $SITE_PUBLIC_URL:'https://mysite.com',
+  $SITE_PROMO_BANNER_IMAGE: 'open_graph_promo_banner.jpg',
+  $APPLE_TOUCH_ICON: 'apple-touch-icon.png',
+  $FELLOWSHIP: 'My groups',
+  $FEEDBACK_EMAIL_ADDRESS: "contact@example.com",
+  $SOURCE_GOOGLE_SHEET_URL: 'https://docs.google.com/spreadsheets/d/****',
+  $ADD_NEW_MEETING_URL: 'https://docs.google.com/forms/d/e/****',
+  $THEME_LIGHT: 'theme-purple-light',
+  $THEME_DARK: 'theme-purple-dark',
+  $DEPLOY_ID: 'C5448DD7-F7AC-48FC-BC3B-A560FE8EF99A' // A random UUID
+}
+```
+4. In your `.env`, set `BUILD_CONFIG_FILE` to `yoursite.js`
+
+> Make sure to update the Open Graph banner with your new site details
+
+## 🎉 NEW! Color themes
+
+The system now supports color theming for all controls.
+The existing themes are:
+* Purple (light)
+* Purple (dark)
+* Forest (light)
+* Forest (dark)
+
+To add more themes:
+
+1. Add your theme colors as a class near the top of `styles.scss`
+2. In `index.html`, add your new CSS classes to the `VALID_THEMES` array.
+3. In your config file, set `$THEME_LIGHT` and `$THEME_DARK` to your new classes.
+
+> Make sure to create a new site icon (`./favicons/apple-touch-icon.png`) and Open Graph banner to match your new theme colors
+
+
+## 🎉 NEW! Multi-site deployment
+
+We now support hosting multiple sites in the same S3 bucket.
+
+To do so, the following changes have been made:
+
+* Every site has a UUID that is used for all its URLs
+* The build HTML file is now `<uuid>.template.html`
+* All builds are deployed to the same S3 bucket and Cloudfront distribution
+* All deployed sites share the same CSS and JS files
+* The JSON schedule rebuilder rebuilds all the sites at once.
+
+
 ## Development
 
 Custom build script powered by Gulp.
@@ -30,18 +92,20 @@ cd tmp && http-server
 
 > Slow build systems should not exist. This build script is optimized to run everything blazing fast. In live rebuild mode the site rebuilds in less than 16ms. Production builds take less than 4 seconds (most of which is Tailwind stripping away all unused CSS styles)
 
+## Config
+
 ## Deployment
 
 `gulp build` creates three files in `dist`:
 
-* `index.template.html`
+* `<uuid>.template.html`
 * `styles.css`
 * `scripts.js`
 
-`index.template.html` **does not contain the schedule JSON** and is unusable on its own.
-The `next-meeting-regenerate-schedule` Lambda pulls `index.template.html` from S3 every hour, injects the latest schedule JSON, and re-uploads it to S3 as a proper `index.html`.
+`<uuid>.template.html` **does not contain the schedule JSON** and is unusable on its own.
+The `next-meeting-regenerate-schedule` Lambda pulls the HTML from S3 every hour, injects the latest schedule JSON, and re-uploads it to S3 as a proper `index.html`.
 
-This allows the static site to be up-to-date with practically no overhead - nothing is recompiled, we don't need to deploy the entire gulp workflow into the cloud or run an servers. Just a simple string replacement in a text (HTML) file.
+This allows the static site to be up-to-date with practically no overhead - nothing is recompiled, we don't need to deploy the entire gulp workflow into the cloud or run any servers. Just a simple string replacement in a text (HTML) file.
 
 ```bash
 gulp build # Builds dist directory

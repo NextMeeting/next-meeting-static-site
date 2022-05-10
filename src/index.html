@@ -4,25 +4,25 @@
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>$SITE_TITLE</title>
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="$APPLE_TOUCH_ICON">
 
   <meta name="title" content="$SITE_TITLE">  
   <meta name="description" content="$SITE_DESCRIPTION">
-
+  
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="$SITE_PUBLIC_URL">
   <meta property="og:title" content="$SITE_TITLE">
   <meta property="og:description" content="$SITE_DESCRIPTION">
   <meta property="og:image" content="$SITE_PUBLIC_URL/$SITE_PROMO_BANNER_IMAGE">
- 
-  <!-- Twitter -->
+  
+  <!-- Twitter -->  
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="$SITE_PUBLIC_URL">
   <meta property="twitter:title" content="$SITE_TITLE">
   <meta property="twitter:description" content="$SITE_DESCRIPTION">
   <meta property="twitter:image" content="$SITE_PUBLIC_URL/$SITE_PROMO_BANNER_IMAGE">
- 
+  
   <!-- Verify Google property ownership -->
   <meta name="google-site-verification" content="hm3CPdpPlWsWUxHDYX8F38LkgWjbQp6Mj72PC7aoqhQ" />
   
@@ -46,19 +46,34 @@
 
   <style>  
     [x-cloak] { opacity: 0; } 
-
+ 
   </style>
 
-  <script>
+  <script> 
     //  && window.matchMedia('(prefers-color-scheme: dark)').matches)
     // (!('theme' in localStorage))
-    if (localStorage.theme === 'dark') {
-      document.documentElement.classList.remove('theme-light');
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.classList.add('theme-light');
-    }
+   
+    const THEME_LIGHT = "$THEME_LIGHT";
+    const THEME_DARK = "$THEME_DARK";
+    
+    const VALID_THEMES = [
+      'theme-purple-light',
+      'theme-purple-dark',
+      'theme-forest-light', 
+      'theme-forest-dark',
+    ]
+    
+    function setTheme(themeName) {
+      if(!VALID_THEMES.includes(themeName)) throw new TypeError(`Unknown theme "${themeName}"`);
+      
+      document.documentElement.classList.add(themeName);
+      const themesToRemove = VALID_THEMES.filter(t => t !== themeName);
+      themesToRemove.forEach(t => document.documentElement.classList.remove(t));
+    } 
+    
+    const theme = localStorage.theme === 'dark' ? THEME_DARK : THEME_LIGHT;
+    setTheme(theme);
+    
   </script>
 
   <script>
@@ -269,19 +284,16 @@
         </h1> 
       </a> 
       <button id="theme-toggle" class="px-3 text-white opacity-0"  x-data="{
-        currentTheme: localStorage.theme || 'light',
+        currentTheme: localStorage.theme || THEME_LIGHT,
         switchToLightMode() { 
-
           localStorage.theme = 'light';
-          document.documentElement.classList.remove('dark');
-          document.documentElement.classList.add('theme-light');
           this.currentTheme = 'light';
+          setTheme(THEME_LIGHT);
         },
         switchToDarkMode() {
           localStorage.theme = 'dark';
-          document.documentElement.classList.remove('theme-light');
-          document.documentElement.classList.add('dark');
           this.currentTheme = 'dark';
+          setTheme(THEME_DARK);
         },
       }" x-init="()=>{document.getElementById('theme-toggle').classList.remove('opacity-0');}">
         <svg x-show="currentTheme == 'light'" @click="switchToDarkMode()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
@@ -429,8 +441,8 @@
       </template> 
 
       <div class="flex justify-center">
-        <a target="_blank" rel="noopener noreferrer" href="$SOURCE_GOOGLE_SHEET_URL" class="banner info flex items-center m-4">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        <a target="_blank" rel="noopener noreferrer" href="$SOURCE_GOOGLE_SHEET_URL" class="announcement-banner info flex items-center my-4">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
           <div class="ml-3 mr-3">
             <p>Info is from <span class="text-primary">this Google Sheet ›</span></p>
             <p class="text-xs uppercase opacity-50 tracking-wide">Updated hourly</p>
@@ -440,7 +452,7 @@
 
       <div class="flex justify-center">
         <div class="flex justify-between">
-          <a target="_blank" rel="noopener noreferrer" href="mailto:$FEEDBACK_EMAIL_ADDRESS" class="share-link">
+          <a target="_blank" rel="noopener noreferrer" href="mailto:$FEEDBACK_EMAIL_ADDRESS" class="share-link transition-all">
             <div class="icon-bubble">
               <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> -->
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
@@ -450,7 +462,7 @@
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="$ADD_NEW_MEETING_URL" class="share-link">
+            href="$ADD_NEW_MEETING_URL" class="share-link transition-all">
             <div class="icon-bubble">  
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
             </div>
@@ -467,7 +479,7 @@
       </div>
  
     </div>
-
+    
     <div x-cloak x-data="{}" class="text-xs uppercase tracking-wide flex flex-col items-center mt-6 opacity-50 mb-6">
       <h4>
         <span>Showing meetings in</span> 
@@ -487,15 +499,45 @@
         <span class="text-primary" x-text="timeDifference(new Date(), window.BUILD_INFO.builtAt, {displayMode: 'full', sign: 'text'})"></span>
       </h4>
   
-      <h4>  
+      <h4>   
         <a target="_blank" rel="noopener noreferrer" href="https://github.com/AnalyzePlatypus/next-meeting-static-site" class="text-primary">Code on Github ›</a>
       </h4>
-
-      <p class="mt-4">
+    </div>
+    
+    <section>
+      <a href='https://nextmeeting.org' noopener target='_blank'>
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+        <svg width="18rem" class='mx-auto' height="100%" viewBox="0 0 1014 404" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+            <g id="Artboard1" transform="matrix(0.966347,0,0,0.926041,-230.245,-69.907)">
+                <rect x="238.263" y="75.49" width="1048.51" height="435.608" style="fill:none;"/>
+                <g transform="matrix(1.03482,0,0,1.07987,-8.02507,-40.2899)">
+                    <text x="353.412px" y="346.837px" style="font-family:'Roboto-Italic_Medium-Italic', 'Roboto';font-style:italic;font-size:146.185px;fill:var(--color-text-2)">Next</text>
+                    <text x="646.496px" y="346.837px" style="font-family:'Roboto-LightItalic', 'Roboto';font-weight:300;font-style:italic;font-size:146.185px;fill:var(--color-text-1)">Meeting</text>
+                </g>
+                <g transform="matrix(0.764142,0,0,0.797401,242.911,-4.30459)">
+                    <g transform="matrix(1,0,0,1,0,10.8338)">
+                        <g transform="matrix(0.821856,0,0,0.630924,64.7293,180.181)">
+                            <path d="M1044.86,502.995C1044.86,467.059 1022.47,437.884 994.88,437.884L500.836,437.884C473.249,437.884 450.852,467.059 450.852,502.995C450.852,538.93 473.249,568.106 500.836,568.106L994.88,568.106C1022.47,568.106 1044.86,538.93 1044.86,502.995Z" style="stroke:var(--color-network-logo-badge);stroke-width:13.86px;fill:var(--color-network-logo-badge)"/>
+                        </g>
+                        <g transform="matrix(0.463243,0,0,0.463243,324.325,359.751)">
+                            <text x="353.412px" y="346.837px" style="font-family:'Roboto-Regular_Bold', 'Roboto';font-size:146.155px;fill:white;">N<tspan x="479.528px 585.947px 696.149px 847.742px 970.147px 1082.06px " y="346.837px 346.837px 346.837px 346.837px 346.837px 346.837px ">ETWORK</tspan></text>
+                        </g>
+                    </g>
+                    <g transform="matrix(0.278499,0,0,0.278499,420.887,131.241)">
+                        <text x="353.412px" y="346.837px" style="font-family:'Roboto-Regular_Black', 'Roboto';font-size:146.155px;">P<tspan x="467.538px 589.944px 741.537px 846.529px 958.444px 1063.44px 1181.2px 1239.31px 1348.3px " y="346.837px 346.837px 346.837px 346.837px 346.837px 346.837px 346.837px 346.837px 346.837px ">OWERED BY</tspan></text>
+                    </g>
+                </g>
+            </g>
+        </svg>
+      
+      </a>
+      <p class="mb-4 text-center uppercase text-xs text-color-3">
         NextMeeting is not affiliated with $FELLOWSHIP
       </p> 
-    </div>
-
+    </section>
+    
+    
     <div class="toast-container relative flex justify-center">
       <div id="toast__copy-success" class="toast whitespace-no-wrap z-30">  
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clipboard"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>

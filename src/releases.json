@@ -58,5 +58,10 @@
     "releaseNumber": "12",
     "date": "2022-03-02",
     "releaseNotes": "🎉 New! Add meetings to your calendar (Powered by https://github.com/jekuer/add-to-calendar-button)"
+  },
+  {
+    "releaseNumber": "13",
+    "date": "2022-05-10",
+    "releaseNotes": "🎉 HUGE release! Add multi-site support, configurability, and color theming!"
   }
 ]
