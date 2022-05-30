@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>  
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>$SITE_TITLE</title>
@@ -8,8 +8,8 @@
 
   <meta name="title" content="$SITE_TITLE">  
   <meta name="description" content="$SITE_DESCRIPTION">
-  
-  <!-- Open Graph / Facebook -->
+     
+  <!-- Open Graph / Facebook -->  
   <meta property="og:type" content="website">
   <meta property="og:url" content="$SITE_PUBLIC_URL">
   <meta property="og:title" content="$SITE_TITLE">
@@ -29,16 +29,9 @@
   <!-- Hide site from search engines -->
   <meta name="robots" content="noindex" />
   <meta name="googlebot" content="noindex" />
-
+   
   <!-- Error monitoring -->
-  <script src="//js.honeybadger.io/v3.2/honeybadger.min.js" type="text/javascript"></script>
- 
-  <script type="text/javascript">
-    Honeybadger.configure({
-      apiKey: 'hbp_xCeyuneJsGRpTaU0r3yzsj0xhBnF8M46Coyg',
-      environment: 'production'
-    });
-  </script>
+  <!-- HONEYBADGER -->
 
   <!-- CSS -->
   <!-- TAILWIND_DEV -->  
@@ -46,13 +39,12 @@
 
   <style>  
     [x-cloak] { opacity: 0; } 
- 
   </style>
 
   <script> 
     //  && window.matchMedia('(prefers-color-scheme: dark)').matches)
     // (!('theme' in localStorage))
-   
+    
     const THEME_LIGHT = "$THEME_LIGHT";
     const THEME_DARK = "$THEME_DARK";
     
@@ -61,6 +53,10 @@
       'theme-purple-dark',
       'theme-forest-light', 
       'theme-forest-dark',
+      'theme-tabasco-light',
+      'theme-tabasco-dark',
+      'theme-neptune-light',
+      'theme-neptune-dark',
     ]
     
     function setTheme(themeName) {
@@ -70,12 +66,16 @@
       const themesToRemove = VALID_THEMES.filter(t => t !== themeName);
       themesToRemove.forEach(t => document.documentElement.classList.remove(t));
     } 
-    
-    const theme = localStorage.theme === 'dark' ? THEME_DARK : THEME_LIGHT;
+     
+    // Migrate people who have old theme settings to the new values
+    if(localStorage.theme == 'light') localStorage.theme = THEME_LIGHT;
+    if(localStorage.theme == 'dark') localStorage.theme = THEME_DARK;
+      
+    const theme = localStorage.theme === THEME_DARK ? THEME_DARK : THEME_LIGHT;
     setTheme(theme);
     
   </script>
-
+  
   <script>
 
     /* INJECT_BUILD_INFO */
@@ -178,7 +178,7 @@
         emptyUIString: "There are no meetings tomorrow",
         hideIfEmpty: true
       },
-      {
+      { 
         title: "Next few days",
         categoryPath: ["future", "thisWeek"], 
         emptyUIString: "There are no meetings this week",
@@ -286,19 +286,19 @@
       <button id="theme-toggle" class="px-3 text-white opacity-0"  x-data="{
         currentTheme: localStorage.theme || THEME_LIGHT,
         switchToLightMode() { 
-          localStorage.theme = 'light';
-          this.currentTheme = 'light';
+          localStorage.theme = '$THEME_LIGHT';
+          this.currentTheme = '$THEME_LIGHT';
           setTheme(THEME_LIGHT);
         },
         switchToDarkMode() {
-          localStorage.theme = 'dark';
-          this.currentTheme = 'dark';
+          localStorage.theme = '$THEME_DARK';
+          this.currentTheme = '$THEME_DARK';
           setTheme(THEME_DARK);
         },
       }" x-init="()=>{document.getElementById('theme-toggle').classList.remove('opacity-0');}">
-        <svg x-show="currentTheme == 'light'" @click="switchToDarkMode()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg x-show="currentTheme == '$THEME_LIGHT' || (currentTheme !== '$THEME_LIGHT' && currentTheme !== '$THEME_DARK')" @click="switchToDarkMode()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         <!-- The extra x-cloak prevents both icons from showing on init and stretching out the nav bar -->
-        <svg x-cloak x-show="currentTheme == 'dark'" @click="switchToLightMode()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <svg x-cloak x-show="currentTheme == '$THEME_DARK'" @click="switchToLightMode()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       </button>
     </div>   
 
@@ -363,11 +363,11 @@
         console.log('Closing modal')
         this.virtualPage = 'home';
         this.sessionDetails=BLANK_SESSION;
-        document.title = '$SITE_TITLE';
         
         bodyScrollLock.clearAllBodyScrollLocks();
         document.querySelector('body').classList.remove('ios-prevent-scroll');
-        history.pushState({}, '', new URL(window.location.origin));
+        window.history.pushState({}, '$SITE_TITLE', window.location.href.substring(window.location.href.lastIndexOf('/') + 1).split('?')[0]);
+        
         console.log('Unlocked scroll')
       },
       recategorizeSessions() {
@@ -377,6 +377,9 @@
         this.MEETINGS_BY_TIME = window.categorizeSessions(this.meetings.slice(0, this.amountRemaining));
         this.currentTimestamp = new Date().toISOString();
       },
+      announcementBarText: '$ANNOUNCEMENT_BAR_TEXT',
+      announcementBarUrl: '',
+      announcementBarEmoji: '$ANNOUNCEMENT_BAR_EMOJI',
     }"
     x-init="
       document.querySelector('#session-details-card').addEventListener('swiped-down', function(e) {
@@ -391,27 +394,11 @@
     </script>
       <div class="flex justify-center">
         <div class="announcement-banner info flex items-center justify-center">
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-           -->
-           <p class="hidden sm:block mx-1">😎</p>
-          <div class="ml-2 flex items-center justify-center">
-            <!--  Before conf 
-            <a x-show="currentTimestamp < '2021-11-18T12:00:00Z'" href="https://simhp.com/sim-2021-live/?utm_source=nextmeeting&utm_medium=link&utm_campaign=banner" class="text-center opacity-75">SIM 2021 is starting soon! Check it out on SIMHP.com!</a>
-
-            <!--  During conf
-            <a x-show="currentTimestamp > '2021-11-18T12:00:00Z' && currentTimestamp < '2021-11-19T12:00:00Z'" href="https://simhp.com/sim-2021-live/?utm_source=nextmeeting&utm_medium=link&utm_campaign=banner" class="text-center opacity-75">SIM 2021, the largest online SA conference is live now! Watch now at SIMHP.com!</a>
-            -->
-            
-            <p class="text-center opacity-75">Hey, welcome! Please keep this site and all meeting info within $FELLOWSHIP</p>
-            
-            
-          <div class="flex justify-end">
-          
-            <!-- <button class="button-primary round ml-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </button> -->
+            <p class="hidden sm:block mx-1" x-text='announcementBarEmoji'></p>
+            <div class="ml-2 flex items-center justify-center">
+              <p class="text-center opacity-75" x-text='announcementBarText'></p>
+            <div class="flex justify-end">
           </div>
-            
           </div>
         </div>  
       </div>
@@ -439,10 +426,10 @@
           </div>
         </section>
       </template> 
-
-      <div class="flex justify-center">
+  
+      <div class="flex justify-center"> 
         <a target="_blank" rel="noopener noreferrer" href="$SOURCE_GOOGLE_SHEET_URL" class="announcement-banner info flex items-center my-4">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
           <div class="ml-3 mr-3">
             <p>Info is from <span class="text-primary">this Google Sheet ›</span></p>
             <p class="text-xs uppercase opacity-50 tracking-wide">Updated hourly</p>
@@ -450,14 +437,14 @@
         </a>
       </div>  
 
-      <div class="flex justify-center">
+      <div class="flex justify-center"> 
         <div class="flex justify-between">
           <a target="_blank" rel="noopener noreferrer" href="mailto:$FEEDBACK_EMAIL_ADDRESS" class="share-link transition-all">
             <div class="icon-bubble">
               <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> -->
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
             </div>
-            <h2>Send Feedback</h2>
+            <h2 class="text-color-1">Send Feedback</h2>
           </a>
           <a
             target="_blank"
@@ -466,7 +453,7 @@
             <div class="icon-bubble">  
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
             </div>
-            <h2>Add a meeting</h2>
+            <h2 class="text-color-1">Add a meeting</h2>
           </a>
           
           <!-- <a href="https://github.com/AnalyzePlatypus/next-meeting-static-site" class="share-link">
@@ -525,7 +512,7 @@
                         </g>
                     </g>
                     <g transform="matrix(0.278499,0,0,0.278499,420.887,131.241)">
-                        <text x="353.412px" y="346.837px" style="font-family:'Roboto-Regular_Black', 'Roboto';font-size:146.155px;">P<tspan x="467.538px 589.944px 741.537px 846.529px 958.444px 1063.44px 1181.2px 1239.31px 1348.3px " y="346.837px 346.837px 346.837px 346.837px 346.837px 346.837px 346.837px 346.837px 346.837px ">OWERED BY</tspan></text>
+                        <text x="353.412px" y="346.837px" style="font-family:'Roboto-Regular_Black', 'Roboto';font-size:146.155px;fill:var(--color-text-2);">P<tspan x="467.538px 589.944px 741.537px 846.529px 958.444px 1063.44px 1181.2px 1239.31px 1348.3px " y="346.837px 346.837px 346.837px 346.837px 346.837px 346.837px 346.837px 346.837px 346.837px ">OWERED BY</tspan></text>
                     </g>
                 </g>
             </g>

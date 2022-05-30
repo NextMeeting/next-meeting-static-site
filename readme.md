@@ -39,14 +39,17 @@ exports.default = {
   $ADD_NEW_MEETING_URL: 'https://docs.google.com/forms/d/e/****',
   $THEME_LIGHT: 'theme-purple-light',
   $THEME_DARK: 'theme-purple-dark',
-  $DEPLOY_ID: 'C5448DD7-F7AC-48FC-BC3B-A560FE8EF99A' // A random UUID
+  $DEPLOY_ID: 'C5448DD7-F7AC-48FC-BC3B-A560FE8EF99A', // A random UUID
+  $ANNOUNCEMENT_BAR_TEXT: 'Welcome to our brand new Zoom meeting site!.',
+  $ANNOUNCEMENT_BAR_URL: '',
+  $ANNOUNCEMENT_BAR_EMOJI: '🚀'
 }
 ```
 4. In your `.env`, set `BUILD_CONFIG_FILE` to `yoursite.js`
 
 > Make sure to update the Open Graph banner with your new site details
 
-## 🎉 NEW! Color themes
+## Color themes
 
 The system now supports color theming for all controls.
 The existing themes are:
@@ -54,6 +57,10 @@ The existing themes are:
 * Purple (dark)
 * Forest (light)
 * Forest (dark)
+* Tabasco (light)
+* Tabasco (dark)
+* Neptune (light)
+* Neptune (dark)
 
 To add more themes:
 
@@ -62,19 +69,6 @@ To add more themes:
 3. In your config file, set `$THEME_LIGHT` and `$THEME_DARK` to your new classes.
 
 > Make sure to create a new site icon (`./favicons/apple-touch-icon.png`) and Open Graph banner to match your new theme colors
-
-
-## 🎉 NEW! Multi-site deployment
-
-We now support hosting multiple sites in the same S3 bucket.
-
-To do so, the following changes have been made:
-
-* Every site has a UUID that is used for all its URLs
-* The build HTML file is now `<uuid>.template.html`
-* All builds are deployed to the same S3 bucket and Cloudfront distribution
-* All deployed sites share the same CSS and JS files
-* The JSON schedule rebuilder rebuilds all the sites at once.
 
 
 ## Development
@@ -92,7 +86,10 @@ cd tmp && http-server
 
 > Slow build systems should not exist. This build script is optimized to run everything blazing fast. In live rebuild mode the site rebuilds in less than 16ms. Production builds take less than 4 seconds (most of which is Tailwind stripping away all unused CSS styles)
 
-## Config
+> 🎉 New! 
+> As of May 2022, development builds now automatically include a list of fake test meetings, so no more hunting down real JSON schedules, fiddling with the schedule generator, or manually tweaking timestamps! 😅
+> Production builds still require the full schedule generator, so they can use Real Data™.
+
 
 ## Deployment
 
@@ -111,6 +108,19 @@ This allows the static site to be up-to-date with practically no overhead - noth
 gulp build # Builds dist directory
 deploy.sh # Builds, uploads to S3, and calls the Lambda to generate the actual `index.html`.
 ```
+
+### Multi-site deployment
+
+We now support hosting multiple sites in the same S3 bucket.
+
+To do so, the following changes have been made:
+
+* Every site has a UUID that is used for all its URLs
+* The build HTML file is now `<uuid>.template.html`
+* All builds are deployed to the same S3 bucket and Cloudfront distribution
+* All deployed sites share the same CSS and JS files
+* The JSON schedule rebuilder rebuilds all the sites at once.
+
 
 ## Thank You
 

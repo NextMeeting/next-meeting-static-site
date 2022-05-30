@@ -193,12 +193,23 @@ async function buildProdHtml() {
     </script>
   `
 
-  const cloudflareAnalyticsSnippet = `
-    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2413c82530e24ed0bc714ed3595cd6c4"}'></script>
+  const cloudflareAnalyticsSnippet = '' //`<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2413c82530e24ed0bc714ed3595cd6c4"}'></script>`
+  
+  const honeybadgerSnipper = `
+  <script src="//js.honeybadger.io/v3.2/honeybadger.min.js" type="text/javascript"></script>
+ 
+  <script type="text/javascript">
+    window.addEventListener('DOMContentLoaded', () => {
+      Honeybadger.configure({
+        apiKey: 'hbp_xCeyuneJsGRpTaU0r3yzsj0xhBnF8M46Coyg',
+        environment: 'production'
+      });
+    });
+  </script>
   `
 
   return src('src/index.html').
-    pipe(batchReplace(Object.entries(TEXT_REPLACEMENT_CONFIG))).
+    
     pipe(replace("<!-- JS_LIBS -->", `<script src="scripts.${BUILD_ID}.js"></script>`)).
     pipe(replace("<!-- CSS -->", `<link rel="stylesheet" href="styles.${BUILD_ID}.css">`)).
     pipe(replace("<!-- FONTS -->", `<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">`)).
@@ -206,7 +217,9 @@ async function buildProdHtml() {
     pipe(replace("<!-- INJECT_SESSION_DETAILS_MODAL -->", sessionDetailsModalPartial)).
     pipe(replace("<!-- JS_INLINE -->", inlinedJsScriptTag)).
     pipe(replace("<!-- GOOGLE_ANALYTICS -->", googleAnalyticsSnippet + cloudflareAnalyticsSnippet)).
+    pipe(replace("<!-- HONEYBADGER -->", honeybadgerSnipper)).
     pipe(replace("/* INJECT_BUILD_INFO */", `window.BUILD_INFO=${JSON.stringify(buildInfo)}`)).
+    pipe(batchReplace(Object.entries(TEXT_REPLACEMENT_CONFIG))).
     // pipe(replace("/* INJECT_SCHEDULE_JSON */", scheduleJson)). // Schedule is injected by automated rebuild Lambda
     pipe(rename(`${TEXT_REPLACEMENT_CONFIG['$DEPLOY_ID']}.template.html`)).
     pipe(dest('dist'));
@@ -223,6 +236,56 @@ function removeProductionBuild() {
     .pipe(clean());
 }
 
+function timesMap(n, fn) {
+  return Array.from({length: n}).map(fn);
+}
+
+function generateFakeMeetingSchedule() {
+  const generatedMeetings = timesMap(10, generateMeeting);
+  const schedule = {
+      "metadata": {
+      "scheduleType": "next24Hours",
+      "generatedAt": new Date().toISOString(),
+    },
+    meetings: generatedMeetings
+  }
+  return schedule;
+}
+
+function generateMeeting(_,seq) {
+  if(seq == undefined) seq = 1;
+  const meetingTime = getCurrentTimestampWithAddedMinutes(20 * (seq))
+  return {
+    "name": `Example Meeting #${seq}`,
+    "nextOccurrence": meetingTime,
+    "connectionDetails": {
+      "platform": "zoom",
+      "mustContactForConnectionInfo": false,
+      "meetingId": "123 456 7890",
+      "password": "monkey1",
+      "joinUrl": "https://zoom.us"
+    },
+    "notes": "",
+    "participantCount": "",
+    "durationMinutes": 60,
+    "metadata": {
+      "hostLocation": "",
+      "language": "en",
+      "fellowship": "any",
+      "restrictions": {
+        "openMeeting": false,
+        "gender": "ALL"
+      }
+    }
+  }
+}
+
+function getCurrentTimestampWithAddedMinutes(minutes) {
+  const currentMillisecondsSinceEpoch = new Date().getTime();
+  const millisecondsToAdd = minutes * 60 * 1000;
+  const totalMilliseconds = currentMillisecondsSinceEpoch + millisecondsToAdd;
+  return new Date(totalMilliseconds).toISOString();
+}
 
 async function buildHtml() {
   // Symlink the prebuild Tailwind file into /tmp #perfmatters
@@ -248,9 +311,9 @@ async function buildHtml() {
       .pipe(symlink('dist'));
   
     
-    const scheduleJson = (fs.readFileSync("./test_data/meetingsNext24Hours.json").toString());
+    const scheduleJson = generateFakeMeetingSchedule(); //(fs.readFileSync("./test_data/meetingsNext24Hours.json").toString());
   
-    const jsonToInject = `const JSON_SCHEDULE=${scheduleJson}`
+    const jsonToInject = `const JSON_SCHEDULE=${JSON.stringify(scheduleJson)}`
 
     const sessionCardPartial = fs.readFileSync("./src/partials/meeting-card.html").toString();
     const sessionDetailsModalPartial = fs.readFileSync("./src/partials/session-details-modal.html").toString();
@@ -273,7 +336,6 @@ async function buildHtml() {
 
     // Inject a link to the stylesheet into the HTML
     return src('src/index.html').
-      pipe(batchReplace(Object.entries(TEXT_REPLACEMENT_CONFIG))).
       pipe(replace("<!-- TAILWIND_DEV -->", "<link rel=\"stylesheet\" href=\"tailwind_full.css\">")).
       pipe(replace("<!-- JS_LIBS -->", `<script src=\"cdn.js\"></script><script src=\"clipboard.js\"></script><script src=\"bodyScrollLock.js\"></script>`)).
       pipe(replace("<!-- FONTS -->", `<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">`)).
@@ -286,6 +348,7 @@ async function buildHtml() {
       pipe(replace("<!-- INJECT_SESSION_DETAILS_MODAL -->", sessionDetailsModalPartial)).
       pipe(replace("<!-- JS_INLINE -->", inlinedJsScriptTag)).
       pipe(replace("/* INJECT_BUILD_INFO */", `window.BUILD_INFO=${JSON.stringify(buildInfo)};`)).
+      pipe(batchReplace(Object.entries(TEXT_REPLACEMENT_CONFIG))).
       pipe(dest('tmp'));
 }
 

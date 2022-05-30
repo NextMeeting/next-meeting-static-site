@@ -3,6 +3,8 @@
   --color-primary__hover: #3036a3;
   --color-secondary: #8F94FB;
 
+  --color-text-primary: var(--color-primary);
+
   --color-text-1: #161737;
   --color-text-2: #4B4D6B;
   --color-text-3: #737487;
@@ -10,6 +12,9 @@
 
   --color-background: #F8F8FD;
   --color-background-3: #F3F3FB;
+
+  --color-link: var(--color-primary);
+  --color-link-hover: var(--color-primary__hover);
   
   --color-card-background: #fff;
   --color-card-background_hover: #fafafa;
@@ -100,6 +105,112 @@
  --brand-gradient: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
 }
 
+
+.theme-tabasco-light {
+  --color-primary: #DF3737;
+  --color-primary__hover: #BF1F1F;
+  --color-secondary: #9D1A1A;
+
+  --color-background: #FCF3F3;
+  --color-background-3: #FEFBFB;
+
+  --color-card-background: #fff;
+  --color-card-background_hover: #FEFBFB;
+
+  --color-text-1: #350000;
+  --color-text-2: #D43535;
+  --color-text-3: #849591;
+  --color-text-always-light: #fff;
+  --color-network-logo-badge: var(--color-text-2);
+
+  --color-success-1: #3EB43C;
+  --color-danger-1: #3A31DD;
+  --brand-gradient: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+}
+
+.theme-tabasco-dark {
+ --color-primary: #CA2121;
+ --color-primary__hover: #DE3434;
+ --color-secondary: #9D1A1A;
+ 
+ --color-background: #190000;
+ --color-background-3: #4F0E0E;
+ 
+ --color-card-background: #511313;
+ --color-card-background_hover: #5E1818;
+ 
+ --color-text-1: #ffffff;
+ --color-text-2: #FF8766;
+ --color-text-3: #EEDFDB;
+ --color-text-always-light: #fff;
+
+ --color-text-primary: var(--color-text-2);
+ 
+  --color-modal-background: var(--color-background);
+  --color-button-secondary: var(--color-text-1);
+  
+  --color-network-logo-badge: var(--color-primary);
+  --color-link: var(--color-text-2);
+  --color-link-hover: #FF5A2C;
+ 
+  --color-success-1: #3EB43C;
+  --color-danger-1: #4463D2;
+ --brand-gradient: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+}
+
+
+.theme-neptune-light {
+  --color-primary: #062CE8;
+ --color-primary__hover: #0A2AB8;
+ --color-secondary: #12236E;
+
+  --color-background: #F7F8FC;
+  --color-background-3: #DAE0FB;
+
+  --color-card-background: #fff;
+  --color-card-background_hover: #FCFCFD;
+
+  --color-text-1: #001F18;
+  --color-text-2: #314FE7;
+  --color-text-3: #97A5E6;
+  --color-text-always-light: #fff;
+  --color-network-logo-badge: var(--color-text-2);
+
+  --color-success-1: #3EB43C;
+  --color-danger-1: #D8413E;
+  --brand-gradient: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+}
+
+.theme-neptune-dark {
+ --color-primary: #0073E6;
+ --color-primary__hover: #0A2AB8;
+ --color-secondary: #2b42ad;
+ 
+ --color-background: #010720;
+ --color-background-3: #243EA8;
+ 
+ --color-card-background: #192B75;
+ --color-card-background_hover: #1B2F7E;
+ 
+ --color-text-1: #ffffff;
+ --color-text-2: #73B7FF;
+ --color-text-3: #BCC5C3;
+ --color-text-always-light: #fff;
+
+ --color-text-primary: var(--color-text-2);
+ 
+  --color-modal-background: var(--color-background);
+  --color-button-secondary: var(--color-text-1);
+  
+  --color-network-logo-badge: var(--color-card-background_hover);
+  
+ 
+ --color-success-1: #3EB43C;
+ --color-danger-1: #D24644;
+ --brand-gradient: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+}
+
+
 * {
   font-family: 'Roboto', sans-serif;
   // color: $color-text-1;
@@ -120,7 +231,7 @@ body {
 }
 
 .text-primary {
-  color: var(--color-primary);
+  color: var(--color-text-primary);
 }
 
 .text-color-1 {
@@ -145,10 +256,10 @@ body {
 
 
 a {
-  color: var(--color-primary);
+  color: var(--color-link);
 
   &:hover {
-    color: var(--color-primary__hover);
+    color: var(--color-link-hover);
   }
 }
 

@@ -9,5 +9,5 @@ aws s3 cp ./dist/ s3://$S3_BUCKET --recursive --profile=$AWS_UPLOAD_PROFILE
 echo "🌀 Rebuilding site..."
 # Trigger an immediate rebuild of the static site
 # with the updated assets
-curl https://fmzbvioi44.execute-api.us-east-1.amazonaws.com/default/next-meeting-regenerate-schedule
+curl "https://xjat3lkitsqhdth7i3rgah7jpu0zbups.lambda-url.us-east-1.on.aws"
 echo "✅ Deploy complete"

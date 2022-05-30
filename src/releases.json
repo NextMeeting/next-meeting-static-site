@@ -63,5 +63,10 @@
     "releaseNumber": "13",
     "date": "2022-05-10",
     "releaseNotes": "🎉 HUGE release! Add multi-site support, configurability, and color theming!"
+  },
+  {
+    "releaseNumber": "14",
+    "date": "2022-05-30",
+    "releaseNotes": "Add Tabasco theme, attempt to make theme button more robust"
   }
 ]
