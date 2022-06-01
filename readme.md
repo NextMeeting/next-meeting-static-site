@@ -30,7 +30,7 @@ Here's how to create one.
 exports.default = {
   $SITE_DESCRIPTION: 'Join an our meetings anytime, anywhere! Choose from over 100 weekly meetings on Zoom!',
   $SITE_TITLE:'NextMeeting Site',
-  $SITE_PUBLIC_URL:'https://mysite.com',
+  $FULL_PAGE_URL:'https://mysite.com',
   $SITE_PROMO_BANNER_IMAGE: 'open_graph_promo_banner.jpg',
   $APPLE_TOUCH_ICON: 'apple-touch-icon.png',
   $FELLOWSHIP: 'My groups',
