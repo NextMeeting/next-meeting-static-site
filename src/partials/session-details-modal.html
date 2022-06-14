@@ -34,7 +34,11 @@
   
         <div class="mt-4 mb-4 mx-4 flex justify-between" x-show="!selectedSession.connectionDetails.mustContactForConnectionInfo" >
           
-          <button id="selected-session-copy-details-button" class="button medium borderless" :data-clipboard-text="'Join ' + selectedSession.name + (selectedSession.nextOccurrence < CURRENT_TIME_STRING ? ', started ' : ', starting ') + (timeDifference(new Date(), selectedSession.nextOccurrence, {displayMode: 'full', sign: 'text'})) + '\n' + selectedSession.connectionDetails.joinUrl + '\n' + 'Meeting ID: ' + selectedSession.connectionDetails.meetingId + '\nPassword: ' + selectedSession.connectionDetails.password">
+          <button 
+            id="selected-session-copy-details-button"
+            class="button medium borderless"
+            onclick="window.fathom && window.fathom.trackGoal('ZBM3Q0VV', 0);"
+            :data-clipboard-text="'Join ' + selectedSession.name + (selectedSession.nextOccurrence < CURRENT_TIME_STRING ? ', started ' : ', starting ') + (timeDifference(new Date(), selectedSession.nextOccurrence, {displayMode: 'full', sign: 'text'})) + '\n' + selectedSession.connectionDetails.joinUrl + '\n' + 'Meeting ID: ' + selectedSession.connectionDetails.meetingId + '\nPassword: ' + selectedSession.connectionDetails.password">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             <span class="ml-1">Copy</span>
           </button>
@@ -45,7 +49,7 @@
             <span class="ml-1">Remind&nbsp;Me</span>
           </button> -->
 
-           <div class="atcb" style="display:none;" x-text='calendarEventJson'></div>
+           <div class="atcb" style="display:none;" x-text='calendarEventJson' onclick="window.fathom && window.fathom.trackGoal('H4ZIF5ZH', 0);"></div>
 
           <a
             x-show="selectedSession.connectionDetails.joinUrl"
@@ -53,7 +57,8 @@
             target="_blank"
             rel="noopener noreferrer"
             :href="selectedSession.connectionDetails.joinUrl"
-            class="button button-primary large px-6 sm:px-2">
+            class="button button-primary large px-6 sm:px-2"
+            onclick="window.fathom && window.fathom.trackGoal('8CCK8QRY', 0);">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-video"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
             <span class="mx-2">Join&nbsp;›</span>
           </a>
@@ -84,6 +89,7 @@
       
         <a target="_blank"
           rel="noopener noreferrer"
+          onclick="window.fathom && window.fathom.trackGoal('BXWNURYL', 0);"
           :href="'mailto:$FEEDBACK_EMAIL_ADDRESS ?subject=[Feedback]: \'' + selectedSession.name + '\' - ' + window.convertTZ(selectedSession.nextOccurrence, 'America/New_York')  + ' (User: ' + getCurrentTimeZoneString() + ') '" class="button-secondary medium transform translate-y-6">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
           <span class="ml-2">Send&nbsp;Feedback</span>

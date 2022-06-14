@@ -79,6 +79,7 @@ Custom build script powered by Gulp.
 npm i
 gulp # Watches source directory and autorebuilds on changes. 
 # you'll need to manually reload the browser (Cmd + R in Chrome)
+# Also you'll need to make a change to any source file to trigger an actual build
 
 # Serve the files
 cd tmp && http-server
@@ -87,7 +88,7 @@ cd tmp && http-server
 > Slow build systems should not exist. This build script is optimized to run everything blazing fast. In live rebuild mode the site rebuilds in less than 16ms. Production builds take less than 4 seconds (most of which is Tailwind stripping away all unused CSS styles)
 
 > 🎉 New! 
-> As of May 2022, development builds now automatically include a list of fake test meetings, so no more hunting down real JSON schedules, fiddling with the schedule generator, or manually tweaking timestamps! 😅
+> As of May 2022, development builds now *automatically generates and injects a list of fake meetings*, so no more hunting down for real JSON schedules, fiddling with the schedule generator, or manually tweaking timestamps! 😅
 > Production builds still require the full schedule generator, so they can use Real Data™.
 
 

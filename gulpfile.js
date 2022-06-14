@@ -191,6 +191,7 @@ async function buildProdHtml() {
     
       gtag('config', 'G-TBFL2F31JY');
     </script>
+    <script src="https://motivating-amazing.nextmeeting.org/script.js" data-site="RKQQQQFN" defer></script>
   `
 
   const cloudflareAnalyticsSnippet = '' //`<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2413c82530e24ed0bc714ed3595cd6c4"}'></script>`
