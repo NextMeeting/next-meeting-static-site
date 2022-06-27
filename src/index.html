@@ -341,7 +341,7 @@
         bodyScrollLock.disableBodyScroll(document.querySelector('#session-details-card'));
         document.querySelector('body').classList.add('ios-prevent-scroll');
         
-        console.log('Locked scroll');
+        console.log('Locked scroll'); 
 
         console.log('Activating calendar button');
         
@@ -366,6 +366,8 @@
         console.log('Closing modal')
         this.virtualPage = 'home';
         this.sessionDetails=BLANK_SESSION;
+
+        this.calendarEventJson = ''
         
         bodyScrollLock.clearAllBodyScrollLocks();
         document.querySelector('body').classList.remove('ios-prevent-scroll');
@@ -416,7 +418,7 @@
       <template x-for="(category, index) in window.sessionCategories">
  
         <section class="session-group" x-show="MEETINGS_BY_TIME[category.categoryPath[0]][category.categoryPath[1]].length > 0 || !category.hideIfEmpty">
-
+ 
           <div class="flex justify-center mb-2">
             <h2 class="session-group__title" x-text="category.title"></h2>
           </div>
@@ -434,7 +436,7 @@
           </div>
         </section>
       </template> 
-  
+   
       <div class="flex justify-center"> 
         <a  
           target="_blank" 
@@ -520,8 +522,8 @@
             <g id="Artboard1" transform="matrix(0.966347,0,0,0.926041,-230.245,-69.907)">
                 <rect x="238.263" y="75.49" width="1048.51" height="435.608" style="fill:none;"/>
                 <g transform="matrix(1.03482,0,0,1.07987,-8.02507,-40.2899)">
-                    <text x="353.412px" y="346.837px" style="font-family:'Roboto-Italic_Medium-Italic', 'Roboto';font-style:italic;font-size:146.185px;fill:var(--color-text-2)">Next</text>
-                    <text x="646.496px" y="346.837px" style="font-family:'Roboto-LightItalic', 'Roboto';font-weight:300;font-style:italic;font-size:146.185px;fill:var(--color-text-1)">Meeting</text>
+                    <text x="353.412px" y="346.837px" style="font-family:'Roboto-Italic_Medium-Italic', 'Roboto', 'system-ui';font-style:italic;font-size:146.185px;fill:var(--color-text-2)">Next</text>
+                    <text x="646.496px" y="346.837px" style="font-family:'Roboto-LightItalic', 'Roboto', 'system-ui';font-weight:300;font-style:italic;font-size:146.185px;fill:var(--color-text-1)">Meeting</text>
                 </g>
                 <g transform="matrix(0.764142,0,0,0.797401,242.911,-4.30459)">
                     <g transform="matrix(1,0,0,1,0,10.8338)">

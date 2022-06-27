@@ -76,13 +76,11 @@ To add more themes:
 Custom build script powered by Gulp.
 
 ```bash
-npm i
-gulp # Watches source directory and autorebuilds on changes. 
+npm run watch # Watches source directory and autorebuilds on changes. 
+npm run serve # Serve the files
 # you'll need to manually reload the browser (Cmd + R in Chrome)
 # Also you'll need to make a change to any source file to trigger an actual build
 
-# Serve the files
-cd tmp && http-server
 ```
 
 > Slow build systems should not exist. This build script is optimized to run everything blazing fast. In live rebuild mode the site rebuilds in less than 16ms. Production builds take less than 4 seconds (most of which is Tailwind stripping away all unused CSS styles)
@@ -94,7 +92,8 @@ cd tmp && http-server
 
 ## Deployment
 
-`gulp build` creates three files in `dist`:
+`npm run build`
+This creates three files in `dist`:
 
 * `<uuid>.template.html`
 * `styles.css`

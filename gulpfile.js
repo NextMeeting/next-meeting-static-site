@@ -244,7 +244,7 @@ function timesMap(n, fn) {
 function generateFakeMeetingSchedule() {
   const generatedMeetings = timesMap(10, generateMeeting);
   const schedule = {
-      "metadata": {
+      "metadata": { 
       "scheduleType": "next24Hours",
       "generatedAt": new Date().toISOString(),
     },
@@ -260,13 +260,13 @@ function generateMeeting(_,seq) {
     "name": `Example Meeting #${seq}`,
     "nextOccurrence": meetingTime,
     "connectionDetails": {
-      "platform": "zoom",
+      "platform":  seq % 2 == 0 ? "phone-number" : "zoom",
       "mustContactForConnectionInfo": false,
       "meetingId": "123 456 7890",
       "password": "monkey1",
       "joinUrl": "https://zoom.us"
     },
-    "notes": "",
+    "notes": seq % 2 == 0 ? "" : "Example notes",
     "participantCount": "",
     "durationMinutes": 60,
     "metadata": {

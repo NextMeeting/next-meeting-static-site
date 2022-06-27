@@ -68,5 +68,10 @@
     "releaseNumber": "14",
     "date": "2022-05-30",
     "releaseNotes": "Add Tabasco theme, attempt to make theme button more robust"
+  },
+  {
+    "releaseNumber": "15",
+    "date": "2022-06-27",
+    "releaseNotes": "Add phone number support, bugfixes"
   }
 ]
