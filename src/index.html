@@ -15,7 +15,7 @@
   <meta property="og:title" content="$SITE_TITLE">
   <meta property="og:description" content="$SITE_DESCRIPTION">
   <meta property="og:image" content="$SITE_DOMAIN_NAME/$SITE_PROMO_BANNER_IMAGE">
-  
+      
   <!-- Twitter -->  
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="$FULL_PAGE_URL">
@@ -296,7 +296,7 @@
           setTheme(THEME_DARK);
         },
       }" x-init="()=>{document.getElementById('theme-toggle').classList.remove('opacity-0');}"
-      onclick="window.fathom && window.fathom.trackGoal('DWYRQGPF', 0);">
+      onclick="window.fathom?.trackGoal('DWYRQGPF', 0);">
         <svg x-show="currentTheme == '$THEME_LIGHT' || (currentTheme !== '$THEME_LIGHT' && currentTheme !== '$THEME_DARK')" @click="switchToDarkMode()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         <!-- The extra x-cloak prevents both icons from showing on init and stretching out the nav bar -->
         <svg x-cloak x-show="currentTheme == '$THEME_DARK'" @click="switchToLightMode()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
@@ -316,81 +316,97 @@
 
   </div>
 
-    <div x-cloak x-data="{
-      JSON_SCHEDULE,
-      MEETINGS_BY_TIME,
-      meetings: JSON_SCHEDULE.meetings, 
-      virtualPage: 'home',  
-      currentTimestamp: new Date().toISOString(),
-      selectedSession: BLANK_SESSION,
-      calendarEventJson: undefined,
-
-      openSessionDetailsModal(session) {
-        console.log('Row click! ' + session.name)
-
-        this.virtualPage='sessionDetails';
-        this.selectedSession=session;
-
-        const state = {};
-        const title = session.name + ' | $SITE_TITLE';
-        const url = new URL(window.location);
-        url.searchParams.set('meetingName', session.name);
-        document.title = title;
-        history.pushState(state, title, url);
+    <script>
+      document.addEventListener('alpine:init', function() {
+        Alpine.data('app', () => ({
+          JSON_SCHEDULE,
+          MEETINGS_BY_TIME,
+          meetings: JSON_SCHEDULE.meetings, 
+          virtualPage: 'home',  
+          currentTimestamp: new Date().toISOString(),
+          selectedSession: BLANK_SESSION,
+          calendarEventJson: undefined,
         
-        bodyScrollLock.disableBodyScroll(document.querySelector('#session-details-card'));
-        document.querySelector('body').classList.add('ios-prevent-scroll');
+          openSessionDetailsModal(session) {
+            console.log('Row click! ' + session.name)
         
-        console.log('Locked scroll'); 
-
-        console.log('Activating calendar button');
+            this.virtualPage='sessionDetails';
+            this.selectedSession=session;
         
-        const calendarEvent = JSON.stringify(createCalendarEventJson(this.selectedSession));
-        console.log(calendarEvent);
-        this.calendarEventJson = calendarEvent;
+            const state = {};
+            const title = session.name + ' | $SITE_TITLE';
+            const url = new URL(window.location);
+            url.searchParams.set('meetingName', session.name);
+            document.title = title;
+            history.pushState(state, title, url);
+            
+            bodyScrollLock.disableBodyScroll(document.querySelector('#session-details-card'));
+            document.querySelector('body').classList.add('ios-prevent-scroll');
+            
+            console.log('Locked scroll'); 
         
-        [...document.querySelectorAll('.atcb_initialized')].map(elem => {
-          elem.classList.remove('atcb_initialized');
-          elem.classList.add('atcb');
-          elem.style.display = 'none';
-        })
-
-        $nextTick(() => {
-          atcb_init(); 
-        });
-
-        this.trackGoal('G6CYDCHM', 0);
-      },
-      
-      closeSessionDetailsModal() {
-        console.log('Closing modal')
-        this.virtualPage = 'home';
-        this.sessionDetails=BLANK_SESSION;
-
-        this.calendarEventJson = ''
+            console.log('Activating calendar button');
+            
+            const calendarEvent = JSON.stringify(createCalendarEventJson(this.selectedSession));
+            console.log(calendarEvent);
+            this.calendarEventJson = calendarEvent;
+            
+            [...document.querySelectorAll('.atcb_initialized')].map(elem => {
+              elem.classList.remove('atcb_initialized');
+              elem.classList.add('atcb');
+              elem.style.display = 'none';
+            })
         
-        bodyScrollLock.clearAllBodyScrollLocks();
-        document.querySelector('body').classList.remove('ios-prevent-scroll');
-        window.history.pushState({}, '$SITE_TITLE', window.location.href.substring(window.location.href.lastIndexOf('/') + 1).split('?')[0]);
+            this.$nextTick(() => {
+              atcb_init(); 
+            });
         
-        console.log('Unlocked scroll')
-      },
-      recategorizeSessions() {
-        // Recalculate all meeting times every minute
-        // So sessions can move up to the next category, become/exit being live, etc.
-        console.log('Recalulating dates');
-        this.MEETINGS_BY_TIME = window.categorizeSessions(this.meetings.slice(0, this.amountRemaining));
-        this.currentTimestamp = new Date().toISOString();
-      },
+            this.trackGoal('G6CYDCHM', 0);
+          },
+          
+          closeSessionDetailsModal() {
+            console.log('Closing modal')
+            this.virtualPage = 'home';
+            this.sessionDetails=BLANK_SESSION;
+        
+            this.calendarEventJson = ''
+            
+            bodyScrollLock.clearAllBodyScrollLocks();
+            document.querySelector('body').classList.remove('ios-prevent-scroll');
+            window.history.pushState({}, '$SITE_TITLE', window.location.href.substring(window.location.href.lastIndexOf('/') + 1).split('?')[0]);
+            
+            console.log('Unlocked scroll')
+          },
+          recategorizeSessions() {
+            // Recalculate all meeting times every minute
+            // So sessions can move up to the next category, become/exit being live, etc.
+            console.log('Recalulating dates');
+            this.MEETINGS_BY_TIME = window.categorizeSessions(this.meetings.slice(0, this.amountRemaining));
+            this.currentTimestamp = new Date().toISOString();
+          },
+        
+          trackGoal(id, value) {
+            window.fathom?.trackGoal(id, value);
+          },
+        
+          announcementBarText: '$ANNOUNCEMENT_BAR_TEXT',
+          announcementBarUrl: '',
+          announcementBarEmoji: '$ANNOUNCEMENT_BAR_EMOJI',
+          getJoinButtonTextForMeetingType(type) {
+            return {
+              'phone-number': 'Call ›',
+              'email': 'Contact ›',
+              'zoom': 'Join ›',
+              'skype': 'Skype ›',
+              'unknown': 'Join ›',
+            }[type];
+          }
+          
+        }))
+      })
+    </script>
 
-      trackGoal(id, value) {
-        window.fathom && window.fathom.trackGoal(id, value);
-      },
-
-      announcementBarText: '$ANNOUNCEMENT_BAR_TEXT',
-      announcementBarUrl: '',
-      announcementBarEmoji: '$ANNOUNCEMENT_BAR_EMOJI',
-    }"
+    <div x-cloak x-data="app"
     x-init="
       document.querySelector('#session-details-card').addEventListener('swiped-down', function(e) {
         closeSessionDetailsModal()
@@ -443,7 +459,7 @@
           rel="noopener noreferrer"
           href="$SOURCE_GOOGLE_SHEET_URL"
           class="announcement-banner info flex items-center my-4"
-          onclick="window.fathom && window.fathom.trackGoal('IKDSR9DY', 0)">
+          onclick="window.fathom?.trackGoal('IKDSR9DY', 0)">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
           <div class="ml-3 mr-3">
             <p>Info is from <span class="text-primary">this Google Sheet ›</span></p>
@@ -460,7 +476,7 @@
             rel="noopener noreferrer"
             href="mailto:$FEEDBACK_EMAIL_ADDRESS"
             class="share-link transition-all"
-            onclick="window.fathom && window.fathom.trackGoal('OTQVXALU', 0);"
+            onclick="window.fathom?.trackGoal('OTQVXALU', 0);"
             >
             <div class="icon-bubble">
               <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> -->
@@ -472,7 +488,7 @@
             target="_blank"
             rel="noopener noreferrer"
             href="$ADD_NEW_MEETING_URL" class="share-link transition-all"
-            onclick="window.fathom && window.fathom.trackGoal('DYPHAUX2', 0);">
+            onclick="window.fathom?.trackGoal('DYPHAUX2', 0);">
             <div class="icon-bubble">  
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
             </div>
@@ -509,13 +525,13 @@
         <span class="text-primary" x-text="timeDifference(new Date(), window.BUILD_INFO.builtAt, {displayMode: 'full', sign: 'text'})"></span>
       </h4>
   
-      <h4 onclick="window.fathom && window.fathom.trackGoal('OAT4RK3A', 0);">   
+      <h4 onclick="window.fathom?.trackGoal('OAT4RK3A', 0);">   
         <a target="_blank" rel="noopener noreferrer" href="https://github.com/AnalyzePlatypus/next-meeting-static-site" class="text-primary">Code on Github ›</a>
       </h4>
     </div>
     
     <section>
-      <a href='https://nextmeeting.org' noopener target='_blank' onclick="window.fathom && window.fathom.trackGoal('SQ0LZXKD', 0);">
+      <a href='https://nextmeeting.org' noopener target='_blank' onclick="window.fathom?.trackGoal('SQ0LZXKD', 0);">
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
         <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
         <svg width="18rem" class='mx-auto' height="100%" viewBox="0 0 1014 404" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">

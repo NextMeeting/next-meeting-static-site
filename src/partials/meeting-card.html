@@ -27,7 +27,7 @@
     title="Show meeting info"
     aria-label="Show meeting info"
     class="fixed-width pl-3 mr-4 h-full"
-    onclick="window.fathom && window.fathom.trackGoal('8J0TYIPR', 0);"
+    onclick="window.fathom?.trackGoal('8J0TYIPR', 0);"
     @click="openSessionDetailsModal(session)">
     <!-- <div>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E54C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
@@ -43,9 +43,10 @@
       rel="noopener noreferrer"
       x-show="!session.connectionDetails.mustContactForConnectionInfo &amp;&amp; session.connectionDetails.joinUrl" 
       x-bind:href="session.connectionDetails.joinUrl" 
-      onclick="window.fathom && window.fathom.trackGoal('ADSVR9K2', 0);"
-      class="button-primary fixed-width mr-2 sm:mr-4"
-      x-text="session.connectionDetails.platform == 'phone-number' ? 'Call&nbsp;›' : 'Join&nbsp;›'"
+      onclick="window.fathom?.trackGoal('ADSVR9K2', 0);"
+      class="button fixed-width mr-2 sm:mr-4"
+      :class="session.connectionDetails.platform == 'email' ? 'secondary' : 'primary'"
+      x-text="getJoinButtonTextForMeetingType(session.connectionDetails.platform)"
       >
     </a>
 

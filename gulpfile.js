@@ -255,17 +255,29 @@ function generateFakeMeetingSchedule() {
 
 function generateMeeting(_,seq) {
   if(seq == undefined) seq = 1;
-  const meetingTime = getCurrentTimestampWithAddedMinutes(20 * (seq))
+  const meetingTime = getCurrentTimestampWithAddedMinutes(20 * (seq));
+  let platform = 'zoom';
+  if(seq % 2 == 0) {
+    platform = "phone-number"
+  } else if(seq % 3 == 0) {
+    platform = "email"
+  }
+  
+  let contactInfo = seq % 2 == 0 ? undefined : 'Contact bob@example.com'
+  let feedbackEmail = seq % 2 == 0 ? undefined : 'bob@example.com'
+  
   return {
     "name": `Example Meeting #${seq}`,
     "nextOccurrence": meetingTime,
     "connectionDetails": {
-      "platform":  seq % 2 == 0 ? "phone-number" : "zoom",
+      platform,
       "mustContactForConnectionInfo": false,
       "meetingId": "123 456 7890",
       "password": "monkey1",
       "joinUrl": "https://zoom.us"
     },
+    contactInfo,
+    feedbackEmail,
     "notes": seq % 2 == 0 ? "" : "Example notes",
     "participantCount": "",
     "durationMinutes": 60,

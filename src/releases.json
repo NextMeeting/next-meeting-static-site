@@ -73,5 +73,10 @@
     "releaseNumber": "15",
     "date": "2022-06-27",
     "releaseNotes": "Add phone number support, bugfixes"
+  },
+  {
+    "releaseNumber": "16",
+    "date": "2022-07-21",
+    "releaseNotes": "Improved UX when join link is an email"
   }
 ]
