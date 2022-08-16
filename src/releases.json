@@ -78,5 +78,15 @@
     "releaseNumber": "16",
     "date": "2022-07-21",
     "releaseNotes": "Improved UX when join link is an email"
+  },
+  {
+    "releaseNumber": "17",
+    "date": "2022-07-21",
+    "releaseNotes": "Added support for per-meeting feedback email address"
+  },
+  {
+    "releaseNumber": "18",
+    "date": "2022-09-16",
+    "releaseNotes": "Added popup site menu"
   }
 ]

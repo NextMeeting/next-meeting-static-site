@@ -1,9 +1,13 @@
 <div class="swipeable-bottom-sheet">
   <div class="bg" :class="{'active': virtualPage === 'sessionDetails'}" @click="closeSessionDetailsModal()"></div>
 
-  <div class="card open" 
+  <div class="card" 
     id="session-details-card"
-    x-show.transition.opacity="virtualPage === 'sessionDetails'"
+    :class="{
+      'open': virtualPage === 'sessionDetails',
+      'closed': virtualPage !== 'sessionDetails'
+    }"
+    x-show="virtualPage === 'sessionDetails'"
     @click.away="closeSessionDetailsModal()"
     >
     <div class="mt-2">

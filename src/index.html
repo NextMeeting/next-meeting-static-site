@@ -16,7 +16,7 @@
   <meta property="og:description" content="$SITE_DESCRIPTION">
   <meta property="og:image" content="$SITE_DOMAIN_NAME/$SITE_PROMO_BANNER_IMAGE">
       
-  <!-- Twitter -->  
+  <!-- Twitter -->    
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="$FULL_PAGE_URL">
   <meta property="twitter:title" content="$SITE_TITLE">
@@ -75,6 +75,8 @@
     setTheme(theme);
     
   </script>
+  
+  
   
   <script>
 
@@ -270,10 +272,135 @@
     }
   </script>
 
+  <script>
+    document.addEventListener('alpine:init', function() {
+      Alpine.data('app', () => ({
+        JSON_SCHEDULE,
+        MEETINGS_BY_TIME,
+        meetings: JSON_SCHEDULE.meetings, 
+        virtualPage: 'home',  
+        currentTimestamp: new Date().toISOString(),
+        selectedSession: BLANK_SESSION,
+        calendarEventJson: undefined,
+      
+        openSessionDetailsModal(session) {
+          console.log('Row click! ' + session.name)
+      
+          this.virtualPage='sessionDetails';
+          this.selectedSession=session;
+      
+          const state = {};
+          const title = session.name + ' | $SITE_TITLE';
+          const url = new URL(window.location);
+          url.searchParams.set('meetingName', session.name);
+          document.title = title;
+          history.pushState(state, title, url);
+          
+          bodyScrollLock.disableBodyScroll(document.querySelector('#session-details-card'));
+          document.querySelector('body').classList.add('ios-prevent-scroll');
+          
+          console.log('Locked scroll'); 
+      
+          console.log('Activating calendar button');
+          
+          const calendarEvent = JSON.stringify(createCalendarEventJson(this.selectedSession));
+          console.log(calendarEvent);
+          this.calendarEventJson = calendarEvent;
+          
+          // Tear down any existing ATCB calendar buttons
+          [...document.querySelectorAll('.atcb_initialized')].map(elem => {
+            elem.classList.remove('atcb_initialized');
+            elem.classList.add('atcb');
+            elem.style.display = 'none';
+          })
+          
+          // Wait until components have rendered
+          // Before generating calendar button
+          this.$nextTick(() => {
+            atcb_init(); 
+          });
+      
+          this.trackGoal('G6CYDCHM', 0);
+        },
+        
+        closeSessionDetailsModal() {
+          console.log('Closing modal')
+          this.virtualPage = 'home';
+          this.sessionDetails=BLANK_SESSION;
+      
+          this.calendarEventJson = ''
+          
+          bodyScrollLock.clearAllBodyScrollLocks();
+          document.querySelector('body').classList.remove('ios-prevent-scroll');
+          window.history.pushState({}, '$SITE_TITLE', window.location.href.substring(window.location.href.lastIndexOf('/') + 1).split('?')[0]);
+          
+          console.log('Unlocked scroll')
+        },
+        recategorizeSessions() {
+          // Recalculate all meeting times every minute
+          // So sessions can move up to the next category, become/exit being live, etc.
+          console.log('Recalulating dates');
+          this.MEETINGS_BY_TIME = window.categorizeSessions(this.meetings.slice(0, this.amountRemaining));
+          this.currentTimestamp = new Date().toISOString();
+        },
+      
+        trackGoal(id, value) {
+          window.fathom?.trackGoal(id, value);
+        },
+      
+        announcementBarText: '$ANNOUNCEMENT_BAR_TEXT',
+        announcementBarUrl: '',
+        announcementBarEmoji: '$ANNOUNCEMENT_BAR_EMOJI',
+        getJoinButtonTextForMeetingType(type) {
+          return {
+            'phone-number': 'Call ›',
+            'email': 'Contact ›',
+            'zoom': 'Join ›',
+            'skype': 'Skype ›',
+            'unknown': 'Join ›',
+          }[type];
+        },
+        
+        navMenuIsOpen: false,
+        openNavMenu() {
+          this.navMenuIsOpen = true;  
+          bodyScrollLock.disableBodyScroll(document.querySelector('#mobile-menu'));
+        },
+        closeNavMenu() {
+          this.navMenuIsOpen = false;
+          bodyScrollLock.clearAllBodyScrollLocks();
+        },
+        toggleNavMenu() {
+          this.navMenuIsOpen ? this.closeNavMenu() : this.openNavMenu();
+        }
+      }))
+    })
+  </script>
 </head>
-  <body>  
+  <body x-data="app"
+  x-init="
+    document.querySelector('#session-details-card').addEventListener('swiped-down', function(e) {
+      closeSessionDetailsModal()
+    });
+    
+    repeatEvery(()=> {  
+      recategorizeSessions(); 
+    }, ONE_MINUTE_IN_MS); 
+  ">  
+    
     <div class="main-nav flex justify-between">
-      <span style="width:60px;"></span>
+      
+      <div class='pl-4 flex items-center' @click.prevent='toggleNavMenu()'>
+        
+        <label for="check" class="bar" >
+            <input id="check" type="checkbox" :checked='navMenuIsOpen'>
+        
+            <span class="top"></span>
+            <span class="middle"></span>
+            <span class="bottom"></span>
+        </label>
+      </div>
+      
       <a href="/"> 
         <h1 class="logo light flex items-center justify-center">
           <div class="flex">
@@ -282,7 +409,9 @@
           </div>
           <span class="beta-badge light ml-1">$FELLOWSHIP</span>
         </h1> 
-      </a> 
+      </a>  
+      
+      <!-- Theme toggle -->
       <button id="theme-toggle" class="px-3 text-white opacity-0"  x-data="{
         currentTheme: localStorage.theme || THEME_LIGHT,
         switchToLightMode() { 
@@ -293,15 +422,91 @@
         switchToDarkMode() {
           localStorage.theme = '$THEME_DARK';
           this.currentTheme = '$THEME_DARK';
-          setTheme(THEME_DARK);
-        },
+          setTheme(THEME_DARK); 
+        },   
       }" x-init="()=>{document.getElementById('theme-toggle').classList.remove('opacity-0');}"
       onclick="window.fathom?.trackGoal('DWYRQGPF', 0);">
         <svg x-show="currentTheme == '$THEME_LIGHT' || (currentTheme !== '$THEME_LIGHT' && currentTheme !== '$THEME_DARK')" @click="switchToDarkMode()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         <!-- The extra x-cloak prevents both icons from showing on init and stretching out the nav bar -->
         <svg x-cloak x-show="currentTheme == '$THEME_DARK'" @click="switchToLightMode()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       </button>
-    </div>   
+      
+       
+    </div> 
+    
+    <div class='fixed inset-0 z-10' @click='closeNavMenu()' :class='{"hidden pointer-events-none": !navMenuIsOpen}''></div>
+    
+    
+    <aside id='mobile-menu' class='mobile-menu fixed w-full z-40 flex flex-col items-stretch justify-between shadow-xl transition-all menu-hidden' :class='{"menu-visible": navMenuIsOpen, "menu-hidden": !navMenuIsOpen}'>
+      <nav>
+        <a  target="_blank"
+            rel="noopener noreferrer"
+            href="$ADD_NEW_MEETING_URL"
+            class='mobile-menu--link'>
+          <span class='content'>
+              Add a Meeting
+             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </span>
+        </a>
+        
+        <a 
+          target="_blank"
+          rel="noopener noreferrer"
+          href="mailto:$FEEDBACK_EMAIL_ADDRESS"
+          class='mobile-menu--link'>
+          <span class='content'>
+            Send Feedback
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </span>
+        </a> 
+        
+        
+      
+        <a target="_blank"
+           rel="noopener noreferrer"
+           href="$SOURCE_GOOGLE_SHEET_URL"
+          class='mobile-menu--link'>
+          <span class='content'>
+            Original Spreadsheet
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </span>
+        </a>
+      </nav>
+      
+      <section class='network-promo'>
+        <a href='https://nextmeeting.org' noopener target='_blank' onclick="window.fathom?.trackGoal('SQ0LZXKD', 0);">
+          <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+          <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+          <svg width="18rem" class='mx-auto' height="100%" viewBox="0 0 1014 404" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+              <g id="Artboard1" transform="matrix(0.966347,0,0,0.926041,-230.245,-69.907)">
+                  <rect x="238.263" y="75.49" width="1048.51" height="435.608" style="fill:none;"/>
+                  <g transform="matrix(1.03482,0,0,1.07987,-8.02507,-40.2899)">
+                      <text x="353.412px" y="346.837px" style="font-family:'Roboto-Italic_Medium-Italic', 'Roboto', 'system-ui';font-style:italic;font-size:146.185px;fill:var(--color-text-2)">Next</text>
+                      <text x="646.496px" y="346.837px" style="font-family:'Roboto-LightItalic', 'Roboto', 'system-ui';font-weight:300;font-style:italic;font-size:146.185px;fill:var(--color-text-1)">Meeting</text>
+                  </g>
+                  <g transform="matrix(0.764142,0,0,0.797401,242.911,-4.30459)">
+                      <g transform="matrix(1,0,0,1,0,10.8338)">
+                          <g transform="matrix(0.821856,0,0,0.630924,64.7293,180.181)">
+                              <path d="M1044.86,502.995C1044.86,467.059 1022.47,437.884 994.88,437.884L500.836,437.884C473.249,437.884 450.852,467.059 450.852,502.995C450.852,538.93 473.249,568.106 500.836,568.106L994.88,568.106C1022.47,568.106 1044.86,538.93 1044.86,502.995Z" style="stroke:var(--color-network-logo-badge);stroke-width:13.86px;fill:var(--color-network-logo-badge)"/>
+                          </g>
+                          <g transform="matrix(0.463243,0,0,0.463243,324.325,359.751)">
+                              <text x="353.412px" y="346.837px" style="font-family:'Roboto-Regular_Bold', 'Roboto';font-size:146.155px;fill:white;">N<tspan x="479.528px 585.947px 696.149px 847.742px 970.147px 1082.06px " y="346.837px 346.837px 346.837px 346.837px 346.837px 346.837px ">ETWORK</tspan></text>
+                          </g>
+                      </g>
+                      <g transform="matrix(0.278499,0,0,0.278499,420.887,131.241)">
+                          <text x="353.412px" y="346.837px" style="font-family:'Roboto-Regular_Black', 'Roboto';font-size:146.155px;fill:var(--color-text-2);">P<tspan x="467.538px 589.944px 741.537px 846.529px 958.444px 1063.44px 1181.2px 1239.31px 1348.3px " y="346.837px 346.837px 346.837px 346.837px 346.837px 346.837px 346.837px 346.837px 346.837px ">OWERED BY</tspan></text>
+                      </g>
+                  </g>
+              </g>
+          </svg>
+        
+        </a>
+        
+        <p class="mb-8 text-center uppercase text-xs text-color-3">
+          NextMeeting is not affiliated with $FELLOWSHIP
+        </p> 
+      </section> 
+    </aside>
 
     <!-- <h4 class="text-xs uppercase flex flex-col items-center mt-4 opacity-50 mb-8">
      
@@ -316,105 +521,9 @@
 
   </div>
 
-    <script>
-      document.addEventListener('alpine:init', function() {
-        Alpine.data('app', () => ({
-          JSON_SCHEDULE,
-          MEETINGS_BY_TIME,
-          meetings: JSON_SCHEDULE.meetings, 
-          virtualPage: 'home',  
-          currentTimestamp: new Date().toISOString(),
-          selectedSession: BLANK_SESSION,
-          calendarEventJson: undefined,
-        
-          openSessionDetailsModal(session) {
-            console.log('Row click! ' + session.name)
-        
-            this.virtualPage='sessionDetails';
-            this.selectedSession=session;
-        
-            const state = {};
-            const title = session.name + ' | $SITE_TITLE';
-            const url = new URL(window.location);
-            url.searchParams.set('meetingName', session.name);
-            document.title = title;
-            history.pushState(state, title, url);
-            
-            bodyScrollLock.disableBodyScroll(document.querySelector('#session-details-card'));
-            document.querySelector('body').classList.add('ios-prevent-scroll');
-            
-            console.log('Locked scroll'); 
-        
-            console.log('Activating calendar button');
-            
-            const calendarEvent = JSON.stringify(createCalendarEventJson(this.selectedSession));
-            console.log(calendarEvent);
-            this.calendarEventJson = calendarEvent;
-            
-            [...document.querySelectorAll('.atcb_initialized')].map(elem => {
-              elem.classList.remove('atcb_initialized');
-              elem.classList.add('atcb');
-              elem.style.display = 'none';
-            })
-        
-            this.$nextTick(() => {
-              atcb_init(); 
-            });
-        
-            this.trackGoal('G6CYDCHM', 0);
-          },
-          
-          closeSessionDetailsModal() {
-            console.log('Closing modal')
-            this.virtualPage = 'home';
-            this.sessionDetails=BLANK_SESSION;
-        
-            this.calendarEventJson = ''
-            
-            bodyScrollLock.clearAllBodyScrollLocks();
-            document.querySelector('body').classList.remove('ios-prevent-scroll');
-            window.history.pushState({}, '$SITE_TITLE', window.location.href.substring(window.location.href.lastIndexOf('/') + 1).split('?')[0]);
-            
-            console.log('Unlocked scroll')
-          },
-          recategorizeSessions() {
-            // Recalculate all meeting times every minute
-            // So sessions can move up to the next category, become/exit being live, etc.
-            console.log('Recalulating dates');
-            this.MEETINGS_BY_TIME = window.categorizeSessions(this.meetings.slice(0, this.amountRemaining));
-            this.currentTimestamp = new Date().toISOString();
-          },
-        
-          trackGoal(id, value) {
-            window.fathom?.trackGoal(id, value);
-          },
-        
-          announcementBarText: '$ANNOUNCEMENT_BAR_TEXT',
-          announcementBarUrl: '',
-          announcementBarEmoji: '$ANNOUNCEMENT_BAR_EMOJI',
-          getJoinButtonTextForMeetingType(type) {
-            return {
-              'phone-number': 'Call ›',
-              'email': 'Contact ›',
-              'zoom': 'Join ›',
-              'skype': 'Skype ›',
-              'unknown': 'Join ›',
-            }[type];
-          }
-          
-        }))
-      })
-    </script>
+    
 
-    <div x-cloak x-data="app"
-    x-init="
-      document.querySelector('#session-details-card').addEventListener('swiped-down', function(e) {
-        closeSessionDetailsModal()
-      });
-      repeatEvery(()=> {  
-        recategorizeSessions(); 
-      }, ONE_MINUTE_IN_MS); 
-    "
+    <div x-cloak 
     >    
     <script>  
     </script>
