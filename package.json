@@ -34,7 +34,7 @@
     "event-stream": "^4.0.1",
     "gulp-dart-sass": "^1.0.2",
     "ics": "^2.31.0",
-    "sass": "^1.38.1",
+    "sass": "^1.65.1",
     "tailwindcss": "^1.9.6"
   }
 }
